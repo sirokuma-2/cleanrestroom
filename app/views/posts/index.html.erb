@@ -7,6 +7,7 @@
 
 <script>
   let currentLanguage = "ja";
+  const googlemapKey = gon.googlemap_key;
   function loadGoogleMapsAPI(currentLanguage) {
     ((g) => {
       var h,
@@ -43,7 +44,7 @@
         ? console.warn(p + " only loads once. Ignoring:", g)
         : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
     })({
-      key: "AIzaSyA_ZWkFEX_aw0B6eqNzserY4pqKWx-BUs4",
+      key: googlemapKey,
       v: "beta",
       language: currentLanguage,
     });
