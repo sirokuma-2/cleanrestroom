@@ -8,6 +8,8 @@ let currentLanguage = "ja"; // デフォルトの言語を設定
 
 let locations; //すべての施設の位置
 let allMarkers = []; // すべてのマーカーを保持する配列
+let restroomIconUrl;
+let routeIconUrl;
 
 let userPos; // ユーザーの現在位置
 
@@ -20,7 +22,7 @@ async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
 
   // gonから施設の位置情報を取得
-  locations = gon.locations;
+  locations = gon.posts;
 
   //ルート検索機能
   directionsService = new google.maps.DirectionsService(); //ルートを検索するためのインスタンス
@@ -44,6 +46,8 @@ async function initMap() {
 
         const mapElement = document.getElementById("map");
         const houseIconUrl = mapElement.getAttribute("data-house-icon-url");
+        restroomIconUrl = mapElement.getAttribute("data-restroom-icon-url");
+        routeIconUrl = mapElement.getAttribute("data-route-icon-url");
 
         //現在地のアイコンの設定
         const userIcon = {
@@ -64,14 +68,16 @@ async function initMap() {
         map.setCenter(userPos);
 
         // マーカーと詳細情報を表示
-        // addMarkers(
-        //   locations,
-        //   map,
-        //   allMarkers,
-        //   userPos,
-        //   directionsService,
-        //   directionsRenderer
-        // );
+        addMarkers(
+          locations,
+          map,
+          allMarkers,
+          userPos,
+          directionsService,
+          directionsRenderer,
+          restroomIconUrl,
+          routeIconUrl
+        );
       },
       () => {
         //handleLocationErrorの設定
