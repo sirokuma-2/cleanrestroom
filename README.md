@@ -1,24 +1,37 @@
-# README
+# アプケーション名
+Quick Clean Restroom
+# アプリケーション概要
+最寄りの綺麗なトイレの位置をリアルタイムで案内し、トイレの情報を提供する
+# URL
+http://43.206.75.128
+# テスト用アカウント
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 利用方法
+## 目標投稿
 
-Things you may want to cover:
+# アプリケーションを作成した背景
+外出先で最寄りのきれいなトイレを探す困難なことがある。googlemapでは公共トイレは多いが、綺麗なトイレがすぐに見つからない。同様の問題を抱えている方も多いと推測し、問題を解決するため、ユーザー同士がきれいなトイレ情報を共有できるアプリケーションを開発することにした。
+# 要件
 
-* Ruby version
+# 実装した機能についての画像やGIFおよびその説明
 
-* System dependencies
+# 実装予定の機能
 
-* Configuration
+# データベース設計
+![ER図](https://gyazo.com/85ecf1606c52d0819d99e02db71e026d)
 
-* Database creation
+# 画面遷移図
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 開発環境
+* フロントエンド
+* バックエンド
+* インフラ
+* テキストエディタ
+* タスク管理
+# ローカルでの動作方法
+以下のコマンドを順に実行\
+% git clone\
+% cd\
+% bundle install
+# 工夫したポイント
+google map APIを活用し、ユーザーに使いやすい機能を実現
