@@ -21,6 +21,7 @@ http://43.206.75.128
 ![ER図](https://i.gyazo.com/85ecf1606c52d0819d99e02db71e026d.png)
 
 # 画面遷移図
+![画面遷移図](https://i.gyazo.com/5df70c98f86793eed3264bb64e9c60fc.png)
 
 # 開発環境
 * フロントエンド
