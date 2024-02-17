@@ -18,7 +18,7 @@ http://43.206.75.128
 # 実装予定の機能
 
 # データベース設計
-![ER図](https://gyazo.com/85ecf1606c52d0819d99e02db71e026d)
+![ER図](https://i.gyazo.com/85ecf1606c52d0819d99e02db71e026d.png)
 
 # 画面遷移図
 
