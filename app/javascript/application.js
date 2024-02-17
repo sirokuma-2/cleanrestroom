@@ -4,6 +4,5 @@ import "controllers";
 import "index";
 import "addMarkers";
 import "calculateAndDisplayRoute";
-import "clearMarkers";
 import "clickListener";
 import "handleLocationError.js";

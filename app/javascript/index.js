@@ -1,6 +1,6 @@
-// import { clickListener } from "./clickListener.js";
+import { clickListener } from "./clickListener.js";
 import { addMarkers } from "./addMarkers.js";
-// import { handleLocationError } from "./handleLocationError.js";
+import { handleLocationError } from "./handleLocationError.js";
 
 let map;
 
@@ -81,18 +81,18 @@ async function initMap() {
       },
       () => {
         //handleLocationErrorの設定
-        // handleLocationError(true, map.getCenter());
+        handleLocationError(true, map.getCenter());
       }
     );
   } else {
     //handleLocationErrorの設定
-    // handleLocationError(false, map.getCenter());
+    handleLocationError(false, map.getCenter());
   }
 
   //右クリックの拡張
   google.maps.event.addListener(map, "rightclick", (event) => {
     // clickListener 関数を呼び出し、マーカーを作成
-    // const marker = clickListener(event, map);
+    const marker = clickListener(event, map);
 
     // マーカーに 'click' イベントリスナーを追加してマーカーを削除
     google.maps.event.addListener(marker, "click", () => {

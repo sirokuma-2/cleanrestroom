@@ -16,8 +16,6 @@ export function addMarkers(
     let iconUrl;
     // iconUrl = "public.png";
 
-    console.log(location);
-
     //アイコンの設定
     const customIcon = {
       url: restroomIconUrl,
@@ -76,8 +74,6 @@ export function addMarkers(
       const searchButton = document.createElement("button");
       // searchButton.textContent = "ルート検索";
       // ボタンに背景画像を設定
-      console.log(routeIconUrl);
-      console.log(restroomIconUrl);
       searchButton.style.backgroundImage = `url(${routeIconUrl})`;
       searchButton.style.backgroundSize = "cover";
       searchButton.style.width = "60px";
