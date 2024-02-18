@@ -33,6 +33,7 @@ async function initMap() {
     zoom: 13,
     mapId: "DEMO_MAP_ID",
     maxZoom: 18,
+    center: { lat: 35.681236, lng: 139.767125 },
   });
 
   // GPSで現在地を表示　現在地にhouseアイコンを表示　マーカーと詳細情報を表示
@@ -81,7 +82,49 @@ async function initMap() {
       },
       () => {
         //handleLocationErrorの設定
-        handleLocationError(true, map.getCenter());
+        // handleLocationError(true, map.getCenter());
+
+        const mapElement = document.getElementById("map");
+        const houseIconUrl = mapElement.getAttribute("data-house-icon-url");
+        restroomIconUrl = mapElement.getAttribute("data-restroom-icon-url");
+        routeIconUrl = mapElement.getAttribute("data-route-icon-url");
+
+        //現在地のアイコンの設定
+        const userIcon = {
+          url: houseIconUrl,
+          scaledSize: new google.maps.Size(20, 20),
+          origin: new google.maps.Point(0, 0),
+        };
+
+        // 現在地の取得に失敗した場合の処理
+        // 東京駅の座標
+        const tokyoStationPos = {
+          lat: 35.681236,
+          lng: 139.767125,
+        };
+
+        // 東京駅にマーカーを設置（オプション）
+        new google.maps.Marker({
+          position: tokyoStationPos,
+          map: map,
+          title: "Tokyo Station",
+          icon: userIcon,
+        });
+
+        // マップの中心を現在位置に移動
+        map.setCenter(tokyoStationPos);
+
+        // マーカーと詳細情報を表示
+        addMarkers(
+          locations,
+          map,
+          allMarkers,
+          tokyoStationPos,
+          directionsService,
+          directionsRenderer,
+          restroomIconUrl,
+          routeIconUrl
+        );
       }
     );
   } else {
