@@ -14,8 +14,8 @@ https://cleanrestrooms.net/posts
 # 要件
 
 # 実装した機能についての画像やGIFおよびその説明
-![ルート検索](https://gyazo.com/0515388e1d4be67320f3889b7b19163d)
-![個別施設情報](https://gyazo.com/6702edd493a19db141f52c579e9582eb)
+![ルート検索](https://i.gyazo.com/0515388e1d4be67320f3889b7b19163d.jpg)
+![個別施設情報](https://i.gyazo.com/6702edd493a19db141f52c579e9582eb.jpg)
 # 実装予定の機能
 
 # データベース設計
