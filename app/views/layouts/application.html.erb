@@ -11,6 +11,38 @@
   </head>
 
   <body>
+    <header class="header">
+      <div class="inner">
+        <div class="nav">
+          <div class="nav__left">
+              <%= link_to "Quick Clean Restroom", "#", class: :header_btn %>
+          </div>
+          <%# <% if user_signed_in? %> 
+            <%# <div class="nav__right"> %>
+              <%# <%= link_to "マイページ", "#", data: { turbo_method: :delete }, class: :nav__logout %> 
+              <%# <%= link_to "ログアウト", "#", class: :nav__btn %>
+            <%# </div> %>
+          <%# <% else %>
+            <div class="nav__right">
+              <%= link_to "検索", "#", class: :nav__btn %>
+              <%= link_to "マイページ", "#", class: :nav__btn %>
+              <%= link_to "ログアウト", "#", class: :nav__btn %>
+            </div>
+          <%# <% end %>
+        </div>
+      </div>
+    </header>
     <%= yield %>
+     <footer class="footer">
+      <div class='footer-details'>
+        <ul>
+          <li><%= link_to 'サービス利用規約', "#", class: "footer-link" %></li>
+          <li><%= link_to 'プライバシーポリシー', "#", class: "footer-link" %></li>
+        </ul>
+      </div>
+      <p>Qucik Clean Restroom</p>
+      <p class="copyright">Copyright © Qucik Clean Restroom  All rights reserved.</p>
+    </footer>
   </body>
 </html>
+
