@@ -1,1 +1,54 @@
-<h1>new画面</h1>
+<h1>Quick Clean Restroom header分割予定</h1>
+<div class="facility">
+  <p>きれいなトイレ情報を投稿する</p>
+  <%= form_with model: @post, local: true do |f| %>
+    <div class="facility-form">
+      <%= f.label :name, "名称" %><br />
+      <%= f.text_field :name, class:"facility-text"%>
+    </div>
+
+    <div class="facility-form">
+      <%= f.label :address, "住所" %><br />
+      <%= f.text_field :address, class:"facility-text"%>
+    </div>
+
+    <div class="facility-form">
+      <%= f.label :comment, "コメント" %><br />
+      <%= f.text_field :comment , class:"facility-text"%>
+    </div>
+
+   
+    <div class="check-box-contents">
+      <p>設備情報</p>
+      <div class="facility-check-box">
+        <%= f.check_box :nursing_room, color:'red'%>
+        <%= f.label :nursing_room, '授乳室'%>
+      </div>
+      <div class="facility-check-box">
+        <%= f.check_box :anyone_toilet %>
+        <%= f.label :anyone_toilet, '誰でもトイレ'%>
+      </div>
+      <div class="facility-check-box">
+        <%= f.check_box :diaper_changing_station %>
+        <%= f.label :diaper_changing_station, 'オムツ交換台'%>
+      </div>  
+      <div class="facility-check-box">
+        <%= f.check_box :powder_corner %>
+        <%= f.label :powder_corner, 'パウダーコーナー'%>
+      </div>
+      <div class="facility-check-box">
+        <%= f.check_box  :stroller_accessible %>
+        <%= f.label  :stroller_accessible, 'ベビーカー可'%>
+      </div>
+    </div>
+
+    <div class="click-upload">
+      <%= f.label :image, "画像投稿" %><br />
+      <%= f.file_field :image, class:"item-image-btn",id:"item-image" %>
+    </div>
+
+    <div class="facility-content">
+      <%= f.submit "登録する", class:"facility-post-btn" %>
+    </div>
+  <% end %>
+</div>
