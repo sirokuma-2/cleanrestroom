@@ -19,10 +19,19 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
     @latitude = params[:latitude]
     @longitude = params[:longitude]
   end
 
   def create
+    @post = Post.new(post_params)
+    puts @post
   end
+
+  private
+  def post_params
+    params.require(:post).permit(:name, :address, :comment, :latitude , :longitude)
+  end
+
 end
