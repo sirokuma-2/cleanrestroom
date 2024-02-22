@@ -6,3 +6,5 @@ import "addMarkers";
 import "calculateAndDisplayRoute";
 import "clickListener";
 import "handleLocationError.js";
+import "menu";
+import "preview";

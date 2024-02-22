@@ -1,4 +1,4 @@
-<div class="facility">
+<div class="facility" id="new_post">
   <p>きれいなトイレ情報を投稿する</p>
   <%= form_with model: @post, local: true do |f| %>
     <div class="facility-form">
@@ -44,6 +44,7 @@
     <div class="click-upload">
       <%= f.label :image, "画像投稿" %><br />
       <%= f.file_field :image, class:"item-image-btn",id:"item-image" %>
+      <div id="preview"></div>
     </div>
 
     <div class="facility-content">
