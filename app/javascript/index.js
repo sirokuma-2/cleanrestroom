@@ -144,5 +144,6 @@ async function initMap() {
   });
 }
 
-//地図の表示を実行
-initMap();
+document.addEventListener("turbo:load", function () {
+  initMap(); // マップの初期化関数をここで呼び出す
+});

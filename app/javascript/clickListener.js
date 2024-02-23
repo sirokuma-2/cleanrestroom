@@ -12,9 +12,9 @@ export function clickListener(event, map) {
   // 登録画面へのリンクを含む吹き出しを生成
   let contentString =
     '<div id="infoWindowContent" style="padding: 15px;">' +
-    '<a href="http://example.com/register?lat=' +
+    '<a href="http://localhost:3000/posts/new?latitude=' +
     latitude + // ここを `lat` から `latitude` に修正
-    "&lng=" +
+    "&longitude=" +
     longitude + // ここを `lng` から `longitude` に修正
     '">ここを登録する</a>' +
     "</div>";
