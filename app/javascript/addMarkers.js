@@ -117,7 +117,6 @@ export function addMarkers(
     address = location.address;
     content = location.content;
     imageUrl = location.image;
-    console.log(imageUrl);
 
     // マップ上のアイコンにイベントリスナーを追加
     marker.addListener("click", function () {
