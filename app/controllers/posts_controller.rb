@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post_facility= PostFacility.new(post_params)
+    @post_facility = PostFacility.new(post_params)
     if @post_facility.save
       # 保存が成功した場合の処理（例: リダイレクト）
       redirect_to posts_path, notice: '投稿が成功しました。'
@@ -39,8 +39,8 @@ class PostsController < ApplicationController
   end
 
   private
-  def post_params
-    params.require(:post_facility).permit(:name, :address, :content, :latitude , :longitude, :image)
-  end
 
+  def post_params
+    params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude, :image)
+  end
 end

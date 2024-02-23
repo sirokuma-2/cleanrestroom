@@ -1,6 +1,6 @@
 class PostFacility
   include ActiveModel::Model
-  attr_accessor :facility_id,:name,:address,:content,:latitude,:longitude, :image
+  attr_accessor :facility_id, :name, :address, :content, :latitude, :longitude, :image
 
   with_options presence: true do
     validates :facility_id
@@ -13,7 +13,7 @@ class PostFacility
   end
 
   def save
-    facility = Facility.new(name: name, address: address, content: content, latitude: latitude, longitude: longitude)
+    facility = Facility.new(name:, address:, content:, latitude:, longitude:)
 
     if image.present?
       facility.image.attach(image)
