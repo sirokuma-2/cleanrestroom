@@ -19,19 +19,25 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post_facility = PostFacility.new
     @latitude = params[:latitude]
     @longitude = params[:longitude]
   end
 
   def create
-    @post = Post.new(post_params)
-    puts @post
+    @post_facility= PostFacility.new(post_params)
+    if @post_facility.save
+      # 保存が成功した場合の処理（例: リダイレクト）
+      redirect_to posts_path, notice: '投稿が成功しました。'
+    else
+      # 失敗した場合、フォームを再表示
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
   def post_params
-    params.require(:post).permit(:name, :address, :comment, :latitude , :longitude)
+    params.require(:post_facility).permit(:name, :address, :content, :latitude , :longitude)
   end
 
 end

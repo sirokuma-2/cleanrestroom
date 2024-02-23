@@ -1,6 +1,6 @@
 <div class="facility" id="new_post">
   <p>きれいなトイレ情報を投稿する</p>
-  <%= form_with model: @post, local: true do |f| %>
+  <%= form_with model: @post_facility, url: posts_path,local: true do |f| %>
     <div class="facility-form">
       <%= f.label :name, "名称" %><br />
       <%= f.text_field :name, class:"facility-text"%>
@@ -12,8 +12,8 @@
     </div>
 
     <div class="facility-form">
-      <%= f.label :comment, "コメント" %><br />
-      <%= f.text_field :comment , class:"facility-text"%>
+      <%= f.label :content, "コメント" %><br />
+      <%= f.text_field :content , class:"facility-text"%>
     </div>
 
    
