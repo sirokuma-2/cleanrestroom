@@ -37,10 +37,17 @@ export function addMarkers(
     // インフォパネルの要素を取得
     const infoPanel = document.getElementById("infoPanel");
 
+    let baseUrl =
+      window.location.hostname === "localhost"
+        ? "http://localhost:3000"
+        : "https://cleanrestrooms.net/";
+
     //編集するボタンを作成
     function addEditButton(parentElement) {
-      const editButton = document.createElement("button");
+      const editButton = document.createElement("a");
       editButton.textContent = "編集する";
+      editButton.href = `${baseUrl}/posts/${location.id}/edit`;
+      editButton.style.display = "inline-block"; // ブロック要素のように扱う
       editButton.style.backgroundColor = "#4CAF50";
       editButton.style.color = "#FFFFFF";
       editButton.style.borderRadius = "10px";
