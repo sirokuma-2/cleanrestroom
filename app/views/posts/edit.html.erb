@@ -1,19 +1,19 @@
 <div class="facility" id="new_post">
-  <p>きれいなトイレ情報を投稿する</p>
-  <%= form_with model: @post_facility, url: posts_path,local: true do |f| %>
+  <p>きれいなトイレ情報を編集する</p>
+  <%= form_with model: @facility, url: post_path(@post), method: :patch,local: true do |f| %>
     <div class="facility-form">
       <%= f.label :name, "名称" %><br />
-      <%= f.text_field :name, class:"facility-text"%>
+      <%= f.text_field :name, value: @facility.name, class:"facility-text"%>
     </div>
 
     <div class="facility-form">
       <%= f.label :address, "住所" %><br />
-      <%= f.text_field :address, class:"facility-text"%>
+      <%= f.text_field :address, value: @facility.address, class:"facility-text"%>
     </div>
 
     <div class="facility-form">
       <%= f.label :content, "コメント" %><br />
-      <%= f.text_field :content , class:"facility-text"%>
+      <%= f.text_field :content, value: @facility.content , class:"facility-text"%>
     </div>
 
    
@@ -43,24 +43,24 @@
 
     <div class="click-upload">
       <%= f.label :image, "画像投稿" %><br />
-      <%= f.file_field :image, class:"item-image-btn",id:"item-image" %>
+      <%= f.file_field :image,value: @facility.image.url, class:"item-image-btn",id:"item-image" %>
       <div id="preview"></div>
     </div>
 
     <div class="facility-place-form">
       <label>緯度</label>
       <p><%= @latitude %></p>
-      <%= f.hidden_field :latitude, value: @latitude %>
+      <%= f.hidden_field :latitude, value: @facility.latitude %>
     </div>
 
     <div class="facility-place-form">
       <label>経度</label>
       <p><%= @longitude %></p>
-      <%= f.hidden_field :longitude, value: @longitude %>
+      <%= f.hidden_field :longitude, value: @facility.longitude %>
     </div>
 
     <div class="facility-content">
-      <%= f.submit "登録する", class:"facility-post-btn" %>
+      <%= f.submit "編集する", class:"facility-post-btn" %>
     </div>
   <% end %>
 </div>

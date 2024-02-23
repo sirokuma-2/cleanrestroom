@@ -134,8 +134,6 @@ export function addMarkers(
 
       //画像の表示
       const image = document.createElement("img");
-      // image.src =
-      //   "https://as1.ftcdn.net/v2/jpg/00/39/41/84/1000_F_39418406_hEbC52KC1Eo5539i9VFagZA1cZ9zI33p.jpg";
       image.src = imageUrl;
       image.alt = "説明テキスト";
       image.style.width = "100%";

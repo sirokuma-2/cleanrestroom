@@ -27,4 +27,5 @@ class PostFacility
       false
     end
   end
+
 end

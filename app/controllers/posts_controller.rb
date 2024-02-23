@@ -37,24 +37,31 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = PostFacility.find(params[:id])
-  end
 
-  def create
-    @post = PostFacility.find(params[:id])
-    if @post_facility.update(post_params)
-      redirect_to posts_path, notice: '投稿を編集しました。'
-    else
-      render :edit, status: :unprocessable_entity
-    end
+def edit
+  @post = Post.find(params[:id])
+  @facility = @post.facility
+end
+
+def update
+  @post = Post.find(params[:id])
+  @facility = @post.facility
+  if @facility.update(post_params)
+    redirect_to posts_path, notice: '投稿を編集しました。'
+  else
+    render :edit, status: :unprocessable_entity
   end
+end
 
 
 
   private
 
   def post_params
-    params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude, :image)
+    if params[:post_facility]
+      params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude, :image)
+    elsif params[:facility]
+      params.require(:facility).permit(:name, :address, :content, :latitude, :longitude, :image)
+    end
   end
 end
