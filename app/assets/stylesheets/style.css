@@ -271,6 +271,9 @@ body {
   border-radius: 5px;
 }
 
+.facility-place-form{
+  display: none;
+}
 @media (min-width:599px){
 
   .facility {
