@@ -1,6 +1,6 @@
 class PostFacility
   include ActiveModel::Model
-  attr_accessor :facility_id,:name,:address,:content,:latitude,:longitude
+  attr_accessor :facility_id,:name,:address,:content,:latitude,:longitude, :image
 
   with_options presence: true do
     validates :facility_id
@@ -9,16 +9,23 @@ class PostFacility
     validates :content
     validates :latitude
     validates :longitude
+    validates :image, presence: true, unless: :was_attached?
   end
 
   def save
     facility=Facility.create(name:,address:,content:,latitude:,longitude:)
     if facility.persisted?
-      # Facilityが正しく保存された場合、そのIDをfacility_idとしてPostを保存
       Post.create(facility_id: facility.id)
     else
-      # Facilityの保存に失敗した場合、falseを返して処理を終了
       false
     end
+    facility.image.attach(image) if image.present?
+    if facility.save
+      puts '画像が保存されました'
+    end
+  end
+
+  def was_attached?
+    self.image.attached?
   end
 end
