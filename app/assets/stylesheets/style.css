@@ -148,6 +148,12 @@ body {
   transition: visibility 0s linear 0s, opacity 0.5s linear;
 }
 
+.info-panel img{
+  max-width: 500px;
+  max-height: 300px;
+  object-fit: contain;
+}
+
 
 @media (min-width:599px){
   .info-panel {
