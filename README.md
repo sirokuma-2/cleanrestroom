@@ -25,11 +25,11 @@ https://cleanrestrooms.net/posts
 ![画面遷移図](https://i.gyazo.com/5df70c98f86793eed3264bb64e9c60fc.png)
 
 # 開発環境
-* フロントエンド
-* バックエンド
-* インフラ
-* テキストエディタ
-* タスク管理
+* フロントエンド:HTML CSS Javascript
+* バックエンド:Rails 7.0.0
+* インフラ:EC2 S3
+* API:Google Maps API Directions API
+
 # ローカルでの動作方法
 以下のコマンドを順に実行\
 % git clone\
