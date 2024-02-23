@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   include Rails.application.routes.url_helpers
+
   def index
     gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
     @posts = Post.includes(:facility).all
@@ -30,13 +31,26 @@ class PostsController < ApplicationController
   def create
     @post_facility = PostFacility.new(post_params)
     if @post_facility.save
-      # 保存が成功した場合の処理（例: リダイレクト）
       redirect_to posts_path, notice: '投稿が成功しました。'
     else
-      # 失敗した場合、フォームを再表示
       render :new, status: :unprocessable_entity
     end
   end
+
+  def edit
+    @post = PostFacility.find(params[:id])
+  end
+
+  def create
+    @post = PostFacility.find(params[:id])
+    if @post_facility.update(post_params)
+      redirect_to posts_path, notice: '投稿を編集しました。'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+
 
   private
 
