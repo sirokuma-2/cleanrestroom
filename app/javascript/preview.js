@@ -1,8 +1,8 @@
 document.addEventListener("turbo:load", function () {
-  const fileField = document.querySelector('input[type="file"][name="image"]');
+  const fileField = document.querySelector(
+    'input[type="file"][name="post_facility[image]"'
+  );
   const previewList = document.getElementById("preview");
-
-  if (!fileField) return; // input要素がなければここで終了
 
   fileField.addEventListener("change", function (e) {
     const file = e.target.files[0];
