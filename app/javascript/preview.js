@@ -33,4 +33,17 @@ document.addEventListener("turbo:load", function () {
       }
     });
   });
+
+  //既存の写真が登録されている場合
+  let imagePreview = document.getElementById("item-image");
+  let imageUrl = imagePreview.getAttribute("value");
+
+  let registerdWrapper = document.createElement("div");
+
+  let registerdImage = document.createElement("img");
+  registerdImage.setAttribute("class", "preview-image");
+  registerdImage.setAttribute("src", imageUrl);
+
+  registerdWrapper.appendChild(registerdImage);
+  previewList.appendChild(registerdWrapper);
 });
