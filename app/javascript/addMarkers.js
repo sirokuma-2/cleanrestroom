@@ -112,11 +112,12 @@ export function addMarkers(
       parentElement.appendChild(reviewButton); // ボタンを親要素に追加
     }
 
-    let name, address, content;
+    let name, address, content, imageUrl;
     name = location.name;
     address = location.address;
     content = location.content;
-    console.log(name, address);
+    imageUrl = location.image;
+    console.log(imageUrl);
 
     // マップ上のアイコンにイベントリスナーを追加
     marker.addListener("click", function () {
@@ -134,8 +135,9 @@ export function addMarkers(
 
       //画像の表示
       const image = document.createElement("img");
-      image.src =
-        "https://as1.ftcdn.net/v2/jpg/00/39/41/84/1000_F_39418406_hEbC52KC1Eo5539i9VFagZA1cZ9zI33p.jpg";
+      // image.src =
+      //   "https://as1.ftcdn.net/v2/jpg/00/39/41/84/1000_F_39418406_hEbC52KC1Eo5539i9VFagZA1cZ9zI33p.jpg";
+      image.src = imageUrl;
       image.alt = "説明テキスト";
       image.style.width = "100%";
       image.style.height = "auto";

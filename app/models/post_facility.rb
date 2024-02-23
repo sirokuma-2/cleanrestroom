@@ -13,19 +13,18 @@ class PostFacility
   end
 
   def save
-    facility=Facility.create(name:,address:,content:,latitude:,longitude:)
-    if facility.persisted?
+    facility = Facility.new(name: name, address: address, content: content, latitude: latitude, longitude: longitude)
+
+    if image.present?
+      facility.image.attach(image)
+      puts '画像が保存されました'
+    end
+
+    if facility.save
       Post.create(facility_id: facility.id)
+      true
     else
       false
     end
-    facility.image.attach(image) if image.present?
-    if facility.save
-      puts '画像が保存されました'
-    end
-  end
-
-  def was_attached?
-    self.image.attached?
   end
 end
