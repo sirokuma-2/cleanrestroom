@@ -62,5 +62,8 @@
     <div class="facility-content">
       <%= f.submit "編集する", class:"facility-post-btn" %>
     </div>
+    <div class="facility-delete">
+      <%= link_to "削除する", post_path(@post), data: {turbo_method: :delete},class: "facility-delete-btn" %>
+    </div>
   <% end %>
 </div>
