@@ -133,10 +133,10 @@ body {
   display: none;
   position: absolute;
   transition: opacity 1.0s ease-in-out; 
-  top: 10px;
+  top: 115px;
   left: 0;
   width: 100%; /* 左半分の幅 */
-  height: 95%;
+  height: 90%;
   background-color: white; /* 背景色 */
   box-sizing: border-box;
 }
@@ -160,10 +160,10 @@ body {
     display: none;
     position: absolute;
     transition: opacity 1.0s ease-in-out; 
-    top: 10px;
+    top: 75px;
     left: 0;
     width: 50%; /* 左半分の幅 */
-    height: 95%;
+    height: 90%;
     background-color: white; /* 背景色 */
     box-sizing: border-box;
   }
@@ -174,10 +174,10 @@ body {
     display: none;
     position: absolute;
     transition: opacity 1.0s ease-in-out; 
-    top: 10px;
+    top: 75px;
     left: 0;
     width: 25%; /* 左半分の幅 */
-    height: 95%;
+    height: 90%;
     background-color: white; /* 背景色 */
     box-sizing: border-box;
   }
