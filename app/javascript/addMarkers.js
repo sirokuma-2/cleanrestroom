@@ -40,7 +40,7 @@ export function addMarkers(
     let baseUrl =
       window.location.hostname === "localhost"
         ? "http://localhost:3000"
-        : "https://cleanrestrooms.net/";
+        : "https://cleanrestrooms.net";
 
     //編集するボタンを作成
     function addEditButton(parentElement) {
