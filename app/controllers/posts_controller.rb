@@ -37,29 +37,26 @@ class PostsController < ApplicationController
     end
   end
 
-
-def edit
-  @post = Post.find(params[:id])
-  @facility = @post.facility
-end
-
-def update
-  @post = Post.find(params[:id])
-  @facility = @post.facility
-  if @facility.update(post_params)
-    redirect_to posts_path, notice: '投稿を編集しました。'
-  else
-    render :edit, status: :unprocessable_entity
+  def edit
+    @post = Post.find(params[:id])
+    @facility = @post.facility
   end
-end
 
-def destroy
-  post = Post.find(params[:id])
-  post.destroy
-  redirect_to posts_path
-end
+  def update
+    @post = Post.find(params[:id])
+    @facility = @post.facility
+    if @facility.update(post_params)
+      redirect_to posts_path, notice: '投稿を編集しました。'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
-
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
+  end
 
   private
 
