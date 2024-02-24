@@ -5,7 +5,7 @@ export function clickListener(event, map) {
   let baseUrl =
     window.location.hostname === "localhost"
       ? "http://localhost:3000"
-      : "https://cleanrestrooms.net/";
+      : "https://cleanrestrooms.net";
 
   // マーカーを作成してマップに追加
   const marker = new google.maps.Marker({
