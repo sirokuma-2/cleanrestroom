@@ -37,10 +37,17 @@ export function addMarkers(
     // インフォパネルの要素を取得
     const infoPanel = document.getElementById("infoPanel");
 
+    let baseUrl =
+      window.location.hostname === "localhost"
+        ? "http://localhost:3000"
+        : "https://cleanrestrooms.net/";
+
     //編集するボタンを作成
     function addEditButton(parentElement) {
-      const editButton = document.createElement("button");
+      const editButton = document.createElement("a");
       editButton.textContent = "編集する";
+      editButton.href = `${baseUrl}/posts/${location.id}/edit`;
+      editButton.style.display = "inline-block"; // ブロック要素のように扱う
       editButton.style.backgroundColor = "#4CAF50";
       editButton.style.color = "#FFFFFF";
       editButton.style.borderRadius = "10px";
@@ -134,8 +141,6 @@ export function addMarkers(
 
       //画像の表示
       const image = document.createElement("img");
-      // image.src =
-      //   "https://as1.ftcdn.net/v2/jpg/00/39/41/84/1000_F_39418406_hEbC52KC1Eo5539i9VFagZA1cZ9zI33p.jpg";
       image.src = imageUrl;
       image.alt = "説明テキスト";
       image.style.width = "100%";

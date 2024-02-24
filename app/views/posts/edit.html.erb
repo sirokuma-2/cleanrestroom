@@ -1,0 +1,69 @@
+<div class="facility" id="new_post">
+  <p>きれいなトイレ情報を編集する</p>
+  <%= form_with model: @facility, url: post_path(@post), method: :patch,local: true do |f| %>
+    <div class="facility-form">
+      <%= f.label :name, "名称" %><br />
+      <%= f.text_field :name, value: @facility.name, class:"facility-text"%>
+    </div>
+
+    <div class="facility-form">
+      <%= f.label :address, "住所" %><br />
+      <%= f.text_field :address, value: @facility.address, class:"facility-text"%>
+    </div>
+
+    <div class="facility-form">
+      <%= f.label :content, "コメント" %><br />
+      <%= f.text_field :content, value: @facility.content , class:"facility-text"%>
+    </div>
+
+   
+    <%# <div class="check-box-contents">
+      <p>設備情報</p>
+      <div class="facility-check-box">
+        <%= f.check_box :nursing_room, color:'red'%>
+        <%# <%= f.label :nursing_room, '授乳室'%> 
+      <%# </div> %>
+      <%# <div class="facility-check-box"> %>
+        <%# <%= f.check_box :anyone_toilet %> 
+        <%# <%= f.label :anyone_toilet, '誰でもトイレ'%> 
+      <%# </div> %>
+      <%# <div class="facility-check-box"> %>
+        <%# <%= f.check_box :diaper_changing_station %> 
+        <%# <%= f.label :diaper_changing_station, 'オムツ交換台'%>
+      <%# </div>   %>
+      <%# <div class="facility-check-box"> %>
+        <%# <%= f.check_box :powder_corner %>
+        <%# <%= f.label :powder_corner, 'パウダーコーナー'%>
+      <%# </div> %>
+      <%# <div class="facility-check-box"> %>
+        <%# <%= f.check_box  :stroller_accessible %>
+        <%# <%= f.label  :stroller_accessible, 'ベビーカー可'%>
+      <%# </div> %>
+    <%# </div>  %>
+
+    <div class="click-upload">
+      <%= f.label :image, "画像投稿" %><br />
+      <%= f.file_field :image,value: @facility.image.url, class:"item-image-btn",id:"item-image" %>
+      <div id="preview"></div>
+    </div>
+
+    <div class="facility-place-form">
+      <label>緯度</label>
+      <p><%= @latitude %></p>
+      <%= f.hidden_field :latitude, value: @facility.latitude %>
+    </div>
+
+    <div class="facility-place-form">
+      <label>経度</label>
+      <p><%= @longitude %></p>
+      <%= f.hidden_field :longitude, value: @facility.longitude %>
+    </div>
+
+    <div class="facility-content">
+      <%= f.submit "編集する", class:"facility-post-btn" %>
+    </div>
+    <div class="facility-delete">
+      <%= link_to "削除する", post_path(@post), data: {turbo_method: :delete},class: "facility-delete-btn" %>
+    </div>
+  <% end %>
+</div>
