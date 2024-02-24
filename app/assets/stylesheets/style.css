@@ -133,7 +133,7 @@ body {
   display: none;
   position: absolute;
   transition: opacity 1.0s ease-in-out; 
-  top: 115px;
+  top: 75px;
   left: 0;
   width: 100%; /* 左半分の幅 */
   height: 90%;
