@@ -51,6 +51,7 @@ export function addMarkers(
       editButton.style.backgroundColor = "#4CAF50";
       editButton.style.color = "#FFFFFF";
       editButton.style.borderRadius = "10px";
+      editButton.style.textDecoration = "none";
       editButton.style.border = "none";
       editButton.style.padding = "10px 20px";
       editButton.style.cursor = "pointer";
