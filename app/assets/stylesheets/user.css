@@ -129,6 +129,19 @@
   background-color: #d65f4c;
 }
 
+
+/* ログイン画面 */
+.user-authentication-links{
+  margin-top: 50px;
+  display: block;
+}
+
+.user-authentication-links p{
+  text-align: center;
+}
+
+/* エラー */
+
 #error_explanation {
   margin: 20px 0;
   padding: 20px 30px;
