@@ -1,13 +1,13 @@
 <%= include_gon %>
 
-<div class="top-bar">
+<div class="top-bar" id="top-bar">
   <h1>きれいなトイレを見つけよう（東京）</h1>
   <p>あなたの近くの清潔で安全なトイレを見つけましょう。</p>
 </div>
 
-<div class="search-bar">
+<div class="search">
   <!-- 検索バーの実装はここに入れます -->
-  <%= link_to "最寄りのトイレ", posts_path, class:"search"%>
+  <%= link_to "最寄りのトイレ", posts_path, class:"search-btn"%>
 </div>
 
 <div class="points">
@@ -17,40 +17,44 @@
       <!-- アイコンとテキストの実装 -->
       <p>\ P O I N T 1 /</p>
       <%= image_tag "point1.png", class:"point-pict" %>
-      <p>きれいなトイレを最短最速で検索</p>
-     </div>     
-     <li>
-     <div class="point">
-      <!-- アイコンとテキストの実装 -->
-      <p>\ P O I N T ２ /</p>
-      <%= image_tag "point2.png", class:"point-pict" %>
-      <p>安心ナビでまよわずトイレまで案内</p>
+      <p>きれいなトイレを<br>最短最速で検索</p>
      </div>     
     </li>
     <li>
      <div class="point">
       <!-- アイコンとテキストの実装 -->
-      <p>\ P O I N T ３/</p>
-      <%= image_tag "point3.png", class:"point-pict" %>
-      <p>本当にきれいなトイレをみんなで評価</p>
+      <p>\ P O I N T 2 /</p>
+      <%= image_tag "point2.png", class:"point-pict" %>
+      <p>安心ナビでまよわず<br>トイレまで案内</p>
      </div>     
     </li>
+    <li>
+     <div class="point">
+      <!-- アイコンとテキストの実装 -->
+      <p>\ P O I N T 3 /</p>
+      <%= image_tag "point3.png", class:"point-pict" %>
+      <p>きれいなトイレを<br>みんなで評価</p>
+     </div>     
     </li>
   </ul>
-
 </div>
+
 
 <div class="map">
   <p>\ S E A R C H /</p>
-  <%= image_tag "map.png", class:"map-pict" %>
-  <p>トイレを探す</p>
+  <div class="pict">
+    <%= image_tag "map.png", class:"map-pict" %>
+  </div>
+  <%= link_to "最寄りのトイレ", posts_path, class:"map-link"%>
   <p>東京</p>
 </div>
 <!-- ここにGoogle MapsやOpenStreetMapの埋め込みコードを挿入 -->
 <div class = "top-map" id="top-map" data-house-icon-url="<%= asset_path('house.svg') %>" data-restroom-icon-url="<%= asset_path('public.png') %>" data-route-icon-url="<%= asset_path('route.png') %>"></div>
 
 <div class="bottom-bar">
-  <a href="#top">TOP</a>
+  <div class="pict">
+    <%= link_to image_tag('top.png'), '#top-bar' %>
+  </div>
 </div>
 
 
