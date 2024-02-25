@@ -82,7 +82,7 @@ body {
 /* フッター */
 
 .footer {
-  margin-top: 100px;
+  margin-top: 50px;
   padding-left: 20px;
   text-align: center;
   display: flex;
@@ -121,6 +121,160 @@ body {
   margin-bottom: 20px;
 }
 
+/* トップ画面 */
+
+.top-bar{
+  margin-top: 100px;
+}
+.top-bar h1{
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.top-bar p{
+  font-size: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.search{
+  width: 100%;
+  display: inline-block;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.search-btn{
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #4CAF50;
+  padding: 10px 20%;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s; /* スムーズなホバー効果を追加 */
+}
+
+.points ul{
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.points p{
+  width: 150px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.pict{
+  display: flex;
+  justify-content: center;
+}
+
+.point-pict{
+  width: 150px;
+  height: 150px;
+}
+
+
+.map{
+  margin-top: 100px;
+}
+
+.map p{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.map-pict{
+  width: 100px;
+  height: 100px;
+  text-align: center;
+}
+
+.map-link{
+  display: block;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+}
+
+.top-map {
+  width: 90%;
+  height: 500px;
+  margin-top: 10px;
+  margin: 0 auto;
+}
+
+.bottom-bar {
+  margin-top: 10px;
+}
+
+@media (min-width:599px){
+  body{
+    width: 100%;
+    margin: auto;
+  }
+
+  .points p{
+    width: 150px;
+    text-align: center;
+  }
+
+  .points ul{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:700px){
+  body{
+    width: 90%;
+    margin: auto;
+  }
+
+  .points p{
+    width: 150px;
+    text-align: center;
+  }
+
+  .points ul{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:1024px){
+  body{
+    width: 65%;
+    margin: auto;
+  }
+
+  .points p{
+    width: 150px;
+    text-align: center;
+  }
+
+  .points ul{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+  }
+}
 
 
 /* マップ一覧画面 */

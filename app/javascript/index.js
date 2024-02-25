@@ -4,8 +4,6 @@ import { handleLocationError } from "./handleLocationError.js";
 
 let map;
 
-let currentLanguage = "ja"; // デフォルトの言語を設定
-
 let locations; //すべての施設の位置
 let allMarkers = []; // すべてのマーカーを保持する配列
 let restroomIconUrl;
@@ -29,12 +27,22 @@ async function initMap() {
   directionsRenderer = new google.maps.DirectionsRenderer(); //マップにルートを表示するためのインスタンス
 
   // Mapクラスからインスタンスを作成　マップを表示　　HTMLのid="map"にマップを挿入
-  map = new Map(document.getElementById("map"), {
-    zoom: 13,
-    mapId: "DEMO_MAP_ID",
-    maxZoom: 18,
-    center: { lat: 35.681236, lng: 139.767125 },
-  });
+  // map = new Map(document.getElementById("map"), {
+  //   zoom: 13,
+  //   mapId: "DEMO_MAP_ID",
+  //   maxZoom: 18,
+  //   center: { lat: 35.681236, lng: 139.767125 },
+  // });
+
+  map = new Map(
+    document.getElementById("top-map") || document.getElementById("map"),
+    {
+      zoom: 13,
+      mapId: "DEMO_MAP_ID",
+      maxZoom: 18,
+      center: { lat: 35.681236, lng: 139.767125 },
+    }
+  );
 
   // GPSで現在地を表示　現在地にhouseアイコンを表示　マーカーと詳細情報を表示
   if (navigator.geolocation) {
@@ -45,7 +53,8 @@ async function initMap() {
           lng: position.coords.longitude,
         };
 
-        const mapElement = document.getElementById("map");
+        const mapElement =
+          document.getElementById("top-map") || document.getElementById("map");
         const houseIconUrl = mapElement.getAttribute("data-house-icon-url");
         restroomIconUrl = mapElement.getAttribute("data-restroom-icon-url");
         routeIconUrl = mapElement.getAttribute("data-route-icon-url");
@@ -84,7 +93,8 @@ async function initMap() {
         //handleLocationErrorの設定
         // handleLocationError(true, map.getCenter());
 
-        const mapElement = document.getElementById("map");
+        const mapElement =
+          document.getElementById("top-map") || document.getElementById("map");
         const houseIconUrl = mapElement.getAttribute("data-house-icon-url");
         restroomIconUrl = mapElement.getAttribute("data-restroom-icon-url");
         routeIconUrl = mapElement.getAttribute("data-route-icon-url");
