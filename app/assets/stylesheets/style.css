@@ -49,7 +49,7 @@ body {
   background: #87CEFA; */
 }
 
-.humbuger__menu{
+.humburger__menu{
   display: inline-block;
 }
 
@@ -59,7 +59,7 @@ body {
 }
 
 @media (min-width:599px){
-  .humbuger__menu{
+  .humburger__menu{
     display: none;
   }
   .nav__right{
@@ -70,7 +70,7 @@ body {
   
 
 @media (min-width:1024px){
-    .humbuger__menu{
+    .humburger__menu{
     display: none;
   }
     .nav__right{

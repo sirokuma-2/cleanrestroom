@@ -1,17 +1,33 @@
 window.addEventListener("load", function () {
-  const hamburgerMenu = document.getElementById("humbuger-menu");
-  const navRight = document.getElementById("nav-right");
+  const hamburgerMenuLoggedIn = document.getElementById(
+    "humburger-menu-logged-in"
+  );
+  const hamburgerMenuLoggedOut = document.getElementById(
+    "humburger-menu-logged-out"
+  );
 
-  hamburgerMenu.addEventListener("click", function (event) {
-    navRight.style.display = "block";
-    hamburgerMenu.style.display = "none";
-    event.stopPropagation();
-  });
+  const navRightLoggedIn = document.getElementById("nav-right-logged-in");
+  const navRightLoggedOut = document.getElementById("nav-right-logged-out");
 
-  document.addEventListener("click", function () {
-    if (navRight.style.display === "block") {
+  const humburgerMenu = hamburgerMenuLoggedIn || hamburgerMenuLoggedOut;
+  const navRight = navRightLoggedIn || navRightLoggedOut;
+
+  console.log(humburgerMenu);
+
+  if (humburgerMenu) {
+    humburgerMenu.addEventListener("click", function (e) {
+      navRight.style.display = "block";
+      humburgerMenu.style.display = "none";
+      e.stopPropagation();
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    if (navRight.style.display === "block" && e.target !== humburgerMenu) {
       navRight.style.display = "none";
-      hamburgerMenu.style.display = "block";
+      if (humburgerMenu) {
+        humburgerMenu.style.display = "block";
+      }
     }
   });
 });
