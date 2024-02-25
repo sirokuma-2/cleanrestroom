@@ -20,7 +20,7 @@ document.addEventListener("turbo:load", function () {
 
       // 表示する画像を生成
       const previewImage = document.createElement("img");
-      previewImage.setAttribute("class", "preview-image");
+      previewImage.setAttribute("class", "preview-name-image");
       previewImage.setAttribute("src", blobName);
 
       // 生成したHTMLの要素をブラウザに表示させる

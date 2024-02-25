@@ -24,6 +24,43 @@
 .field{
   margin-left: 20%;
 }
+
+.click-name-upload {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+
+.click-name-upload label {
+  color: #FFFFFF;
+  background-color: #4CAF50;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s; /* スムーズなホバー効果を追加 */
+}
+
+.name-image-btn {
+  position: absolute;
+  top: 10px;
+  left:10px;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: background-color 1.0s, color 1.0s; /* スムーズなホバー効果を追加 */
+}
+
+
+.preview-name-image{
+  width: 200px;
+  margin-top: 10px;
+}
+
 .account-page .account-page__header h2:after {
   content: "";
   display: block;
