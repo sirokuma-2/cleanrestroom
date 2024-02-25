@@ -1,4 +1,4 @@
-window.addEventListener("load", function () {
+window.addEventListener("turbo:load", function () {
   const hamburgerMenuLoggedIn = document.getElementById(
     "humburger-menu-logged-in"
   );
