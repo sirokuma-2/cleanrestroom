@@ -1,10 +1,11 @@
 document.addEventListener("turbo:load", function () {
   const fileFieldName = document.querySelector(
-    'input[type="file"][name="user[image]"]'
+    'input[type="file"][name="user[imageName]"]'
   );
   const previewList = document.getElementById("preview-name");
-  console.log("読み込み成功");
+
   fileFieldName.addEventListener("change", function (e) {
+    console.log("読み込み成功");
     const file = e.target.files[0];
     if (file) {
       const blobName = window.URL.createObjectURL(file);
