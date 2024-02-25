@@ -127,15 +127,20 @@ body {
   margin-top: 100px;
 }
 .top-bar h1{
+  width: 350px;
   font-size: 24px;
   font-weight: bold;
   text-align: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .top-bar p{
+  width: 350px;
   font-size: 20px;
   margin-top: 10px;
   text-align: center;
+  margin: 0 auto;
 }
 
 .search{
@@ -222,6 +227,14 @@ body {
     margin: auto;
   }
 
+  .top-bar h1{
+    width:100%;
+  }
+  
+  .top-bar p{
+    width: 100%;
+  }
+
   .points p{
     width: 150px;
     text-align: center;
@@ -242,6 +255,14 @@ body {
     margin: auto;
   }
 
+  .top-bar h1{
+    width:100%;
+  }
+  
+  .top-bar p{
+    width: 100%;
+  }
+
   .points p{
     width: 150px;
     text-align: center;
@@ -260,6 +281,14 @@ body {
   body{
     width: 65%;
     margin: auto;
+  }
+
+  .top-bar h1{
+    width:100%;
+  }
+  
+  .top-bar p{
+    width: 100%;
   }
 
   .points p{
