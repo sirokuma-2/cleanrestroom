@@ -121,7 +121,13 @@ body {
   margin-bottom: 20px;
 }
 
+/* トップ画面 */
 
+.top-map {
+  width: 90%;
+  height: 500px;
+  margin: 0 auto;
+}
 
 /* マップ一覧画面 */
 

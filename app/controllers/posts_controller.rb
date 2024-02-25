@@ -1,6 +1,26 @@
 class PostsController < ApplicationController
   include Rails.application.routes.url_helpers
 
+  def top
+    gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
+    @posts = Post.includes(:facility).all
+
+    gon.posts = @posts.map do |post|
+      # Railsロガーを使用してデバッグ情報を出力
+      Rails.logger.debug "Facility Name: #{post.facility.address}"
+      image_url = url_for(post.facility.image.url)
+      {
+        id: post.id,
+        name: post.facility.name,
+        address: post.facility.address,
+        content: post.facility.content,
+        latitude: post.facility.latitude,
+        longitude: post.facility.longitude,
+        image: url_for(post.facility.image.url)
+      }
+    end
+  end
+
   def index
     gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
     @posts = Post.includes(:facility).all
@@ -9,7 +29,6 @@ class PostsController < ApplicationController
       # Railsロガーを使用してデバッグ情報を出力
       Rails.logger.debug "Facility Name: #{post.facility.address}"
       image_url = url_for(post.facility.image.url)
-      puts image_url # 画像のURLをコンソールに出力
       {
         id: post.id,
         name: post.facility.name,
