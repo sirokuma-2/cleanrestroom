@@ -3,12 +3,9 @@ class PostsController < ApplicationController
 
   def top
     gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
-    @posts = Post.includes(:facility).all
 
+    @posts = Post.includes(:facility).all
     gon.posts = @posts.map do |post|
-      # Railsロガーを使用してデバッグ情報を出力
-      Rails.logger.debug "Facility Name: #{post.facility.address}"
-      image_url = url_for(post.facility.image.url)
       {
         id: post.id,
         name: post.facility.name,
@@ -23,12 +20,9 @@ class PostsController < ApplicationController
 
   def index
     gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
-    @posts = Post.includes(:facility).all
 
+    @posts = Post.includes(:facility).all
     gon.posts = @posts.map do |post|
-      # Railsロガーを使用してデバッグ情報を出力
-      Rails.logger.debug "Facility Name: #{post.facility.address}"
-      image_url = url_for(post.facility.image.url)
       {
         id: post.id,
         name: post.facility.name,

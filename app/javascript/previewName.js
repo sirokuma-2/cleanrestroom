@@ -4,33 +4,33 @@ document.addEventListener("turbo:load", function () {
   );
   const previewList = document.getElementById("preview-name");
 
-  fileFieldName.addEventListener("change", function (e) {
-    console.log("読み込み成功");
-    const file = e.target.files[0];
-    if (file) {
-      const blobName = window.URL.createObjectURL(file);
-      console.log(blobName);
+  if (fileFieldName) {
+    fileFieldName.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const blobName = window.URL.createObjectURL(file);
 
-      // 既存のプレビューをクリアする
-      previewList.innerHTML = "";
+        // 既存のプレビューをクリアする
+        previewList.innerHTML = "";
 
-      // 画像を表示するためのdiv要素を生成
-      const previewWrapper = document.createElement("div");
-      previewWrapper.setAttribute("class", "preview");
+        // 画像を表示するためのdiv要素を生成
+        const previewWrapper = document.createElement("div");
+        previewWrapper.setAttribute("class", "preview");
 
-      // 表示する画像を生成
-      const previewImage = document.createElement("img");
-      previewImage.setAttribute("class", "preview-name-image");
-      previewImage.setAttribute("src", blobName);
+        // 表示する画像を生成
+        const previewImage = document.createElement("img");
+        previewImage.setAttribute("class", "preview-name-image");
+        previewImage.setAttribute("src", blobName);
 
-      // 生成したHTMLの要素をブラウザに表示させる
-      previewWrapper.appendChild(previewImage);
-      previewList.appendChild(previewWrapper);
+        // 生成したHTMLの要素をブラウザに表示させる
+        previewWrapper.appendChild(previewImage);
+        previewList.appendChild(previewWrapper);
 
-      // Blob URLのクリーンアップ
-      previewImage.onload = function () {
-        window.URL.revokeObjectURL(this.src);
-      };
-    }
-  });
+        // Blob URLのクリーンアップ
+        previewImage.onload = function () {
+          window.URL.revokeObjectURL(this.src);
+        };
+      }
+    });
+  }
 });
