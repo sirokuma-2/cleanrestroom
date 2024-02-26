@@ -1,0 +1,41 @@
+/* フッター */
+
+.footer {
+  margin-top: 50px;
+  padding-left: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-details {
+  width: 100%; 
+  display: flex;
+  justify-content: left;
+  list-style: none; 
+  margin-bottom: 30px;
+
+}
+
+.footer-details ul {
+  display: flex;
+  padding: 0; 
+  list-style: none; 
+  justify-content: left; 
+}
+
+.footer-details li {
+  margin: 0 10px; 
+}
+
+.footer-link {
+  text-decoration: none;
+  color: inherit; 
+}
+
+.footer p {
+  font-size: 12px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
