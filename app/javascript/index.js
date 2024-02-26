@@ -49,9 +49,12 @@ function loadGoogleMapsAPI() {
           a.nonce = m.querySelector("script[nonce]")?.nonce || "";
           m.head.append(a);
         }));
-    d[l]
-      ? console.warn(p + " only loads once. Ignoring:", g)
-      : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
+    //APIをすでに読み込んでいる場合再度読み込まない
+    if (!d[l]) {
+      d[l]
+        ? console.warn(p + " only loads once. Ignoring:", g)
+        : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
+    }
   })({
     key: googleMapKey,
     v: "beta",
