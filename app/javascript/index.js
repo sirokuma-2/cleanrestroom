@@ -6,8 +6,8 @@ let map;
 
 let locations; //すべての施設の位置
 let allMarkers = []; // すべてのマーカーを保持する配列
-let restroomIconUrl;
-let routeIconUrl;
+// let restroomIconUrl;
+// let routeIconUrl;
 
 let userPos; // ユーザーの現在位置
 
@@ -156,12 +156,8 @@ async function initMap() {
   });
 }
 
-document.addEventListener("turbo:load", function () {});
-
 document.addEventListener("turbo:load", () => {
-  // マップを表示する要素がページ上に存在するかチェック
   if (document.getElementById("map")) {
-    // 存在する場合は、Google Maps APIを読み込んでマップを初期化
-    initMap(); // マップの初期化関数をここで呼び出す
+    initMap();
   }
 });

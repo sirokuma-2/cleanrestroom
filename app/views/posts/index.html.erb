@@ -42,7 +42,7 @@
             a.nonce = m.querySelector("script[nonce]")?.nonce || "";
             m.head.append(a);
           }));
-    if (!d[l]) {
+      if (!d[l]) {
         d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n));
 
         // APIのロードを試みる

@@ -60,8 +60,12 @@
 
 
 <script>
-  const googlemapKey = gon.googlemap_key;
-  function loadGoogleMapsAPI(currentLanguage) {
+  
+ if (typeof window.googlemapKey === 'undefined') {
+  window.googlemapKey = gon.googlemap_key;
+  }
+  
+  function loadGoogleMapsAPI() {
     ((g) => {
       var h,
         a,
@@ -93,14 +97,32 @@
             a.nonce = m.querySelector("script[nonce]")?.nonce || "";
             m.head.append(a);
           }));
-      d[l]
-        ? console.warn(p + " only loads once. Ignoring:", g)
-        : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
+      if (!d[l]) {
+        d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n));
+
+        // APIのロードを試みる
+        u().then(() => {
+            // ここでAPIがロードされた後の処理を行う
+            // 例えば、マップを初期化するなど
+        }).catch(error => {
+            console.error("Google Maps APIのロードに失敗しました:", error);
+        });
+    }
     })({
       key: googlemapKey,
       v: "beta",
     });
-  }
+  };
   <!-- マップの表示 -->
-  loadGoogleMapsAPI();
+
+document.addEventListener('turbo:load', () => {
+  // マップを表示するDOM要素の存在をチェック
+  const mapElement = document.getElementById('map'); // 'map'はマップを表示する要素のIDに置き換えてください
+
+  // DOM要素が存在する場合のみマップを初期化
+  if (mapElement) {
+    loadGoogleMapsAPI(); // マップを初期化する関数を呼び出し
+  }
+});
+
 </script>
