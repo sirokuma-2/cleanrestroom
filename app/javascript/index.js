@@ -17,8 +17,9 @@ let directionsRenderer; // マップ上にルートを表示するためのDirec
 //非同期関数　マップの初期化
 async function initMap() {
   //Google Mapsライブラリを非同期にインポート　　Mapクラス
-  const { Map } = await google.maps.importLibrary("maps");
-
+  if (google) {
+    const { Map } = await google.maps.importLibrary("maps");
+  }
   // gonから施設の位置情報を取得
   locations = gon.posts;
 
@@ -26,15 +27,19 @@ async function initMap() {
   directionsService = new google.maps.DirectionsService(); //ルートを検索するためのインスタンス
   directionsRenderer = new google.maps.DirectionsRenderer(); //マップにルートを表示するためのインスタンス
 
-  map = new Map(
-    document.getElementById("top-map") || document.getElementById("map"),
-    {
+  // まず、'top-map'または'map'のいずれかの要素を取得します。
+  let mapDiv =
+    document.getElementById("top-map") || document.getElementById("map");
+
+  // mapDivが存在する場合のみマップを初期化します。
+  if (mapDiv) {
+    var map = new google.maps.Map(mapDiv, {
       zoom: 13,
       mapId: "DEMO_MAP_ID",
       maxZoom: 18,
       center: { lat: 35.681236, lng: 139.767125 },
-    }
-  );
+    });
+  }
 
   // GPSで現在地を表示　現在地にhouseアイコンを表示　マーカーと詳細情報を表示
   if (navigator.geolocation) {
@@ -47,9 +52,12 @@ async function initMap() {
 
         const mapElement =
           document.getElementById("top-map") || document.getElementById("map");
+
         const houseIconUrl = mapElement.getAttribute("data-house-icon-url");
-        restroomIconUrl = mapElement.getAttribute("data-restroom-icon-url");
-        routeIconUrl = mapElement.getAttribute("data-route-icon-url");
+        const restroomIconUrl = mapElement.getAttribute(
+          "data-restroom-icon-url"
+        );
+        const routeIconUrl = mapElement.getAttribute("data-route-icon-url");
 
         //現在地のアイコンの設定
         const userIcon = {
@@ -88,8 +96,10 @@ async function initMap() {
         const mapElement =
           document.getElementById("top-map") || document.getElementById("map");
         const houseIconUrl = mapElement.getAttribute("data-house-icon-url");
-        restroomIconUrl = mapElement.getAttribute("data-restroom-icon-url");
-        routeIconUrl = mapElement.getAttribute("data-route-icon-url");
+        const restroomIconUrl = mapElement.getAttribute(
+          "data-restroom-icon-url"
+        );
+        const routeIconUrl = mapElement.getAttribute("data-route-icon-url");
 
         //現在地のアイコンの設定
         const userIcon = {
@@ -146,6 +156,12 @@ async function initMap() {
   });
 }
 
-document.addEventListener("turbo:load", function () {
-  initMap(); // マップの初期化関数をここで呼び出す
+document.addEventListener("turbo:load", function () {});
+
+document.addEventListener("turbo:load", () => {
+  // マップを表示する要素がページ上に存在するかチェック
+  if (document.getElementById("map")) {
+    // 存在する場合は、Google Maps APIを読み込んでマップを初期化
+    initMap(); // マップの初期化関数をここで呼び出す
+  }
 });
