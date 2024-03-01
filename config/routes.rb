@@ -2,5 +2,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#top'
   resources :posts
-  resources :users, only: [:edit]
+  resources :users, only: [:edit, :update]
 end
