@@ -2,7 +2,7 @@ document.addEventListener("turbo:load", function () {
   const fileFieldName = document.querySelector(
     'input[type="file"][name="user[imageName]"]'
   );
-  const previewList = document.getElementById("preview-name");
+  const previewList = document.getElementById("user_imageName");
 
   if (fileFieldName) {
     fileFieldName.addEventListener("change", function (e) {

@@ -5,7 +5,7 @@ document.addEventListener("turbo:load", function () {
   const previewList = document.getElementById("preview");
 
   //既存の写真が登録されている場合
-  let imagePreview = document.getElementById("item-image");
+  let imagePreview = document.getElementById("facility_image");
 
   if (imagePreview) {
     let imageUrl = imagePreview.getAttribute("value");
