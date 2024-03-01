@@ -12,8 +12,6 @@ window.addEventListener("turbo:load", function () {
   const humburgerMenu = hamburgerMenuLoggedIn || hamburgerMenuLoggedOut;
   const navRight = navRightLoggedIn || navRightLoggedOut;
 
-  console.log(humburgerMenu);
-
   if (humburgerMenu) {
     humburgerMenu.addEventListener("click", function (e) {
       navRight.style.display = "block";

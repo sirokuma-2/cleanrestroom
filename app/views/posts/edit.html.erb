@@ -43,18 +43,16 @@
 
     <div class="click-upload">
       <%= f.label :image, "画像投稿" %><br />
-      <%= f.file_field :image,value: @facility.image.url, class:"item-image-btn",id:"item-image" %>
+      <%= f.file_field :image,value: @facility.image.url, class:"item-image-btn" %>
       <div id="preview"></div>
     </div>
 
     <div class="facility-place-form">
-      <label>緯度</label>
       <p><%= @latitude %></p>
       <%= f.hidden_field :latitude, value: @facility.latitude %>
     </div>
 
     <div class="facility-place-form">
-      <label>経度</label>
       <p><%= @longitude %></p>
       <%= f.hidden_field :longitude, value: @facility.longitude %>
     </div>

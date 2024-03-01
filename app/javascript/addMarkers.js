@@ -1,4 +1,4 @@
-import { calculateAndDisplayRoute } from "./calculateAndDisplayRoute.js";
+import { calculateAndDisplayRoute } from "calculateAndDisplayRoute";
 
 export function addMarkers(
   locations,
@@ -13,22 +13,17 @@ export function addMarkers(
   locations.forEach((location) => {
     //locationごとに繰り返し
 
-    let iconUrl;
-    // iconUrl = "public.png";
-
-    //アイコンの設定
-    const customIcon = {
-      url: restroomIconUrl,
-      scaledSize: new google.maps.Size(15, 15),
-      origin: new google.maps.Point(0, 0),
-    };
+    const pinViewScaled = new google.maps.marker.PinView({
+      background: "#0000FF",
+      glyphColor: "white",
+    });
 
     // マーカーを設置する設定
-    const marker = new google.maps.Marker({
+    const marker = new google.maps.marker.AdvancedMarkerView({
       map: map,
       position: { lat: location.latitude, lng: location.longitude },
       title: location.name,
-      icon: customIcon,
+      content: pinViewScaled.element,
     });
 
     // ここでマーカーを配列に追加
@@ -95,7 +90,7 @@ export function addMarkers(
           directionsService,
           directionsRenderer,
           userPos,
-          { lat: marker.getPosition().lat(), lng: marker.getPosition().lng() },
+          { lat: marker.position.lat, lng: marker.position.lng },
           map
         );
         //ルート検索実行後、infopanelを閉じる
@@ -127,7 +122,7 @@ export function addMarkers(
     imageUrl = location.image;
 
     // マップ上のアイコンにイベントリスナーを追加
-    marker.addListener("click", function () {
+    marker.addListener("gmp-click", function () {
       infoPanel.style.display = "block";
 
       // infoPanelの中身をクリア

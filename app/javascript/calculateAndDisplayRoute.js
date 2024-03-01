@@ -16,7 +16,7 @@ export function calculateAndDisplayRoute(
     (response, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
         directionsRenderer.setDirections(response);
-        console.log(response);
+
         // ルートの所要時間を取得して表示
         const durationText = response.routes[0].legs[0].duration.text;
         // ルートの中間地点を計算
@@ -27,7 +27,7 @@ export function calculateAndDisplayRoute(
         if (durationInfoWindow !== null) {
           durationInfoWindow.close(map);
         }
-        console.log(userPos);
+
         // Google Mapsで詳細を見るためのリンクを作成
         const originParam = `${userPos.lat},${userPos.lng}`;
         const destinationParam = `${destination.lat},${destination.lng}`;

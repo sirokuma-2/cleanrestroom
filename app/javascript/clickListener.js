@@ -7,10 +7,16 @@ export function clickListener(event, map) {
       ? "http://localhost:3000"
       : "https://cleanrestrooms.net";
 
+  const pinViewScaled = new google.maps.marker.PinView({
+    background: "#0000FF",
+    glyphColor: "white",
+  });
+
   // マーカーを作成してマップに追加
-  const marker = new google.maps.Marker({
+  const marker = new google.maps.marker.AdvancedMarkerView({
     position: { lat: latitude, lng: longitude }, // 更新された変数名を使用
     map,
+    content: pinViewScaled.element,
   });
 
   // 登録画面へのリンクを含む吹き出しを生成
