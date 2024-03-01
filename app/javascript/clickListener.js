@@ -8,7 +8,7 @@ export function clickListener(event, map) {
       : "https://cleanrestrooms.net";
 
   // マーカーを作成してマップに追加
-  const marker = new google.maps.Marker({
+  const marker = new google.maps.marker.AdvancedMarkerElement({
     position: { lat: latitude, lng: longitude }, // 更新された変数名を使用
     map,
   });
