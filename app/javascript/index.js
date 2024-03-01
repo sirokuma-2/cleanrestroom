@@ -1,6 +1,6 @@
-import { clickListener } from "./clickListener.js";
-import { addMarkers } from "./addMarkers.js";
-import { handleLocationError } from "./handleLocationError.js";
+import { clickListener } from "clickListener";
+import { addMarkers } from "addMarkers";
+import { handleLocationError } from "handleLocationError";
 
 let map;
 

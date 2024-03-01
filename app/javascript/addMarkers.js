@@ -1,4 +1,4 @@
-import { calculateAndDisplayRoute } from "./calculateAndDisplayRoute.js";
+import { calculateAndDisplayRoute } from "calculateAndDisplayRoute";
 
 export function addMarkers(
   locations,
