@@ -131,7 +131,7 @@ export function addMarkers(
     imageUrl = location.image;
 
     // マップ上のアイコンにイベントリスナーを追加
-    marker.addListener("click", function () {
+    marker.addListener("gmp-click", function () {
       infoPanel.style.display = "block";
 
       // infoPanelの中身をクリア

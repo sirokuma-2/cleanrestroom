@@ -151,7 +151,7 @@ async function initMap() {
     const marker = clickListener(event, map);
 
     // マーカーに 'click' イベントリスナーを追加してマーカーを削除
-    google.maps.event.addListener(marker, "click", () => {
+    google.maps.event.addListener(marker, "gmp-click", () => {
       marker.setMap(null); // マーカーをマップから削除
     });
   });
