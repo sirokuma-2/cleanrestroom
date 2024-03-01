@@ -69,18 +69,10 @@ async function initMap() {
             document.getElementById("top-map") ||
             document.getElementById("map");
 
-          const houseIconUrl = mapElement.getAttribute("data-house-icon-url");
           const restroomIconUrl = mapElement.getAttribute(
             "data-restroom-icon-url"
           );
           const routeIconUrl = mapElement.getAttribute("data-route-icon-url");
-
-          //現在地のアイコンの設定
-          // const userIcon = {
-          //   url: houseIconUrl,
-          //   scaledSize: new google.maps.Size(20, 20),
-          //   origin: new google.maps.Point(0, 0),
-          // };
 
           //現在地にhouseのアイコンを表示
           new google.maps.marker.AdvancedMarkerView({
@@ -106,8 +98,6 @@ async function initMap() {
           );
         },
         () => {
-          //handleLocationErrorの設定
-          // handleLocationError(true, map.getCenter());
           const mapElement =
             document.getElementById("top-map") ||
             document.getElementById("map");
@@ -116,13 +106,6 @@ async function initMap() {
             "data-restroom-icon-url"
           );
           const routeIconUrl = mapElement.getAttribute("data-route-icon-url");
-
-          //現在地のアイコンの設定
-          const userIcon = {
-            url: houseIconUrl,
-            scaledSize: new google.maps.Size(20, 20),
-            origin: new google.maps.Point(0, 0),
-          };
 
           // 現在地の取得に失敗した場合の処理
           // 東京駅の座標
@@ -136,7 +119,6 @@ async function initMap() {
             position: tokyoStationPos,
             map: map,
             title: "Tokyo Station",
-            // icon: userIcon,
           });
 
           // マップの中心を現在位置に移動
