@@ -19,6 +19,7 @@ async function initMap() {
   //Google Mapsライブラリを非同期にインポート　　Mapクラス
   if (google) {
     const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
   }
   // gonから施設の位置情報を取得
   locations = gon.posts;
@@ -67,11 +68,11 @@ async function initMap() {
         };
 
         //現在地にhouseのアイコンを表示
-        new google.maps.Marker({
+        new google.maps.marker.AdvancedMarkerElement({
           position: userPos,
           map: map,
           title: "Your Location",
-          icon: userIcon,
+          // icon: userIcon,
         });
 
         // マップの中心を現在位置に移動
@@ -116,11 +117,11 @@ async function initMap() {
         };
 
         // 東京駅にマーカーを設置（オプション）
-        new google.maps.Marker({
+        new google.maps.marker.AdvancedMarkerElement({
           position: tokyoStationPos,
           map: map,
           title: "Tokyo Station",
-          icon: userIcon,
+          // icon: userIcon,
         });
 
         // マップの中心を現在位置に移動
