@@ -1,37 +1,35 @@
-<div class='account-page' id='account-page'>
-  <div class='account-page__inner clearfix'> 
-    <div class='user-form'>
-      <%= form_with model: @user, url: user_path(@user), local: true do |f|%>
-          <div class='account-page__header'>
-            <h2>プロフィール編集</h2>
-          </div>
-          <div class='field'>
-            <div class="click-name-upload">
-              <%= f.label :imageName, "ユーザー画像" %><br />
-              <%= f.file_field :imageName,value: @user.imageName.url, class:"name-image-btn" %>
-              <div id="preview-name"></div>
-            </div>
-          </div>
-          <div class='field'>
-            <div class='field-label'>
-              <%= f.label :name, "アカウント名"%>
-            </div>
-            <div class='field-input'>
-              <%= f.text_field :name,value: @user.name, autofocus: true%>
-            </div>
-          </div>
-          <div class='field'>
-            <div class='field-label'>
-              <%= f.label :email, "メールアドレス"%>
-            </div>
-            <div class='field-input'>
-              <%= f.email_field :email,value: @user.email %>
-            </div>
-          </div>   
-          <div class='actions'>
-            <%= f.submit "編集", class: 'btn'%>
-          </div>
-      <% end %>
+<div class="mypage">
+  <div class="user-image">
+    <%= image_tag @user.imageName.url , class: "user-image-pic" if @user.imageName.url.present? %>
+  </div>
+  <div class="review-details">
+    <div class="user-name"><%= @user.name %></div>
+    <div class="user-email"><%= @user.email %></div>
+    <%= link_to '編集', edit_user_path(@user), class: 'edit-button' %>
+  </div>
+</div>
+
+
+
+<div class="reviews">
+  <p class="review-title">投稿</p>
+  <div class="review">
+    <div class="review-wrapper">
+      <div class="review-pic">
+         <%= image_tag @user.imageName.url , class: "review-user-image-pic" if @user.imageName.url.present? %>
+      </div>
+      <div class="review-user-name">
+        <%= @user.name %>
+      </div>
+      <div class="review-facility-name">
+        施設名
+      </div>
+      <div class="rating">
+        ★★★★☆
+      </div>
+    </div>
+    <div class="review-content">
+      とても役立った。また利用したい
     </div>
   </div>
 </div>

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    puts @user.imageName.url
   end
 
   def update
