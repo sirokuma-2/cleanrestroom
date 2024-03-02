@@ -136,13 +136,14 @@ export function addMarkers(
         "border: 1px solid #ccc; background-color: #f9f9f9; padding: 15px; border-radius: 5px; font-family: Arial, sans-serif;";
 
       //画像の表示
-      const image = document.createElement("img");
-      image.src = imageUrl;
-      image.alt = "説明テキスト";
-      image.style.width = "100%";
-      image.style.height = "auto";
-      infoWindowContent.appendChild(image);
-
+      if (imageUrl.includes("https://cleanrestroom")) {
+        const image = document.createElement("img");
+        image.src = imageUrl;
+        image.alt = "画像";
+        image.style.width = "100%";
+        image.style.height = "auto";
+        infoWindowContent.appendChild(image);
+      }
       //h1の親要素を作成
       const h1Wrapper = document.createElement("div");
       h1Wrapper.style.display = "flex";
