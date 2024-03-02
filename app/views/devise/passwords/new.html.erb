@@ -2,7 +2,6 @@
   <div class='account-page__inner clearfix'> 
     <div class='user-form'>
       <%= form_with model: @user, url: user_password_path, local: true do |f|%>
-        <%= render "devise/shared/error_messages", resource: resource %>
           <div class='account-page__header'>
             <h2>パスワードを変更する</h2>
           </div>
