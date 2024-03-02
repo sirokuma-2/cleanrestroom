@@ -1,0 +1,23 @@
+<div class='account-page' id='account-page'>
+  <div class='account-page__inner clearfix'> 
+    <div class='user-form'>
+      <%= form_with model: @user, url: user_password_path, local: true do |f|%>
+        <%= render "devise/shared/error_messages", resource: resource %>
+          <div class='account-page__header'>
+            <h2>パスワードを変更する</h2>
+          </div>
+          <div class='field'>
+            <div class='field-label'>
+              <%= f.label :email, "メールアドレス"%>
+            </div>
+            <div class='field-input'>
+              <%= f.email_field :email%>
+            </div>
+          </div>
+          <div class='actions'>
+            <%= f.submit "パスワードを変更する", class: 'btn'%>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

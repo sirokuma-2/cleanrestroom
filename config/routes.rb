@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    passwords: 'public/passwords'
-  }
+  devise_for :users
   root to: 'posts#top'
   resources :posts
   resources :users, only: [:show, :edit, :update]
