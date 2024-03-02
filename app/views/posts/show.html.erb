@@ -10,7 +10,7 @@
       </div>
       <div class="post-review-average">
         <p>レビュー</p>
-        <p >4.3　<span class="rating">★★★★☆</span>　 (<%= @comments.count %>件の評価)</p>
+        <p >平均<%= @comments.average(:raiting) %>　<span class="rating">★★★★☆</span>　 (<%= @comments.count %>件の評価)</p>
       </div>
     </div>
   </div>

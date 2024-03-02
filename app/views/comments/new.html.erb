@@ -14,9 +14,9 @@
   <div class="comments-form">
    <%= form_with model: [@post, @comment],local: true do |f|%>
       <div class="comment-form-wrqpper">
-        <div class="comment-rating">
+        <div class="comment-rating-wrapper">
           <p class="">評価する</p>
-          <p>★★★★☆</p>
+          <p class="comment-rating">★★★★☆</p>
         </div>
         <div class="comment-form">
           <%= f.label :content, "コメントを書く" %><br />

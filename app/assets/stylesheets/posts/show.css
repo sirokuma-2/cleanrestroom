@@ -24,7 +24,7 @@
 }
 
 .comment-details{
-  width: 400px;
+  width: 450px;
   margin: 20px auto;
   display: flex;
   align-items: center;
@@ -39,7 +39,7 @@
 }
 
 .post-review-average{
-  margin-left: 20px;
+  margin-left: 30px;
 }
 
 .comments {

@@ -9,3 +9,4 @@ import "handleLocationError";
 import "menu";
 import "preview";
 import "previewName";
+import "rating";
