@@ -4,6 +4,23 @@ document.addEventListener("turbo:load", function () {
   );
   const previewList = document.getElementById("preview-name");
 
+  //既存の写真が登録されている場合
+  let imagePreview = document.getElementById("user_imageName");
+
+  if (imagePreview) {
+    let imageUrl = imagePreview.getAttribute("value");
+    if (imageUrl) {
+      let registerdWrapper = document.createElement("div");
+
+      let registerdImage = document.createElement("img");
+      registerdImage.setAttribute("class", "preview-name-image");
+      registerdImage.setAttribute("src", imageUrl);
+
+      registerdWrapper.appendChild(registerdImage);
+      previewList.appendChild(registerdWrapper);
+    }
+  }
+
   if (fileFieldName) {
     fileFieldName.addEventListener("change", function (e) {
       const file = e.target.files[0];

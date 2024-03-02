@@ -8,7 +8,7 @@
           <div class='field'>
             <div class="click-name-upload">
               <%= f.label :imageName, "ユーザー画像" %><br />
-              <%= f.file_field :imageName, class:"name-image-btn" %>
+              <%= f.file_field :imageName,value: @user.imageName.url, class:"name-image-btn" %>
               <div id="preview-name"></div>
             </div>
           </div>
