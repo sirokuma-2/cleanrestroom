@@ -10,6 +10,7 @@ class PostFacility
     validates :latitude
     validates :longitude
     validates :image, presence: true, unless: :was_attached?
+    validates :user_id
   end
 
   def save
@@ -21,7 +22,7 @@ class PostFacility
     end
 
     if facility.save
-      Post.create(facility_id: facility.id)
+      Post.create(facility_id: facility.id,user_id: user_id)
       true
     else
       false
