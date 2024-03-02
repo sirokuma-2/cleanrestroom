@@ -1,0 +1,46 @@
+<div class="comments-page-wrapper">
+  <div class="post-image">
+    <%= image_tag @post.facility.image.url , class: "post-image-pic" if @post.facility.image.url.present? %>
+  </div>
+  <div class="comment-page">
+    <div class="comment-details">
+      <div class="post-name">
+        <p>名前</p>
+        <div class="facility-name"><%= @post.facility.name %></div>
+      </div>
+      <div class="post-review-average">
+        <p>レビュー</p>
+        <p >4.3　<span class="rating">★★★★☆</span>　 (<%= @comments.count %>件の評価)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="comments">
+    <p class="comment-title">すべての評価</p>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <div class="comment-facility-created-at">
+            <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+          </div>
+        <div class="comment-wrapper">
+          <div class="comment-reviewer-pic">
+            <%= image_tag comment.user.imageName.url , class: "comment-reviewer-image-pic" if comment.user.imageName.url.present? %>
+          </div>
+          <div class="comment-reviewer-name">
+            <%= comment.user.name %>
+          </div>
+          <div class="rating">
+            ★★★★☆
+          </div>
+        </div>
+        <div class="comment-review-content">
+          <%= comment.content %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="button-wrapper">
+    <%= link_to '戻る', posts_path, class: 'close-button' %>
+    <%= link_to '評価する', "#", class: 'review-button' %>
+  </div>
+</div>

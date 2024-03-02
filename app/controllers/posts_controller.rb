@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update]
+
   include Rails.application.routes.url_helpers
 
   def top
@@ -36,6 +38,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user)
+  end
+
   def new
     @post_facility = PostFacility.new
     @latitude = params[:latitude]
@@ -52,12 +59,10 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
     @facility = @post.facility
   end
 
   def update
-    @post = Post.find(params[:id])
     @facility = @post.facility
     if @facility.update(post_params)
       redirect_to posts_path
@@ -81,5 +86,9 @@ class PostsController < ApplicationController
     elsif params[:facility]
       params.require(:facility).permit(:name, :address, :content, :latitude, :longitude, :image)
     end
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
