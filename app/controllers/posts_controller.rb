@@ -76,7 +76,8 @@ class PostsController < ApplicationController
 
   def post_params
     if params[:post_facility]
-      params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude, :image).merge(user_id:current_user.id)
+      params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude,
+                                            :image).merge(user_id: current_user.id)
     elsif params[:facility]
       params.require(:facility).permit(:name, :address, :content, :latitude, :longitude, :image)
     end

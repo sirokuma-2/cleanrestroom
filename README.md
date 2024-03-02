@@ -4,7 +4,6 @@ Quick Clean Restroom
 最寄りの綺麗なトイレの位置をリアルタイムで案内し、トイレの情報を提供する
 # URL
 https://cleanrestrooms.net/posts
-# テスト用アカウント
 
 # 利用方法
 ## 目標投稿
@@ -27,7 +26,7 @@ https://cleanrestrooms.net/posts
 # 開発環境
 * フロントエンド:HTML CSS Javascript
 * バックエンド:Rails 7.0.0
-* インフラ:EC2 S3
+* インフラ:EC2 S3 SES
 * API:Google Maps API Directions API
 
 # ローカルでの動作方法
