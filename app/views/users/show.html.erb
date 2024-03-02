@@ -1,37 +1,37 @@
-<div class="mypage">
-  <div class="user-image">
-    <%= image_tag @user.imageName.url , class: "user-image-pic" if @user.imageName.url.present? %>
-  </div>
-  <div class="review-details">
-    <div class="user-name"><%= @user.name %></div>
-    <div class="user-email"><%= @user.email %></div>
-    <%= link_to '編集', edit_user_path(@user), class: 'edit-button' %>
-  </div>
-</div>
-
-
-
-<div class="reviews">
-  <p class="review-title">投稿</p>
-   <% @posts.each do |post| %>
-    <div class="review">
-      <div class="review-facility-created-at">
-          <%= post.facility.created_at.strftime('%Y年%m月%d日%H時%M分') %>
-        </div>
-      <div class="review-wrapper">
-        <div class="review-pic">
-          <%= image_tag post.facility.image.url , class: "review-user-image-pic" if post.facility.image.url.present? %>
-        </div>
-        <div class="review-facility-name">
-          <%= post.facility.name %>
-        </div>
-        <div class="rating">
-          ★★★★☆
-        </div>
-      </div>
-      <div class="review-content">
-        <%= post.facility.content %>
-      </div>
+<div class="mypage-wrapper">
+  <div class="mypage">
+    <div class="user-image">
+      <%= image_tag @user.imageName.url , class: "user-image-pic" if @user.imageName.url.present? %>
     </div>
-  <% end %>
+    <div class="review-details">
+      <div class="user-name"><%= @user.name %></div>
+      <div class="user-email"><%= @user.email %></div>
+      <%= link_to '編集', edit_user_path(@user), class: 'edit-button' %>
+    </div>
+  </div>
+
+  <div class="reviews">
+    <p class="review-title">投稿</p>
+    <% @posts.each do |post| %>
+      <div class="review">
+        <div class="review-facility-created-at">
+            <%= post.facility.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+          </div>
+        <div class="review-wrapper">
+          <div class="review-pic">
+            <%= image_tag post.facility.image.url , class: "review-user-image-pic" if post.facility.image.url.present? %>
+          </div>
+          <div class="review-facility-name">
+            <%= post.facility.name %>
+          </div>
+          <div class="rating">
+            ★★★★☆
+          </div>
+        </div>
+        <div class="review-content">
+          <%= post.facility.content %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
