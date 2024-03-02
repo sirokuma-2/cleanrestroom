@@ -1,0 +1,31 @@
+<div class="comments-page-wrapper">
+  <div class="post-image">
+    <%= image_tag @post.facility.image.url , class: "post-image-pic" if @post.facility.image.url.present? %>
+  </div>
+  <div class="comment-page">
+    <div class="comment-details">
+      <div class="comment-name">
+        <p>名称</p>
+        <div class="facility-name"><%= @post.facility.name %></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comments-form">
+   <%= form_with model: [@post, @comment],local: true do |f|%>
+      <div class="comment-form-wrqpper">
+        <div class="comment-rating">
+          <p class="">評価する</p>
+          <p>★★★★☆</p>
+        </div>
+        <div class="comment-form">
+          <%= f.label :content, "コメントを書く" %><br />
+          <%= f.text_field :content, class:"comment-text" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "評価する",  class:"comment-post-btn"  %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

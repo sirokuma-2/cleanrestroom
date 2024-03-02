@@ -1,0 +1,37 @@
+.comments-form {
+  width: 75%;
+  min-height: 75px; 
+  margin: 0 auto;
+}
+
+.comment-form-wrapper{
+  width: 50%;
+  margin: 0 auto;
+  border-top: 1px solid black;
+}
+
+.comment-rating{
+
+}
+
+.comment-text{
+  width: 100%;
+  height: 100px;
+  background-color: #F0F0F0;
+  border: none;
+}
+
+.comment-form{
+  margin-top: 15px;
+}
+
+.comment-post-btn{
+    width: 100px;
+    height: 50px;
+    color: #FFFFFF;
+    background-color: #4CAF50;
+    display: block;
+    margin: 15px auto;
+    border: none;
+    border-radius: 5px; 
+}

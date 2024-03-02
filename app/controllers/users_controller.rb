@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    puts @user.imageName.url
-  end
+    end
 
   def update
     if current_user.update(user_params)

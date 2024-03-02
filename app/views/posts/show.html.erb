@@ -41,6 +41,6 @@
   </div>
   <div class="button-wrapper">
     <%= link_to '戻る', posts_path, class: 'close-button' %>
-    <%= link_to '評価する', "#", class: 'review-button' %>
+    <%= link_to '評価する',  new_post_comment_path(@post), class: 'review-button' %>
   </div>
 </div>

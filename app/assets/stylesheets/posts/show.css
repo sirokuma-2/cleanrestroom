@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.comment-details{
+  border-bottom: 1px solid #808080;
+}
+
 .post-page {
   width: 100%;
   margin-bottom: 10px;
@@ -24,7 +28,6 @@
   margin: 20px auto;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid black;
 }
 
 .facility-name{
