@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
+  before_action :set_prototype, only: [:show, :edit]
+
+  def show
+
+  end
+
   def edit
-    @user = User.find(params[:id])
+
   end
 
   def update
@@ -15,5 +21,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :imageName)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
