@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_prototype, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit]
 
   def show
 
