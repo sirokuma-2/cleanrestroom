@@ -90,4 +90,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #Amazon SESからのメールの送信
+  config.action_mailer.default_url_options = { host: 'https://cleanrestrooms.net/' }
+  config.action_mailer.delivery_method = :aws_sdk
 end
