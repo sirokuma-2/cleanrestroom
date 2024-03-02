@@ -1,0 +1,109 @@
+.comments-page-wrapper{
+  width: 95%;
+  margin: 0 auto;
+}
+
+.post-page {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.post-image{
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.post-image-pic {
+  width: 400px;
+  height: auto;
+}
+
+.comment-details{
+  width: 400px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.facility-name{
+  
+}
+
+.user-email{
+  margin-bottom: 20px;
+}
+
+.post-review-average{
+  margin-left: 20px;
+}
+
+.comments {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.comment-title {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.comment {
+  min-height: 75px; 
+  margin-bottom: 30px;
+  padding: 10px;
+  border: 1px solid black;
+  display: flex; 
+  flex-direction: column;
+}
+
+.comment-facility-created-at{
+  color: #808080;
+  font-size: 10px;
+  text-align: right;
+}
+
+.comment-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.comment-reviewer-pic {
+  width: 50px;
+  height:auto;
+  border-radius: 50%;
+}
+
+.comment-reviewer-image-pic {
+  width: 100%; 
+  height: auto;
+  border-radius: 50%;
+}
+
+.comment-reviewer-name {
+  margin-left: 20px;
+}
+
+.rating {
+  color: gold;
+  margin-left: auto;
+}
+
+.comment-review-content {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+@media (min-width:599px){
+  .mypage-wrapper{
+    width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width:1024px){
+  .mypage-wrapper{
+    width: 500px;
+    margin: 0 auto;
+  }
+}
