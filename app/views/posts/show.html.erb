@@ -1,7 +1,7 @@
 <div class="mypage-wrapper">
   <div class="mypage">
     <div class="user-image">
-      <%= image_tag @post.facility.image.url , class: "user-image-pic" if @user.imageName.url.present? %>
+      <%= image_tag @post.facility.image.url , class: "user-image-pic" if @post.facility.image.url.present? %>
     </div>
     <div class="review-details">
       <p>名前</p>
@@ -16,11 +16,11 @@
     <% @comments.each do |comment| %>
       <div class="review">
         <div class="review-facility-created-at">
-            <%= commen.created_at.strftime('%Y年%m月%d日%H時%M分') %>
+            <%= comment.created_at.strftime('%Y年%m月%d日%H時%M分') %>
           </div>
         <div class="review-wrapper">
           <div class="review-pic">
-            <%= image_tag comment.user.imageName.url , class: "review-user-image-pic" if post.facility.image.url.present? %>
+            <%= image_tag comment.user.imageName.url , class: "review-user-image-pic" if comment.user.imageName.url.present? %>
           </div>
           <div class="review-facility-name">
             <%= comment.user.name %>
