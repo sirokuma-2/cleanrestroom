@@ -26,7 +26,7 @@
            </div>
             <div class="nav__right" id="nav-right-logged-in">
               <%= link_to "検索", "#", class: :nav__btn %>
-              <%= link_to "マイページ", "#", class: :nav__btn %>
+              <%= link_to "マイページ", user_path(current_user), class: :nav__btn %>
               <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav__btn %>
             </div>
           <% else %>

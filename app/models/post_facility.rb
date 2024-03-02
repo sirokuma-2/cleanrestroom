@@ -1,6 +1,6 @@
 class PostFacility
   include ActiveModel::Model
-  attr_accessor :facility_id, :name, :address, :content, :latitude, :longitude, :image
+  attr_accessor :facility_id, :name, :address, :content, :latitude, :longitude, :image, :user_id
 
   with_options presence: true do
     validates :facility_id
@@ -10,6 +10,7 @@ class PostFacility
     validates :latitude
     validates :longitude
     validates :image, presence: true, unless: :was_attached?
+    validates :user_id
   end
 
   def save
@@ -21,7 +22,7 @@ class PostFacility
     end
 
     if facility.save
-      Post.create(facility_id: facility.id)
+      Post.create(facility_id: facility.id, user_id:)
       true
     else
       false

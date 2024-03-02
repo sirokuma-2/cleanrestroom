@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   def create
     @post_facility = PostFacility.new(post_params)
     if @post_facility.save
-      redirect_to posts_path, notice: '投稿が成功しました。'
+      redirect_to posts_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @facility = @post.facility
     if @facility.update(post_params)
-      redirect_to posts_path, notice: '投稿を編集しました。'
+      redirect_to posts_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -76,7 +76,7 @@ class PostsController < ApplicationController
 
   def post_params
     if params[:post_facility]
-      params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude, :image)
+      params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude, :image).merge(user_id:current_user.id)
     elsif params[:facility]
       params.require(:facility).permit(:name, :address, :content, :latitude, :longitude, :image)
     end
