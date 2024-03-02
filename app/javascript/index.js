@@ -157,6 +157,7 @@ async function initMap() {
 
 document.addEventListener("turbo:load", () => {
   if (document.getElementById("top-map") || document.getElementById("map")) {
+    console.log("initmap");
     initMap();
   }
 });
