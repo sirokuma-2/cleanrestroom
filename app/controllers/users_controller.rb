@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
 
   def show
-
+  @posts = Post.include(:current_user)
   end
 
   def edit
