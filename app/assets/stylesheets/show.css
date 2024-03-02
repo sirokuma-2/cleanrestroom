@@ -42,54 +42,57 @@
   cursor: pointer;
 }
 
-.reviews{
+.reviews {
   width: 500px;
   margin: 0 auto;
 }
 
-.review-title{
+.review-title {
   text-align: left;
   margin-bottom: 25px;
 }
 
-.review{
+.review {
+  min-height: 75px; 
+  margin-bottom: 30px;
   padding: 10px;
   border: 1px solid black;
+  display: flex; 
+  flex-direction: column;
 }
 
-.review-wrapper{
-  width: 500px;
+.review-facility-created-at{
+  color: #808080;
+  font-size: 10px;
+  text-align: right;
+}
+
+.review-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: left;
   align-items: center;
 }
 
 .review-pic {
-  width: 50px;
-  height: 50px;
-  background-color: #ccc;
-  border-radius: 50%;
-  margin-top: 50px
-  margin-right: 50px;
+  width: 100px;
+  height:auto;
+  margin-top: 10px;
 }
 
 .review-user-image-pic {
-  width: 50px;
+  width: 100%; 
   height: auto;
-  border-radius: 50%;
 }
 
-.review-user-name{
-
+.review-facility-name {
+  margin-left: 20px;
 }
 
-.review-facility-name{
-
-}
 .rating {
   color: gold;
+  margin-left: auto;
 }
+
 .review-content {
-  margin-left: 50px;
-  margin-top: 10px;
+  margin-left: 5px;
 }

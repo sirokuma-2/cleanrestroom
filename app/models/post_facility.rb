@@ -1,6 +1,6 @@
 class PostFacility
   include ActiveModel::Model
-  attr_accessor :facility_id, :name, :address, :content, :latitude, :longitude, :image
+  attr_accessor :facility_id, :name, :address, :content, :latitude, :longitude, :image ,:user_id
 
   with_options presence: true do
     validates :facility_id
