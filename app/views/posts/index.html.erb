@@ -1,5 +1,11 @@
 <%= include_gon %>
-<div id="map" data-house-icon-url="<%= asset_path('house.svg') %>" data-restroom-icon-url="<%= asset_path('public.png') %>" data-route-icon-url="<%= asset_path('route.png') %>"></div>
+<div id="map" data-house-icon-url="<%= asset_path('house.svg') %>" 
+              data-restroom-icon-url="<%= asset_path('public.png') %>" 
+              data-route-icon-url="<%= asset_path('route.png') %>"
+              data-star-on="<%= asset_path('star-on.png') %>"
+              data-star-off="<%= asset_path('star-off.png') %>"
+              data-star-half="<%= asset_path('star-half.png') %>">
+</div>
 
 <div id="infoPanel" class="info-panel"></div>
 

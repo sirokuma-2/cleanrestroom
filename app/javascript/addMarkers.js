@@ -8,7 +8,10 @@ export function addMarkers(
   directionsService,
   directionsRenderer,
   restroomIconUrl,
-  routeIconUrl
+  routeIconUrl,
+  dataStarOn,
+  dataStarOff,
+  dataStarHalf
 ) {
   locations.forEach((location) => {
     //locationごとに繰り返し
@@ -117,7 +120,7 @@ export function addMarkers(
       parentElement.appendChild(reviewButton);
     }
 
-    let name, address, content, imageUrl, averageRating;
+    let name, address, content, imageUrl, averageRating, countRating;
     name = location.name;
     address = location.address;
     content = location.content;
@@ -216,6 +219,54 @@ export function addMarkers(
         infoWindowContent.appendChild(item);
       }
 
+      function addItemReview(titleText, contentText, contentText2) {
+        // 追記の親要素（ラッパー）を作成
+        const item = document.createElement("div");
+        item.style.padding = "4px 0px";
+
+        // タイトル用の要素を作成
+        const titleElement = document.createElement("div");
+        titleElement.textContent = titleText;
+        titleElement.style.color = "#333";
+        titleElement.style.fontSize = "18px";
+        titleElement.style.fontWeight = "bold";
+        titleElement.style.marginBottom = "10px";
+
+        // コンテンツ用の要素を作成
+        const contentElement = document.createElement("p");
+        contentElement.textContent = `${contentText}`;
+        contentElement.style.color = "#555";
+        contentElement.style.fontSize = "16px";
+        contentElement.style.marginLeft = "20px";
+
+        const contentElement2 = document.createElement("a");
+        contentElement2.textContent = `(${contentText2}件の評価を見る)`;
+        contentElement2.href = `${baseUrl}/posts/${location.id}`;
+        contentElement2.style.color = "#555";
+        contentElement2.style.fontSize = "16px";
+        contentElement2.style.marginLeft = "20px";
+
+        // 星評価を表示するためのdiv要素の作成
+        const starRatingElement = document.createElement("div");
+        titleElement.textContent = titleText;
+        starRatingElement.id = "star-rating";
+        starRatingElement.setAttribute("data-score", contentText);
+        starRatingElement.setAttribute("data-star-on", dataStarOn);
+        starRatingElement.setAttribute("data-star-off", dataStarOff);
+        starRatingElement.setAttribute("data-star-half", dataStarHalf);
+
+        // 星評価のdivをコンテンツのdivに追加
+        contentElement.appendChild(starRatingElement);
+
+        // titleElement と contentElement を item に追加
+        item.appendChild(titleElement);
+        item.appendChild(contentElement);
+        item.appendChild(contentElement2);
+
+        // item を infoWindowContent に追加
+        infoWindowContent.appendChild(item);
+      }
+
       // 使用例
 
       //レビュー平均
@@ -225,10 +276,13 @@ export function addMarkers(
 
       averageRating = totalRating / location.comment.length;
 
+      countRating = location.comment.length;
+      console.log(countRating);
+
       addItem("住所", address);
       addItem("コメント", content);
       //addItem("設備情報", capacity);
-      addItem("レビュー", averageRating.toFixed(1));
+      addItemReview("レビュー", averageRating.toFixed(1), countRating);
 
       // ボタンの親要素（ラッパー）を作成
       const buttonWrapper2 = document.createElement("div");
