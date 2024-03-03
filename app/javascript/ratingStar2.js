@@ -1,7 +1,9 @@
 import $ from "jquery";
 
-$(document).on("turbo:load", function () {
+// Ratyの初期化関数を定義
+export function initializeRaty() {
   let elem = document.querySelector("#star-rating");
+  console.log("動いている？");
   let opt = {
     starOn: "asset_path('star-on.png') ",
     starOff: "asset_path('star-off.png') ",
@@ -10,4 +12,5 @@ $(document).on("turbo:load", function () {
     score: elem.getAttribute("data-score"),
   };
   raty(elem, opt);
-});
+  console.log("動いたね");
+}

@@ -11,6 +11,7 @@ import "preview";
 import "previewName";
 import "rating";
 import "ratingStar";
+import "ratingStar2";
 
 import Raty from "raty";
 

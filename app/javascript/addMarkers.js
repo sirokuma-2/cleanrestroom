@@ -1,4 +1,5 @@
 import { calculateAndDisplayRoute } from "calculateAndDisplayRoute";
+import { initializeRaty } from "ratingStar2";
 
 export function addMarkers(
   locations,
@@ -232,6 +233,12 @@ export function addMarkers(
         titleElement.style.fontWeight = "bold";
         titleElement.style.marginBottom = "10px";
 
+        const containerElement = document.createElement("div");
+        containerElement.style.maxWidth = "400px";
+        containerElement.style.display = "flex";
+        containerElement.style.justifyContent = "space-around";
+        containerElement.style.alignItems = "center";
+
         // コンテンツ用の要素を作成
         const contentElement = document.createElement("p");
         contentElement.textContent = `${contentText}`;
@@ -255,16 +262,22 @@ export function addMarkers(
         starRatingElement.setAttribute("data-star-off", dataStarOff);
         starRatingElement.setAttribute("data-star-half", dataStarHalf);
 
-        // 星評価のdivをコンテンツのdivに追加
-        contentElement.appendChild(starRatingElement);
-
         // titleElement と contentElement を item に追加
         item.appendChild(titleElement);
-        item.appendChild(contentElement);
-        item.appendChild(contentElement2);
+
+        // 各要素をコンテナに追加
+        containerElement.appendChild(contentElement);
+        containerElement.appendChild(starRatingElement);
+        containerElement.appendChild(contentElement2);
+
+        // コンテナをitemに追加（itemは既にある要素と仮定）
+        item.appendChild(containerElement);
 
         // item を infoWindowContent に追加
         infoWindowContent.appendChild(item);
+
+        //　itemを描画したのちにレビュー星を作成
+        initializeRaty();
       }
 
       // 使用例
@@ -276,8 +289,8 @@ export function addMarkers(
 
       averageRating = totalRating / location.comment.length;
 
+      //レビュー件数
       countRating = location.comment.length;
-      console.log(countRating);
 
       addItem("住所", address);
       addItem("コメント", content);
