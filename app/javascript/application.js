@@ -10,6 +10,7 @@ import "menu";
 import "preview";
 import "previewName";
 import "rating";
+import "ratingStar";
 
 import Raty from "raty";
 

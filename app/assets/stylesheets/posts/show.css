@@ -12,6 +12,11 @@
   margin-bottom: 10px;
 }
 
+.comment-facility-name{
+  width:200px;
+  margin-bottom: 20px;
+}
+
 .post-image{
   width: 400px;
   height: auto;
@@ -24,10 +29,8 @@
 }
 
 .comment-details{
-  width: 450px;
+  width: 400px;
   margin: 20px auto;
-  display: flex;
-  align-items: center;
 }
 
 .facility-name{
@@ -39,7 +42,23 @@
 }
 
 .post-review-average{
-  margin-left: 30px;
+  width: 350px;
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+}
+
+.post-review-average-content{
+  width:100px;
+  text-align: center;
+}
+
+.star-rating{
+  width: 100px;
+}
+
+.star-rating img{
+  width: 16px; 
 }
 
 .comments {
@@ -89,10 +108,12 @@
 }
 
 .rating {
-  color: gold;
   margin-left: auto;
 }
 
+.rating img{
+  width: 16px;
+}
 .comment-review-content {
   margin-top: 10px;
   margin-left: 5px;
