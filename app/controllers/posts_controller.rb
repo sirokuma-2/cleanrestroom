@@ -33,7 +33,8 @@ class PostsController < ApplicationController
         content: post.facility.content,
         latitude: post.facility.latitude,
         longitude: post.facility.longitude,
-        image: url_for(post.facility.image.url)
+        image: url_for(post.facility.image.url),
+        comment: post.comments
       }
     end
   end

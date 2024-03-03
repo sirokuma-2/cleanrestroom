@@ -9,3 +9,14 @@ import "handleLocationError";
 import "menu";
 import "preview";
 import "previewName";
+import "rating";
+import "ratingStar";
+import "ratingStar2";
+
+import Raty from "raty";
+
+window.raty = function (elem, opt) {
+  let raty = new Raty(elem, opt);
+  raty.init();
+  return raty;
+};

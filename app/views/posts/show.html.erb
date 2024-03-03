@@ -6,11 +6,17 @@
     <div class="comment-details">
       <div class="post-name">
         <p>名前</p>
-        <div class="facility-name"><%= @post.facility.name %></div>
+        <div class="comment-facility-name">　<%= @post.facility.name %></div>
       </div>
+      <p>レビュー</p>
       <div class="post-review-average">
-        <p>レビュー</p>
-        <p >4.3　<span class="rating">★★★★☆</span>　 (<%= @comments.count %>件の評価)</p>
+        <p class="post-review-average-content">平均　<%= @comments.average(:rating).round(1) %></p>
+        <p id="star-rating" class="star-rating"
+            data-score="<%= @comments.average(:rating).round(1) %>"
+            data-star-on="<%= asset_path('star-on.png') %>"
+            data-star-off="<%= asset_path('star-off.png') %>"
+            data-star-half="<%= asset_path('star-half.png') %>"></p>
+        <p class="post-review-average-content">(<%= @comments.count %>件の評価)</p>
       </div>
     </div>
   </div>
@@ -30,7 +36,12 @@
             <%= comment.user.name %>
           </div>
           <div class="rating">
-            ★★★★☆
+            <% comment.rating.times do %>
+              <img src="<%= asset_path('star-on.png') %>" alt="star" class="rating-star">
+            <% end %>
+            <% (5 - comment.rating).times do %>
+              <img src="<%= asset_path('star-off.png') %>" alt="star" class="rating-not-star">
+            <% end %>
           </div>
         </div>
         <div class="comment-review-content">
@@ -41,6 +52,6 @@
   </div>
   <div class="button-wrapper">
     <%= link_to '戻る', posts_path, class: 'close-button' %>
-    <%= link_to '評価する', "#", class: 'review-button' %>
+    <%= link_to '評価する',  new_post_comment_path(@post), class: 'review-button' %>
   </div>
 </div>

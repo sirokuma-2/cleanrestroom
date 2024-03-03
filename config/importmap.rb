@@ -13,3 +13,11 @@ pin "handleLocationError", to:"handleLocationError.js"
 pin "menu", to:"menu.js"
 pin "preview", to:"preview.js"
 pin "previewName", to:"previewName.js"
+pin "rating", to:"rating.js"
+pin "ratingStar", to:"ratingStar.js"
+pin "ratingStar2", to:"ratingStar2.js"
+
+
+
+pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.6.3/dist/jquery.js"
+pin "raty", to:"raty.js"

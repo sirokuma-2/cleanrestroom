@@ -9,6 +9,10 @@ let allMarkers = []; // すべてのマーカーを保持する配列
 // let restroomIconUrl;
 // let routeIconUrl;
 
+let dataStarOn;
+let dataStarOff;
+let dataStarHalf;
+
 let userPos; // ユーザーの現在位置
 
 let directionsService; // ルートを検索するためのDirectionsServiceのインスタンス
@@ -74,6 +78,12 @@ async function initMap() {
           );
           const routeIconUrl = mapElement.getAttribute("data-route-icon-url");
 
+          const dataStarOn = mapElement.getAttribute("data-star-on");
+          const dataStarOff = mapElement.getAttribute("data-star-off");
+          const dataStarHalf = mapElement.getAttribute("data-star-half");
+
+          console.log(dataStarOn);
+
           //現在地にhouseのアイコンを表示
           new google.maps.marker.AdvancedMarkerView({
             position: userPos,
@@ -94,7 +104,10 @@ async function initMap() {
             directionsService,
             directionsRenderer,
             restroomIconUrl,
-            routeIconUrl
+            routeIconUrl,
+            dataStarOn,
+            dataStarOff,
+            dataStarHalf
           );
         },
         () => {
@@ -106,6 +119,10 @@ async function initMap() {
             "data-restroom-icon-url"
           );
           const routeIconUrl = mapElement.getAttribute("data-route-icon-url");
+
+          const dataStarOn = mapElement.getAttribute("data-star-on");
+          const dataStarOff = mapElement.getAttribute("data-star-off");
+          const dataStarHalf = mapElement.getAttribute("data-star-half");
 
           // 現在地の取得に失敗した場合の処理
           // 東京駅の座標
@@ -133,7 +150,10 @@ async function initMap() {
             directionsService,
             directionsRenderer,
             restroomIconUrl,
-            routeIconUrl
+            routeIconUrl,
+            dataStarOn,
+            dataStarOff,
+            dataStarHalf
           );
         }
       );
