@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    end
+  end
 
   def update
     if current_user.update(user_params)
