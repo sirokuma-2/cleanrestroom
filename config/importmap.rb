@@ -14,5 +14,6 @@ pin "menu", to:"menu.js"
 pin "preview", to:"preview.js"
 pin "previewName", to:"previewName.js"
 pin "rating", to:"rating.js"
-pin "raty", to:"raty.js"
+
 pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.6.3/dist/jquery.js"
+pin "raty", to:"raty.js"

@@ -15,8 +15,15 @@
    <%= form_with model: [@post, @comment],local: true do |f|%>
       <div class="comment-form-wrqpper">
         <div class="comment-rating-wrapper">
-          <p class="">評価する</p>
-          <p class="comment-rating">★★★★☆</p>
+          <p class=""></p>
+          <div class="form-group" id="star">
+            <%= f.label :rating, "評価する" %>
+            <%= f.hidden_field :rating, id: :review_star, class: 'form-control' %>
+            <div id="post_raty" data-star-on="<%= asset_path('star-on.png') %>" 
+                                data-star-off="<%= asset_path('star-off.png') %>" 
+                                data-star-half="<%= asset_path('star-half.png') %>">
+            </div>
+          </div>
         </div>
         <div class="comment-form">
           <%= f.label :content, "コメントを書く" %><br />

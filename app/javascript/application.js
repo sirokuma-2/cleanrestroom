@@ -10,4 +10,11 @@ import "menu";
 import "preview";
 import "previewName";
 import "rating";
-import "raty";
+
+import Raty from "raty";
+
+window.raty = function (elem, opt) {
+  let raty = new Raty(elem, opt);
+  raty.init();
+  return raty;
+};
