@@ -103,16 +103,18 @@ export function addMarkers(
 
     //評価するボタンを作成
     function addReviewButton(parentElement) {
-      const reviewButton = document.createElement("button");
+      const reviewButton = document.createElement("a");
       reviewButton.textContent = "評価する";
+      reviewButton.href = `${baseUrl}/posts/${location.id}/comments/new`;
       reviewButton.style.backgroundColor = "#4CAF50";
       reviewButton.style.color = "#FFFFFF";
       reviewButton.style.borderRadius = "10px";
       reviewButton.style.border = "none";
-      reviewButton.style.padding = "10px 20px";
+      reviewButton.style.textDecoration = "none";
+      reviewButton.style.padding = "10px 30px";
       reviewButton.style.cursor = "pointer";
       reviewButton.style.marginTop = "10px";
-      parentElement.appendChild(reviewButton); // ボタンを親要素に追加
+      parentElement.appendChild(reviewButton);
     }
 
     let name, address, content, imageUrl;
