@@ -3,7 +3,6 @@ import $ from "jquery";
 // Ratyの初期化関数を定義
 export function initializeRaty() {
   let elem = document.querySelector("#star-rating");
-  console.log("動いている？");
   let opt = {
     starOn: "asset_path('star-on.png') ",
     starOff: "asset_path('star-off.png') ",
@@ -12,5 +11,4 @@ export function initializeRaty() {
     score: elem.getAttribute("data-score"),
   };
   raty(elem, opt);
-  console.log("動いたね");
 }
