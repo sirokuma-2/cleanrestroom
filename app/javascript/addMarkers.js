@@ -117,7 +117,7 @@ export function addMarkers(
       parentElement.appendChild(reviewButton);
     }
 
-    let name, address, content, imageUrl;
+    let name, address, content, imageUrl, averageRating;
     name = location.name;
     address = location.address;
     content = location.content;
@@ -217,10 +217,18 @@ export function addMarkers(
       }
 
       // 使用例
+
+      //レビュー平均
+      const totalRating = location.comment.reduce((acc, comment) => {
+        return acc + comment.rating;
+      }, 0);
+
+      averageRating = totalRating / location.comment.length;
+
       addItem("住所", address);
       addItem("コメント", content);
       //addItem("設備情報", capacity);
-      //addItem("レビュー", place);
+      addItem("レビュー", averageRating.toFixed(1));
 
       // ボタンの親要素（ラッパー）を作成
       const buttonWrapper2 = document.createElement("div");
