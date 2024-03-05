@@ -16,6 +16,10 @@ class PostsController < ApplicationController
         content: post.facility.content,
         latitude: post.facility.latitude,
         longitude: post.facility.longitude,
+        anyone_toilet: post.facility.anyone_toilet,
+        diaper_changing_station: post.facility.diaper_changing_station,
+        powder_corner: post.facility.powder_corner,
+        stroller_accessible: post.facility.stroller_accessible,
         image: url_for(post.facility.image.url)
       }
     end
@@ -33,6 +37,11 @@ class PostsController < ApplicationController
         content: post.facility.content,
         latitude: post.facility.latitude,
         longitude: post.facility.longitude,
+        nursing_room: post.facility.nursing_room,
+        anyone_toilet: post.facility.anyone_toilet,
+        diaper_changing_station: post.facility.diaper_changing_station,
+        powder_corner: post.facility.powder_corner,
+        stroller_accessible: post.facility.stroller_accessible,
         image: url_for(post.facility.image.url),
         comment: post.comments
       }
@@ -83,9 +92,13 @@ class PostsController < ApplicationController
   def post_params
     if params[:post_facility]
       params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude,
+                                            :nursing_room, :anyone_toilet, :diaper_changing_station,
+                                            :powder_corner, :stroller_accessible,
                                             :image).merge(user_id: current_user.id)
     elsif params[:facility]
-      params.require(:facility).permit(:name, :address, :content, :latitude, :longitude, :image)
+      params.require(:facility).permit(:name, :address, :content, :latitude, :longitude,
+                                       :nursing_room, :anyone_toilet, :diaper_changing_station,
+                                       :powder_corner, :stroller_accessible, :image)
     end
   end
 

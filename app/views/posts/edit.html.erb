@@ -17,29 +17,30 @@
     </div>
 
    
-    <%# <div class="check-box-contents">
+    <div class="check-box-contents">
       <p>設備情報</p>
       <div class="facility-check-box">
-        <%= f.check_box :nursing_room, color:'red'%>
-        <%# <%= f.label :nursing_room, '授乳室'%> 
-      <%# </div> %>
-      <%# <div class="facility-check-box"> %>
-        <%# <%= f.check_box :anyone_toilet %> 
-        <%# <%= f.label :anyone_toilet, '誰でもトイレ'%> 
-      <%# </div> %>
-      <%# <div class="facility-check-box"> %>
-        <%# <%= f.check_box :diaper_changing_station %> 
-        <%# <%= f.label :diaper_changing_station, 'オムツ交換台'%>
-      <%# </div>   %>
-      <%# <div class="facility-check-box"> %>
-        <%# <%= f.check_box :powder_corner %>
-        <%# <%= f.label :powder_corner, 'パウダーコーナー'%>
-      <%# </div> %>
-      <%# <div class="facility-check-box"> %>
-        <%# <%= f.check_box  :stroller_accessible %>
-        <%# <%= f.label  :stroller_accessible, 'ベビーカー可'%>
-      <%# </div> %>
-    <%# </div>  %>
+        <%= f.check_box :nursing_room %>
+        <%= f.label :nursing_room, '授乳室' %>
+      </div>
+      <div class="facility-check-box">
+        <%= f.check_box :anyone_toilet %>
+        <%= f.label :anyone_toilet, '誰でもトイレ' %>
+      </div>
+      <div class="facility-check-box">
+        <%= f.check_box :diaper_changing_station %>
+        <%= f.label :diaper_changing_station, 'オムツ交換台' %>
+      </div>
+      <div class="facility-check-box">
+        <%= f.check_box :powder_corner %>
+        <%= f.label :powder_corner, 'パウダーコーナー' %>
+      </div>
+      <div class="facility-check-box">
+        <%= f.check_box :stroller_accessible %>
+        <%= f.label :stroller_accessible, 'ベビーカー可' %>
+      </div>
+    </div>
+
 
     <div class="click-upload">
       <%= f.label :image, "画像投稿" %><br />
