@@ -84,12 +84,12 @@ class PostsController < ApplicationController
     if params[:post_facility]
       params.require(:post_facility).permit(:name, :address, :content, :latitude, :longitude,
                                             :nursing_room, :anyone_toilet, :diaper_changing_station,
-                                            :powder_corner,:stroller_accessible
+                                            :powder_corner,:stroller_accessible,
                                             :image).merge(user_id: current_user.id)
     elsif params[:facility]
       params.require(:facility).permit(:name, :address, :content, :latitude, :longitude,
                                        :nursing_room, :anyone_toilet, :diaper_changing_station,
-                                       :powder_corner,:stroller_accessible :image)
+                                       :powder_corner,:stroller_accessible, :image)
     end
   end
 
