@@ -256,6 +256,12 @@ export function addMarkers(
         // コンテンツ用の要素を作成
         const contentElement = document.createElement("div");
 
+        const contentElementWrapper = document.createElement("div");
+        contentElementWrapper.style.maxWidth = "350px";
+        contentElementWrapper.style.display = "flex";
+        contentElementWrapper.style.flexWrap = "wrap"; // 要素が多い場合に折り返す
+        contentElementWrapper.style.justifyContent = "space-between";
+
         // contentTextList 内の各設備に対してループ処理
         contentTextList.forEach(function (contentText, index) {
           if (contentText) {
@@ -268,12 +274,18 @@ export function addMarkers(
               "パウダーコーナー",
               "ベビーカー可",
             ][index]; // 対応する設備名
+            contentElement.style.width = "150px";
             contentElement.style.color = "#555";
             contentElement.style.fontSize = "16px";
+            contentElement.style.textAlign = "center";
+            contentElement.style.marginBottom = "5px";
             contentElement.style.marginLeft = "20px";
+            contentElement.style.border = "1px solid black";
+            contentElement.style.backgroundColor = "#F0F0F0";
+            contentElement.style.borderRadius = "10px";
 
-            console.log(contentElement);
-            item.appendChild(contentElement);
+            contentElementWrapper.appendChild(contentElement);
+            item.appendChild(contentElementWrapper);
           }
         });
 
