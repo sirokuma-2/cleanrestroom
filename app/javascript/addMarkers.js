@@ -121,10 +121,26 @@ export function addMarkers(
       parentElement.appendChild(reviewButton);
     }
 
-    let name, address, content, imageUrl, averageRating, countRating;
+    let name,
+      address,
+      content,
+      nursing_room,
+      anyone_toilet,
+      diaper_changing_station,
+      powder_corner,
+      stroller_accessible,
+      imageUrl,
+      averageRating,
+      countRating;
+
     name = location.name;
     address = location.address;
     content = location.content;
+    nursing_room = location.nursing_room;
+    anyone_toilet = location.anyone_toilet;
+    diaper_changing_station = location.diaper_changing_station;
+    powder_corner = location.powder_corner;
+    stroller_accessible = location.stroller_accessible;
     imageUrl = location.image;
 
     // マップ上のアイコンにイベントリスナーを追加
@@ -192,6 +208,7 @@ export function addMarkers(
       // infoPanelにinfoWindowContentを追加
       infoPanel.appendChild(infoWindowContent);
 
+      //住所　コメントの表示
       function addItem(titleText, contentText) {
         // 追記の親要素（ラッパー）を作成
         const item = document.createElement("div");
@@ -220,6 +237,51 @@ export function addMarkers(
         infoWindowContent.appendChild(item);
       }
 
+      //設備情報の表示
+      function addItemFacility(titleText, contentTextList) {
+        // 追記の親要素（ラッパー）を作成
+        const item = document.createElement("div");
+        item.style.padding = "4px 0px";
+
+        // タイトル用の要素を作成
+        const titleElement = document.createElement("div");
+        titleElement.textContent = titleText;
+        titleElement.style.color = "#333";
+        titleElement.style.fontSize = "18px";
+        titleElement.style.fontWeight = "bold";
+        titleElement.style.marginBottom = "10px";
+
+        item.appendChild(titleElement);
+
+        // コンテンツ用の要素を作成
+        const contentElement = document.createElement("div");
+
+        // contentTextList 内の各設備に対してループ処理
+        contentTextList.forEach(function (contentText, index) {
+          if (contentText) {
+            // 設備が true の場合のみ
+            const contentElement = document.createElement("div");
+            contentElement.textContent = [
+              "授乳室",
+              "誰でもトイレ",
+              "オムツ交換台",
+              "パウダーコーナー",
+              "ベビーカー可",
+            ][index]; // 対応する設備名
+            contentElement.style.color = "#555";
+            contentElement.style.fontSize = "16px";
+            contentElement.style.marginLeft = "20px";
+
+            console.log(contentElement);
+            item.appendChild(contentElement);
+          }
+        });
+
+        // item を infoWindowContent に追加
+        infoWindowContent.appendChild(item);
+      }
+
+      //レビューの表示
       function addItemReview(titleText, contentText, contentText2) {
         // 追記の親要素（ラッパー）を作成
         const item = document.createElement("div");
@@ -294,7 +356,13 @@ export function addMarkers(
 
       addItem("住所", address);
       addItem("コメント", content);
-      //addItem("設備情報", capacity);
+      addItemFacility("設備情報", [
+        nursing_room,
+        anyone_toilet,
+        diaper_changing_station,
+        powder_corner,
+        stroller_accessible,
+      ]);
       addItemReview("レビュー", averageRating.toFixed(1), countRating);
 
       // ボタンの親要素（ラッパー）を作成
