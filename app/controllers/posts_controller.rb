@@ -16,6 +16,10 @@ class PostsController < ApplicationController
         content: post.facility.content,
         latitude: post.facility.latitude,
         longitude: post.facility.longitude,
+        anyone_toilet: post.facility.anyone_toilet,
+        diaper_changing_station: post.facility.diaper_changing_station,
+        powder_corner: post.facility.powder_corner,
+        stroller_accessible: post.facility.stroller_accessible,
         image: url_for(post.facility.image.url)
       }
     end
@@ -33,6 +37,11 @@ class PostsController < ApplicationController
         content: post.facility.content,
         latitude: post.facility.latitude,
         longitude: post.facility.longitude,
+        nursing_room: post.facility.nursing_room,
+        anyone_toilet: post.facility.anyone_toilet,
+        diaper_changing_station: post.facility.diaper_changing_station,
+        powder_corner: post.facility.powder_corner,
+        stroller_accessible: post.facility.stroller_accessible,
         image: url_for(post.facility.image.url),
         comment: post.comments
       }
