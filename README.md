@@ -15,7 +15,7 @@ https://cleanrestrooms.net/posts
 ![個別施設情報](https://i.gyazo.com/6702edd493a19db141f52c579e9582eb.jpg)
 
 # データベース設計
-![ER図](https://i.gyazo.com/cb4db6391737ad0c1f7b11f5940a068c.png)
+![ER図](https://i.gyazo.com/42977e40f1dd8a412f28fda252482899.png)
 
 # 画面遷移図
 ![画面遷移図](https://i.gyazo.com/5df70c98f86793eed3264bb64e9c60fc.png)
