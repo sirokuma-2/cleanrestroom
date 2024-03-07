@@ -43,7 +43,6 @@ export function geoLocation(
             position: userPos,
             map: map,
             title: "Your Location",
-            // icon: userIcon,
           });
 
           // マップの中心を現在位置に移動

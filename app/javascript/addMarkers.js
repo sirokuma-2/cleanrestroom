@@ -75,10 +75,9 @@ export function addMarkers(
       }, 250);
     }
 
-    // ルート検索機能を持つボタンの動的作成とイベントリスナーの追加
+    // // ルート検索機能を持つボタンの動的作成とイベントリスナーの追加
     function addSearchRouteButton(parentElement) {
       const searchButton = document.createElement("button");
-      // searchButton.textContent = "ルート検索";
       // ボタンに背景画像を設定
       searchButton.style.backgroundImage = `url(${routeIconUrl})`;
       searchButton.style.backgroundSize = "cover";

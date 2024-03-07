@@ -1,12 +1,10 @@
 import { clickListener } from "clickListener";
 import { addMarkers } from "addMarkers";
-import { handleLocationError } from "handleLocationError";
 import { geoLocation } from "geoLocation";
 
 let locations; //すべての施設の位置
 let map;
 let allMarkers = []; // すべてのマーカーを保持する配列
-let userPos;
 let directionsService; // ルートを検索するためのDirectionsServiceのインスタンス
 let directionsRenderer; // マップ上にルートを表示するためのDirectionsRendererのインスタンス
 let routeIconUrl;
@@ -24,10 +22,6 @@ async function initMap() {
   // gonから施設の位置情報を取得
   locations = gon.posts;
 
-  //ルート検索機能
-  directionsService = new google.maps.DirectionsService(); //ルートを検索するためのインスタンス
-  directionsRenderer = new google.maps.DirectionsRenderer(); //マップにルートを表示するためのインスタンス
-
   const mapElement =
     document.getElementById("top-map") || document.getElementById("map");
 
@@ -40,11 +34,36 @@ async function initMap() {
     });
   }
 
+  //アイコンのイメージ図
   routeIconUrl = mapElement.getAttribute("data-route-icon-url");
   dataStarOn = mapElement.getAttribute("data-star-on");
   dataStarOff = mapElement.getAttribute("data-star-off");
   dataStarHalf = mapElement.getAttribute("data-star-half");
 
+  //ルート検索機能
+  directionsService = new google.maps.DirectionsService(); //ルートを検索するためのインスタンス
+  directionsRenderer = new google.maps.DirectionsRenderer(); //マップにルートを表示するためのインスタンス
+
+  const tokyoStationPos = {
+    lat: 35.681236,
+    lng: 139.767125,
+  };
+
+  //まずは施設情報をすべて表示
+  addMarkers(
+    locations,
+    map,
+    allMarkers,
+    tokyoStationPos, //東京駅を渡す
+    directionsService,
+    directionsRenderer,
+    routeIconUrl,
+    dataStarOn,
+    dataStarOff,
+    dataStarHalf
+  );
+
+  //現在地と施設情報の表示
   geoLocation(
     locations,
     map,
