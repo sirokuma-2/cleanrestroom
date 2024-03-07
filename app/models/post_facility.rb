@@ -22,7 +22,6 @@ class PostFacility
 
     if image.present?
       facility.image.attach(image)
-      puts '画像が保存されました'
     end
 
     if facility.save
