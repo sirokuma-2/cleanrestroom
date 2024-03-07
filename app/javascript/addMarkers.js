@@ -5,7 +5,7 @@ export function addMarkers(
   locations,
   map,
   allMarkers,
-  userPos,
+  userPos, //現在地または東京駅
   directionsService,
   directionsRenderer,
   routeIconUrl,
@@ -14,8 +14,6 @@ export function addMarkers(
   dataStarHalf
 ) {
   locations.forEach((location) => {
-    //locationごとに繰り返し
-
     const pinViewScaled = new google.maps.marker.PinView({
       background: "#0000FF",
       glyphColor: "white",
@@ -40,23 +38,46 @@ export function addMarkers(
         ? "http://localhost:3000"
         : "https://cleanrestrooms.net";
 
-    //編集するボタンを作成
-    function addEditButton(parentElement) {
-      const editButton = document.createElement("a");
-      editButton.textContent = "編集する";
-      editButton.href = `${baseUrl}/posts/${location.id}/edit`;
-      editButton.style.display = "inline-block"; // ブロック要素のように扱う
-      editButton.style.backgroundColor = "#4CAF50";
-      editButton.style.color = "#FFFFFF";
-      editButton.style.borderRadius = "10px";
-      editButton.style.textDecoration = "none";
-      editButton.style.border = "none";
-      editButton.style.padding = "10px 20px";
-      editButton.style.cursor = "pointer";
-      parentElement.appendChild(editButton);
+    //post_facilityテーブルからの情報を定義
+    let name,
+      address,
+      content,
+      nursing_room,
+      anyone_toilet,
+      diaper_changing_station,
+      powder_corner,
+      stroller_accessible,
+      imageUrl,
+      averageRating,
+      countRating;
+
+    name = location.name;
+    address = location.address;
+    content = location.content;
+    nursing_room = location.nursing_room;
+    anyone_toilet = location.anyone_toilet;
+    diaper_changing_station = location.diaper_changing_station;
+    powder_corner = location.powder_corner;
+    stroller_accessible = location.stroller_accessible;
+    imageUrl = location.image;
+
+    //編集・評価するボタンの作成
+    function addButton(parentElement, buttonText) {
+      const Button = document.createElement("a");
+      Button.textContent = buttonText;
+      Button.href = `${baseUrl}/posts/${location.id}/edit`;
+      Button.style.display = "inline-block"; // ブロック要素のように扱う
+      Button.style.backgroundColor = "#4CAF50";
+      Button.style.color = "#FFFFFF";
+      Button.style.borderRadius = "10px";
+      Button.style.textDecoration = "none";
+      Button.style.border = "none";
+      Button.style.padding = "10px 20px";
+      Button.style.cursor = "pointer";
+      parentElement.appendChild(Button);
     }
 
-    // パネルを閉じる機能を持つボタンの動的作成とイベントリスナーの追加
+    // 閉じるボタンの作成
     function addCloseButton(parentElement) {
       const closeButton = document.createElement("button");
       closeButton.textContent = "← 戻る";
@@ -75,7 +96,7 @@ export function addMarkers(
       }, 250);
     }
 
-    // // ルート検索機能を持つボタンの動的作成とイベントリスナーの追加
+    //ルート案内ボタンの作成
     function addSearchRouteButton(parentElement) {
       const searchButton = document.createElement("button");
       // ボタンに背景画像を設定
@@ -103,53 +124,13 @@ export function addMarkers(
       parentElement.appendChild(searchButton);
     }
 
-    //評価するボタンを作成
-    function addReviewButton(parentElement) {
-      const reviewButton = document.createElement("a");
-      reviewButton.textContent = "評価する";
-      reviewButton.href = `${baseUrl}/posts/${location.id}/comments/new`;
-      reviewButton.style.backgroundColor = "#4CAF50";
-      reviewButton.style.color = "#FFFFFF";
-      reviewButton.style.borderRadius = "10px";
-      reviewButton.style.border = "none";
-      reviewButton.style.textDecoration = "none";
-      reviewButton.style.padding = "10px 30px";
-      reviewButton.style.cursor = "pointer";
-      reviewButton.style.marginTop = "10px";
-      parentElement.appendChild(reviewButton);
-    }
-
-    let name,
-      address,
-      content,
-      nursing_room,
-      anyone_toilet,
-      diaper_changing_station,
-      powder_corner,
-      stroller_accessible,
-      imageUrl,
-      averageRating,
-      countRating;
-
-    name = location.name;
-    address = location.address;
-    content = location.content;
-    nursing_room = location.nursing_room;
-    anyone_toilet = location.anyone_toilet;
-    diaper_changing_station = location.diaper_changing_station;
-    powder_corner = location.powder_corner;
-    stroller_accessible = location.stroller_accessible;
-    imageUrl = location.image;
-
-    // マップ上のアイコンにイベントリスナーを追加
+    // infopanelを表示
     marker.addListener("gmp-click", function () {
       infoPanel.style.display = "block";
 
       // infoPanelの中身をクリア
       infoPanel.innerHTML = "";
 
-      // infoPanelの中身を新しく作成
-      //divクラスを作成　 id="infoWindowContent"
       const infoWindowContent = document.createElement("div");
       infoWindowContent.id = "infoWindowContent";
       infoWindowContent.style =
@@ -164,7 +145,8 @@ export function addMarkers(
         image.style.height = "auto";
         infoWindowContent.appendChild(image);
       }
-      //h1の親要素を作成
+
+      //戻る　施設名称　ルート案内ボタンのラッパーの作成
       const h1Wrapper = document.createElement("div");
       h1Wrapper.style.display = "flex";
       h1Wrapper.style.justifyContent = "space-around";
@@ -175,7 +157,7 @@ export function addMarkers(
       h1Wrapper.style.marginBottom = "10px";
       h1Wrapper.style.paddingLeft = "10px";
 
-      // h1タグ id class style
+      //施設名称の表示
       const firstHeading = document.createElement("h1");
       firstHeading.id = "firstHeading";
       firstHeading.className = "firstHeading";
@@ -183,7 +165,7 @@ export function addMarkers(
         "font-size: 20px; margin: 0 auto; text-align: center; vertical-align: middle;";
       firstHeading.textContent = name;
 
-      // h1をラッパーに追加
+      // 戻るボタン　ルート案内ボタンの表示
       addCloseButton(h1Wrapper);
       h1Wrapper.appendChild(firstHeading);
       addSearchRouteButton(h1Wrapper);
@@ -191,14 +173,14 @@ export function addMarkers(
       // ラッパーをinfoWindowContentに追加
       infoWindowContent.appendChild(h1Wrapper);
 
-      // ボタンの親要素（ラッパー）を作成
+      // 編集ボタンのラッパーの作成
       const buttonWrapper = document.createElement("div");
       buttonWrapper.style.display = "flex";
       buttonWrapper.style.justifyContent = "flex-end";
       buttonWrapper.style.width = "100%";
 
-      // buttonWrapperを親要素として編集ボタンを追加
-      addEditButton(buttonWrapper);
+      // 編集ボタンを追加
+      addButton(buttonWrapper, "編集する");
 
       // buttonWrapperを最終的な親要素に追加（例: infoWindowContent）
       infoWindowContent.appendChild(buttonWrapper);
@@ -206,7 +188,7 @@ export function addMarkers(
       // infoPanelにinfoWindowContentを追加
       infoPanel.appendChild(infoWindowContent);
 
-      //住所　コメントの表示
+      //住所　　コメントの表示関数の作成
       function addItem(titleText, contentText) {
         // 追記の親要素（ラッパー）を作成
         const item = document.createElement("div");
@@ -235,7 +217,7 @@ export function addMarkers(
         infoWindowContent.appendChild(item);
       }
 
-      //設備情報の表示
+      //設備情報の表示関数の作成
       function addItemFacility(titleText, contentTextList) {
         // 追記の親要素（ラッパー）を作成
         const item = document.createElement("div");
@@ -291,7 +273,7 @@ export function addMarkers(
         infoWindowContent.appendChild(item);
       }
 
-      //レビューの表示
+      //レビューの表示関するの作成
       function addItemReview(titleText, contentText, contentText2) {
         // 追記の親要素（ラッパー）を作成
         const item = document.createElement("div");
@@ -352,8 +334,6 @@ export function addMarkers(
         initializeRaty();
       }
 
-      // 使用例
-
       //レビュー平均
       const totalRating = location.comment.reduce((acc, comment) => {
         return acc + comment.rating;
@@ -375,7 +355,7 @@ export function addMarkers(
       ]);
       addItemReview("レビュー", averageRating.toFixed(1), countRating);
 
-      // ボタンの親要素（ラッパー）を作成
+      // 評価するボタンのラッパーの作成
       const buttonWrapper2 = document.createElement("div");
       buttonWrapper2.style.display = "flex";
       buttonWrapper2.style.justifyContent = "center";
@@ -383,7 +363,7 @@ export function addMarkers(
       buttonWrapper2.style.marginBottom = "10px";
 
       // buttonWrapperを親要素として編集ボタンを追加
-      addReviewButton(buttonWrapper2);
+      addButton(buttonWrapper2, "評価する");
 
       // buttonWrapperを最終的な親要素に追加（例: infoWindowContent）
       infoWindowContent.appendChild(buttonWrapper2);

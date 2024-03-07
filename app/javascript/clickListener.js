@@ -1,7 +1,7 @@
-export function clickListener(event, map) {
+export function clickListener(e, map) {
   // lat() と lng() メソッドで緯度経度を取得
-  const latitude = event.latLng.lat();
-  const longitude = event.latLng.lng();
+  const latitude = e.latLng.lat();
+  const longitude = e.latLng.lng();
   let baseUrl =
     window.location.hostname === "localhost"
       ? "http://localhost:3000"
@@ -33,7 +33,7 @@ export function clickListener(event, map) {
 
   let infowindow = new google.maps.InfoWindow({
     content: contentString,
-    position: event.latLng,
+    position: e.latLng,
   });
 
   infowindow.open(map, marker);

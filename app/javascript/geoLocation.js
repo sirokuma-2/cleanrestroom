@@ -38,14 +38,14 @@ export function geoLocation(
             lng: position.coords.longitude,
           };
 
-          //現在地にhouseのアイコンを表示
+          //現在地のアイコンを表示
           new google.maps.marker.AdvancedMarkerView({
             position: userPos,
             map: map,
             title: "Your Location",
           });
 
-          // マップの中心を現在位置に移動
+          // マップの中心を現在地に移動
           map.setCenter(userPos);
 
           // マーカーと詳細情報を表示
@@ -70,7 +70,7 @@ export function geoLocation(
             lng: 139.767125,
           };
 
-          // 東京駅にマーカーを設置（オプション）
+          // 東京駅に現在地を設置
           new google.maps.marker.AdvancedMarkerView({
             position: tokyoStationPos,
             map: map,
