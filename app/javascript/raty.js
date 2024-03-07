@@ -14,53 +14,57 @@ class Raty {
    */
   constructor(element, options = {}) {
     this.element = element;
-    this.opt = { ...this.defaultOptions(), ...options, ...this._parseOptions(element.dataset) };
+    this.opt = {
+      ...this.defaultOptions(),
+      ...options,
+      ...this._parseOptions(element.dataset),
+    };
   }
 
   defaultOptions() {
     return {
       cancelButton: false,
-      cancelClass: 'raty-cancel',
-      cancelHint: 'Cancel this rating!',
-      cancelOff: 'cancel-off.png',
-      cancelOn: 'cancel-on.png',
-      cancelPlace: 'left',
+      cancelClass: "raty-cancel",
+      cancelHint: "Cancel this rating!",
+      cancelOff: "cancel-off.png",
+      cancelOn: "cancel-on.png",
+      cancelPlace: "left",
       click: undefined,
       half: false,
       halfShow: true,
-      hints: ['bad', 'poor', 'regular', 'good', 'gorgeous'],
+      hints: ["bad", "poor", "regular", "good", "gorgeous"],
       iconRange: undefined,
       iconRangeSame: false,
       mouseout: undefined,
       mouseover: undefined,
-      noRatedMsg: 'Not rated yet!',
+      noRatedMsg: "Not rated yet!",
       number: 5,
-      numberMax: 20,
+      numberMax: 5,
       path: undefined,
       precision: false,
       readOnly: false,
       round: { down: 0.25, full: 0.6, up: 0.76 },
       score: undefined,
-      scoreName: 'score',
+      scoreName: "score",
       single: false,
       space: true,
-      starHalf: 'star-half.png',
-      starOff: 'star-off.png',
-      starOn: 'star-on.png',
-      starType: 'img',
+      starHalf: "star-half.png",
+      starOff: "star-off.png",
+      starOn: "star-on.png",
+      starType: "img",
       target: undefined,
-      targetFormat: '{score}',
+      targetFormat: "{score}",
       targetKeep: false,
       targetScore: undefined,
-      targetText: '',
-      targetType: 'hint',
+      targetText: "",
+      targetType: "hint",
     };
   }
 
   cancel(click) {
     if (!this._isReadOnly()) {
-      this[click ? 'click' : 'score'](null);
-      this.scoreField.removeAttribute('value');
+      this[click ? "click" : "score"](null);
+      this.scoreField.removeAttribute("value");
     }
   }
 
@@ -93,7 +97,7 @@ class Raty {
     var steps = width / 10;
     var star = this.stars[integer];
     var percent = star.offsetLeft + steps * decimal;
-    var evt = new Event('mousemove');
+    var evt = new Event("mousemove");
     evt.pageX = percent;
     this.isMove = true;
     star.dispatchEvent(evt);
@@ -144,7 +148,7 @@ class Raty {
 
     this.opt.score = this._adjustedScore(this.opt.score);
 
-    if (this.opt.starType !== 'img') {
+    if (this.opt.starType !== "img") {
       this._adjustStarName();
     }
 
@@ -168,7 +172,7 @@ class Raty {
     if (this.opt.readOnly) {
       this._lock();
     } else {
-      this.element.style.cursor = 'pointer';
+      this.element.style.cursor = "pointer";
       this._binds();
     }
 
@@ -199,7 +203,7 @@ class Raty {
     for (let i = 0; i < this.opt.number; i++) {
       var group = this.opt.hints[i];
 
-      if (Object.prototype.toString.call(group) !== '[object Array]') {
+      if (Object.prototype.toString.call(group) !== "[object Array]") {
         group = [group];
       }
 
@@ -227,12 +231,12 @@ class Raty {
   }
 
   _adjustStarName() {
-    const replaces = ['cancelOff', 'cancelOn', 'starHalf', 'starOff', 'starOn'];
+    const replaces = ["cancelOff", "cancelOn", "starHalf", "starOff", "starOn"];
 
-    this.opt.path = '';
+    this.opt.path = "";
 
     for (let i = 0; i < replaces.length; i++) {
-      this.opt[replaces[i]] = this.opt[replaces[i]].replace('.', '-');
+      this.opt[replaces[i]] = this.opt[replaces[i]].replace(".", "-");
     }
   }
 
@@ -253,8 +257,8 @@ class Raty {
     var name = this._nameForIndex(i);
     var attributes = { alt: i, src: this.opt.path + this.opt[name] };
 
-    if (this.opt.starType !== 'img') {
-      attributes = { 'data-alt': i, 'class': this.opt[name] };
+    if (this.opt.starType !== "img") {
+      attributes = { "data-alt": i, class: this.opt[name] };
     }
 
     attributes.title = this._getHint(i);
@@ -281,13 +285,16 @@ class Raty {
   // TODO: model spec
   _bindClick() {
     this.stars.forEach((value) => {
-      value.addEventListener('click', (evt) => {
+      value.addEventListener("click", (evt) => {
         if (this._isReadOnly()) {
           return;
         }
 
         let execute;
-        let score = this.opt.half || this.opt.precision ? this.element.dataset.score : value.alt || value.dataset.alt;
+        let score =
+          this.opt.half || this.opt.precision
+            ? this.element.dataset.score
+            : value.alt || value.dataset.alt;
 
         if (this.opt.half && !this.opt.precision) {
           score = this._roundHalfScore(score);
@@ -306,8 +313,8 @@ class Raty {
 
   // TODO: model spec
   _bindClickCancel() {
-    this.cancelButton.addEventListener('click', (evt) => {
-      this.scoreField.removeAttribute('value');
+    this.cancelButton.addEventListener("click", (evt) => {
+      this.scoreField.removeAttribute("value");
 
       if (this.opt.click) {
         this.opt.click.call(this, null, this.element, evt);
@@ -317,7 +324,7 @@ class Raty {
 
   // TODO: model spec
   _bindOut() {
-    this.element.addEventListener('mouseleave', (evt) => {
+    this.element.addEventListener("mouseleave", (evt) => {
       const score = +this.scoreField.value || undefined;
 
       this._apply(score);
@@ -332,10 +339,10 @@ class Raty {
 
   // TODO: model spec
   _bindOutCancel() {
-    this.cancelButton.addEventListener('mouseleave', (evt) => {
+    this.cancelButton.addEventListener("mouseleave", (evt) => {
       let icon = this.opt.cancelOff;
 
-      if (this.opt.starType !== 'img') {
+      if (this.opt.starType !== "img") {
         icon = `${this.opt.cancelClass} ${icon}`;
       }
 
@@ -351,7 +358,7 @@ class Raty {
 
   // TODO: model spec
   _bindOver() {
-    const action = this.opt.half ? 'mousemove' : 'mouseover';
+    const action = this.opt.half ? "mousemove" : "mouseover";
 
     this.stars.forEach((value) => {
       value.addEventListener(action, (evt) => {
@@ -377,7 +384,7 @@ class Raty {
 
   // TODO: model spec
   _bindOverCancel() {
-    this.cancelButton.addEventListener('mouseover', (evt) => {
+    this.cancelButton.addEventListener("mouseover", (evt) => {
       if (this._isReadOnly()) {
         return;
       }
@@ -386,12 +393,12 @@ class Raty {
 
       let icon = this.opt.cancelOn;
 
-      if (this.opt.starType === 'img') {
+      if (this.opt.starType === "img") {
         this.stars.forEach((value) => {
           value.src = starOff;
         });
       } else {
-        icon = this.opt.cancelClass + ' ' + icon;
+        icon = this.opt.cancelClass + " " + icon;
 
         this.stars.forEach((value) => {
           value.className = starOff;
@@ -409,10 +416,10 @@ class Raty {
 
   // TODO: model spec
   _buildScoreField() {
-    const input = document.createElement('input');
+    const input = document.createElement("input");
 
     input.name = this.opt.scoreName;
-    input.type = 'hidden';
+    input.type = "hidden";
 
     this.element.appendChild(input);
 
@@ -424,24 +431,24 @@ class Raty {
     const button = document.createElement(this.opt.starType);
     const icon = this.opt.path + this.opt.cancelOff;
 
-    button.setAttribute('class', this.opt.cancelClass);
-    button.setAttribute('title', this.opt.cancelHint);
+    button.setAttribute("class", this.opt.cancelClass);
+    button.setAttribute("title", this.opt.cancelHint);
 
-    if (this.opt.starType === 'img') {
-      button.setAttribute('alt', 'x');
-      button.setAttribute('src', icon);
+    if (this.opt.starType === "img") {
+      button.setAttribute("alt", "x");
+      button.setAttribute("src", icon);
     } else {
       button.classList.add(icon);
 
       // TODO: use the dataset
-      button.setAttribute('data-alt', 'x');
+      button.setAttribute("data-alt", "x");
     }
 
-    if (this.opt.cancelPlace === 'left') {
-      this.element.prepend('\u00A0');
+    if (this.opt.cancelPlace === "left") {
+      this.element.prepend("\u00A0");
       this.element.prepend(button);
     } else {
-      this.element.append('\u00A0');
+      this.element.append("\u00A0");
       this.element.appendChild(button);
     }
 
@@ -450,7 +457,8 @@ class Raty {
 
   // TODO: model spec
   _createScore() {
-    this.scoreField = document.querySelector(this.opt.targetScore) || this._buildScoreField();
+    this.scoreField =
+      document.querySelector(this.opt.targetScore) || this._buildScoreField();
   }
 
   _createStars() {
@@ -466,7 +474,7 @@ class Raty {
       this.element.appendChild(star);
 
       if (this.opt.space && i < this.opt.number) {
-        this.element.append('\u00A0');
+        this.element.append("\u00A0");
       }
     }
 
@@ -479,10 +487,17 @@ class Raty {
   }
 
   _executeCallbacks() {
-    const options = ['number', 'readOnly', 'score', 'scoreName', 'target', 'path'];
+    const options = [
+      "number",
+      "readOnly",
+      "score",
+      "scoreName",
+      "target",
+      "path",
+    ];
 
     for (let i = 0; i < options.length; i++) {
-      if (typeof this.opt[options[i]] === 'function') {
+      if (typeof this.opt[options[i]] === "function") {
         const value = this.opt[options[i]].call(this, this.element);
 
         if (value) {
@@ -499,7 +514,10 @@ class Raty {
     let hash = 0;
 
     if (this.opt.iconRangeSame && this.opt.iconRange) {
-      while (hash < this.opt.iconRange.length && this.opt.iconRange[hash].range < score) {
+      while (
+        hash < this.opt.iconRange.length &&
+        this.opt.iconRange[hash].range < score
+      ) {
         hash++;
       }
     }
@@ -523,7 +541,7 @@ class Raty {
           hash++;
         }
       } else {
-        icon = this.opt[turnOn ? 'starOn' : 'starOff'];
+        icon = this.opt[turnOn ? "starOn" : "starOff"];
 
         this._setIcon(star, icon);
       }
@@ -531,14 +549,14 @@ class Raty {
   }
 
   _getDecimal(number, fractions) {
-    const decimal = number.toString().split('.')[1];
+    const decimal = number.toString().split(".")[1];
 
     let result = 0;
 
     if (decimal) {
       result = parseInt(decimal.slice(0, fractions), 10);
 
-      if (decimal.slice(1, 5) === '9999') {
+      if (decimal.slice(1, 5) === "9999") {
         result++;
       }
     }
@@ -548,16 +566,20 @@ class Raty {
 
   // TODO: model spec
   _getRangeIcon(irange, turnOn) {
-    return turnOn ? irange.on || this.opt.starOn : irange.off || this.opt.starOff;
+    return turnOn
+      ? irange.on || this.opt.starOn
+      : irange.off || this.opt.starOff;
   }
 
   // TODO: model spec
   _getScoreByPosition(evt, icon) {
-    let score = parseInt(icon.alt || icon.getAttribute('data-alt'), 10);
+    let score = parseInt(icon.alt || icon.getAttribute("data-alt"), 10);
 
     if (this.opt.half) {
       const size = this._getWidth();
-      const percent = parseFloat((evt.pageX - icon.getBoundingClientRect().x) / size);
+      const percent = parseFloat(
+        (evt.pageX - icon.getBoundingClientRect().x) / size
+      );
 
       score = score - 1 + percent;
     }
@@ -590,7 +612,7 @@ class Raty {
       hint = group[decimal];
     }
 
-    return hint === '' ? '' : hint || score;
+    return hint === "" ? "" : hint || score;
   }
 
   // TODO: model spec
@@ -599,7 +621,7 @@ class Raty {
     const width = parseFloat(this.stars[0].offsetWidth) || 16;
 
     if (!width) {
-      this._error('Could not get the icon width!');
+      this._error("Could not get the icon width!");
     }
 
     return width;
@@ -613,7 +635,7 @@ class Raty {
   _lock() {
     const hint = this._getHint(this.scoreField.value);
 
-    this.element.style.pointerEvents = 'none';
+    this.element.style.pointerEvents = "none";
     this.element.title = hint;
 
     this.scoreField.readOnly = true;
@@ -623,14 +645,14 @@ class Raty {
     });
 
     if (this.cancelButton) {
-      this.cancelButton.style.display = 'none';
+      this.cancelButton.style.display = "none";
     }
 
     this.element.dataset.readOnly = true;
   }
 
   _nameForIndex(i) {
-    return this.opt.score && this.opt.score >= i ? 'starOn' : 'starOff';
+    return this.opt.score && this.opt.score >= i ? "starOn" : "starOff";
   }
 
   // TODO: model spec
@@ -683,23 +705,27 @@ class Raty {
 
   // TODO: model spec
   _setIcon(star, icon) {
-    star[this.opt.starType === 'img' ? 'src' : 'className'] = this.opt.path + icon;
+    star[this.opt.starType === "img" ? "src" : "className"] =
+      this.opt.path + icon;
   }
 
   _setPath() {
-    this.opt.path = this.opt.path || '';
+    this.opt.path = this.opt.path || "";
 
-    if (this.opt.path && this.opt.path.slice(-1) !== '/') {
-      this.opt.path += '/';
+    if (this.opt.path && this.opt.path.slice(-1) !== "/") {
+      this.opt.path += "/";
     }
   }
 
   // TODO: model spec
   _setTarget(target, score) {
     if (score) {
-      score = this.opt.targetFormat.toString().replace('{score}', score);
+      score = this.opt.targetFormat.toString().replace("{score}", score);
     }
-    if (target instanceof HTMLInputElement || target instanceof HTMLSelectElement) {
+    if (
+      target instanceof HTMLInputElement ||
+      target instanceof HTMLSelectElement
+    ) {
       target.value = score;
     } else {
       target.textContent = score;
@@ -720,7 +746,7 @@ class Raty {
     const decimal = +(score % 1).toFixed(2);
 
     if (evt || this.isMove) {
-      return decimal > 0.5 ? 'starOn' : 'starHalf';
+      return decimal > 0.5 ? "starOn" : "starHalf";
     }
 
     if (decimal <= this.opt.round.down) {
@@ -730,15 +756,15 @@ class Raty {
 
     if (this.opt.halfShow && decimal < this.opt.round.up) {
       // Half: [x.26 ... x.75]
-      return 'starHalf';
+      return "starHalf";
     }
 
     if (decimal < this.opt.round.full) {
       // Off: [x.26 .. x.6]
-      return 'starOff';
+      return "starOff";
     }
 
-    return 'starOn'; // Up: [x.26 ...] || [x.6 ...]
+    return "starOn"; // Up: [x.26 ...] || [x.6 ...]
   }
 
   // TODO: model spec
@@ -747,23 +773,23 @@ class Raty {
       const target = document.querySelector(this.opt.target);
 
       if (!target) {
-        this._error('Target selector invalid or missing!');
+        this._error("Target selector invalid or missing!");
       }
 
-      const mouseover = evt && evt.type === 'mouseover';
+      const mouseover = evt && evt.type === "mouseover";
 
       if (score === undefined) {
         score = this.opt.targetText;
       } else if (score === null) {
         score = mouseover ? this.opt.cancelHint : this.opt.targetText;
       } else {
-        if (this.opt.targetType === 'hint') {
+        if (this.opt.targetType === "hint") {
           score = this._getHint(score, evt);
         } else if (this.opt.precision) {
           score = parseFloat(score).toFixed(1);
         }
 
-        const mousemove = evt && evt.type === 'mousemove';
+        const mousemove = evt && evt.type === "mousemove";
 
         if (!mouseover && !mousemove && !this.opt.targetKeep) {
           score = this.opt.targetText;
@@ -781,10 +807,10 @@ class Raty {
 
   // TODO: model spec
   _unlock() {
-    this.element.style.cursor = 'pointer';
-    this.element.style.pointerEvents = 'auto';
+    this.element.style.cursor = "pointer";
+    this.element.style.pointerEvents = "auto";
 
-    this.element.removeAttribute('title');
+    this.element.removeAttribute("title");
 
     this.element.dataset.readOnly = false;
 
@@ -793,7 +819,7 @@ class Raty {
     this._resetTitle();
 
     if (this.cancelButton) {
-      this.cancelButton.style.display = '';
+      this.cancelButton.style.display = "";
     }
   }
 }

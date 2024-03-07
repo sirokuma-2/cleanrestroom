@@ -2,8 +2,7 @@ import $ from "jquery";
 
 $(document).on("turbo:load", function () {
   let elem = document.querySelector("#star-rating");
-  elem.setAttribute("data-raty-initialized", "true"); //星が増えないための属性
-  if (elem && !elem.hasAttribute("data-raty-initialized")) {
+  if (elem) {
     let opt = {
       starOn: "asset_path('star-on.png') ",
       starOff: "asset_path('star-off.png') ",
@@ -11,7 +10,6 @@ $(document).on("turbo:load", function () {
       readOnly: true,
       score: elem.getAttribute("data-score"),
     };
-
     raty(elem, opt);
   }
 });
