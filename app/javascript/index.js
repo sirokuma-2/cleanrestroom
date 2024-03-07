@@ -2,20 +2,16 @@ import { clickListener } from "clickListener";
 import { addMarkers } from "addMarkers";
 import { handleLocationError } from "handleLocationError";
 
-let map;
-
 let locations; //すべての施設の位置
+let map;
 let allMarkers = []; // すべてのマーカーを保持する配列
-
+let userPos;
+let directionsService; // ルートを検索するためのDirectionsServiceのインスタンス
+let directionsRenderer; // マップ上にルートを表示するためのDirectionsRendererのインスタンス
 let routeIconUrl;
 let dataStarOn;
 let dataStarOff;
 let dataStarHalf;
-
-let userPos; // ユーザーの現在位置
-
-let directionsService; // ルートを検索するためのDirectionsServiceのインスタンス
-let directionsRenderer; // マップ上にルートを表示するためのDirectionsRendererのインスタンス
 
 //非同期関数　マップの初期化
 async function initMap() {
@@ -31,19 +27,23 @@ async function initMap() {
   directionsService = new google.maps.DirectionsService(); //ルートを検索するためのインスタンス
   directionsRenderer = new google.maps.DirectionsRenderer(); //マップにルートを表示するためのインスタンス
 
-  // まず、'top-map'または'map'のいずれかの要素を取得します。
-  let mapDiv =
+  const mapElement =
     document.getElementById("top-map") || document.getElementById("map");
 
   // mapDivが存在する場合のみマップを初期化します。
-  if (mapDiv) {
-    var map = new google.maps.Map(mapDiv, {
+  if (mapElement) {
+    map = new google.maps.Map(mapElement, {
       zoom: 13,
       mapId: "DEMO_MAP_ID",
       maxZoom: 18,
       center: { lat: 35.681236, lng: 139.767125 },
     });
   }
+
+  routeIconUrl = mapElement.getAttribute("data-route-icon-url");
+  dataStarOn = mapElement.getAttribute("data-star-on");
+  dataStarOff = mapElement.getAttribute("data-star-off");
+  dataStarHalf = mapElement.getAttribute("data-star-half");
 
   //現在地を取得するボタン プライバシー確保のため現在地をいきなり表示できない
   const locationButton = document.createElement("button");
@@ -56,6 +56,7 @@ async function initMap() {
   locationButton.style.border = "none";
   locationButton.style.padding = "10px 20px";
   locationButton.style.marginTop = "10px";
+
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
 
   // GPSで現在地を表示　現在地にhouseアイコンを表示　マーカーと詳細情報を表示
@@ -67,18 +68,6 @@ async function initMap() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-
-          const mapElement =
-            document.getElementById("top-map") ||
-            document.getElementById("map");
-
-          routeIconUrl = mapElement.getAttribute("data-route-icon-url");
-
-          dataStarOn = mapElement.getAttribute("data-star-on");
-          dataStarOff = mapElement.getAttribute("data-star-off");
-          dataStarHalf = mapElement.getAttribute("data-star-half");
-
-          console.log(dataStarOn);
 
           //現在地にhouseのアイコンを表示
           new google.maps.marker.AdvancedMarkerView({
@@ -106,16 +95,6 @@ async function initMap() {
           );
         },
         () => {
-          const mapElement =
-            document.getElementById("top-map") ||
-            document.getElementById("map");
-
-          routeIconUrl = mapElement.getAttribute("data-route-icon-url");
-
-          dataStarOn = mapElement.getAttribute("data-star-on");
-          dataStarOff = mapElement.getAttribute("data-star-off");
-          dataStarHalf = mapElement.getAttribute("data-star-half");
-
           // 現在地の取得に失敗した場合の処理
           // 東京駅の座標
           const tokyoStationPos = {
