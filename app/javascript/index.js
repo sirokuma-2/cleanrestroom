@@ -1,6 +1,7 @@
 import { clickListener } from "clickListener";
 import { addMarkers } from "addMarkers";
 import { handleLocationError } from "handleLocationError";
+import { geoLocation } from "geoLocation";
 
 let locations; //すべての施設の位置
 let map;
@@ -30,7 +31,6 @@ async function initMap() {
   const mapElement =
     document.getElementById("top-map") || document.getElementById("map");
 
-  // mapDivが存在する場合のみマップを初期化します。
   if (mapElement) {
     map = new google.maps.Map(mapElement, {
       zoom: 13,
@@ -45,93 +45,17 @@ async function initMap() {
   dataStarOff = mapElement.getAttribute("data-star-off");
   dataStarHalf = mapElement.getAttribute("data-star-half");
 
-  //現在地を取得するボタン プライバシー確保のため現在地をいきなり表示できない
-  const locationButton = document.createElement("button");
-  locationButton.textContent = "現在地を表示";
-
-  // ボタンをページに追加
-  locationButton.style.backgroundColor = "#FFFFFF";
-  locationButton.style.color = "#000000";
-  locationButton.style.fontSize = "16px";
-  locationButton.style.border = "none";
-  locationButton.style.padding = "10px 20px";
-  locationButton.style.marginTop = "10px";
-
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-
-  // GPSで現在地を表示　現在地にhouseアイコンを表示　マーカーと詳細情報を表示
-  locationButton.addEventListener("click", function () {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          userPos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-
-          //現在地にhouseのアイコンを表示
-          new google.maps.marker.AdvancedMarkerView({
-            position: userPos,
-            map: map,
-            title: "Your Location",
-            // icon: userIcon,
-          });
-
-          // マップの中心を現在位置に移動
-          map.setCenter(userPos);
-
-          // マーカーと詳細情報を表示
-          addMarkers(
-            locations,
-            map,
-            allMarkers,
-            userPos,
-            directionsService,
-            directionsRenderer,
-            routeIconUrl,
-            dataStarOn,
-            dataStarOff,
-            dataStarHalf
-          );
-        },
-        () => {
-          // 現在地の取得に失敗した場合の処理
-          // 東京駅の座標
-          const tokyoStationPos = {
-            lat: 35.681236,
-            lng: 139.767125,
-          };
-
-          // 東京駅にマーカーを設置（オプション）
-          new google.maps.marker.AdvancedMarkerView({
-            position: tokyoStationPos,
-            map: map,
-            title: "Tokyo Station",
-          });
-
-          // マップの中心を現在位置に移動
-          map.setCenter(tokyoStationPos);
-
-          // マーカーと詳細情報を表示
-          addMarkers(
-            locations,
-            map,
-            allMarkers,
-            tokyoStationPos,
-            directionsService,
-            directionsRenderer,
-            routeIconUrl,
-            dataStarOn,
-            dataStarOff,
-            dataStarHalf
-          );
-        }
-      );
-    } else {
-      //handleLocationErrorの設定
-      handleLocationError(false, map.getCenter());
-    }
-  });
+  geoLocation(
+    locations,
+    map,
+    allMarkers,
+    directionsService,
+    directionsRenderer,
+    routeIconUrl,
+    dataStarOn,
+    dataStarOff,
+    dataStarHalf
+  );
 
   //右クリックの拡張
   google.maps.event.addListener(map, "rightclick", (event) => {

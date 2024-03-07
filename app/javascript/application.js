@@ -3,6 +3,7 @@ import "@hotwired/turbo-rails";
 import "controllers";
 import "index";
 import "addMarkers";
+import "geoLocation";
 import "calculateAndDisplayRoute";
 import "clickListener";
 import "handleLocationError";
