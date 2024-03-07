@@ -61,7 +61,7 @@ export function addMarkers(
     stroller_accessible = location.stroller_accessible;
     imageUrl = location.image;
 
-    // 閉じるボタン関数の作成
+    // 戻るボタン関数の作成
     function addCloseButton(parentElement) {
       const closeButton = document.createElement("button");
       closeButton.textContent = "← 戻る";
@@ -71,7 +71,7 @@ export function addMarkers(
       parentElement.appendChild(closeButton);
     }
 
-    // パネルを閉じる関数
+    // 戻るをクリックするとパネル閉じる関数
     function hideInfoPanel() {
       infoPanel.classList.remove("infoPanel-visible");
       setTimeout(function () {
@@ -80,7 +80,7 @@ export function addMarkers(
       }, 250);
     }
 
-    //ルート案内ボタ関数の作成
+    // ルート案内ボタ関数の作成
     function addSearchRouteButton(parentElement) {
       const searchButton = document.createElement("button");
       // ボタンに背景画像を設定
@@ -168,9 +168,6 @@ export function addMarkers(
       titleElement.style.marginBottom = "10px";
 
       item.appendChild(titleElement);
-
-      // コンテンツ用の要素を作成
-      const contentElement = document.createElement("div");
 
       const contentElementWrapper = document.createElement("div");
       contentElementWrapper.style.maxWidth = "350px";

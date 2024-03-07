@@ -1,6 +1,6 @@
-import { clickListener } from "clickListener";
 import { addMarkers } from "addMarkers";
 import { geoLocation } from "geoLocation";
+import { clickListener } from "clickListener";
 
 let locations; //すべての施設の位置
 let map;
