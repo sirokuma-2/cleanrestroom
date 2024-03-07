@@ -6,9 +6,8 @@ let map;
 
 let locations; //すべての施設の位置
 let allMarkers = []; // すべてのマーカーを保持する配列
-// let restroomIconUrl;
-// let routeIconUrl;
 
+let routeIconUrl;
 let dataStarOn;
 let dataStarOff;
 let dataStarHalf;
@@ -73,14 +72,11 @@ async function initMap() {
             document.getElementById("top-map") ||
             document.getElementById("map");
 
-          const restroomIconUrl = mapElement.getAttribute(
-            "data-restroom-icon-url"
-          );
-          const routeIconUrl = mapElement.getAttribute("data-route-icon-url");
+          routeIconUrl = mapElement.getAttribute("data-route-icon-url");
 
-          const dataStarOn = mapElement.getAttribute("data-star-on");
-          const dataStarOff = mapElement.getAttribute("data-star-off");
-          const dataStarHalf = mapElement.getAttribute("data-star-half");
+          dataStarOn = mapElement.getAttribute("data-star-on");
+          dataStarOff = mapElement.getAttribute("data-star-off");
+          dataStarHalf = mapElement.getAttribute("data-star-half");
 
           console.log(dataStarOn);
 
@@ -103,7 +99,6 @@ async function initMap() {
             userPos,
             directionsService,
             directionsRenderer,
-            restroomIconUrl,
             routeIconUrl,
             dataStarOn,
             dataStarOff,
@@ -114,15 +109,12 @@ async function initMap() {
           const mapElement =
             document.getElementById("top-map") ||
             document.getElementById("map");
-          const houseIconUrl = mapElement.getAttribute("data-house-icon-url");
-          const restroomIconUrl = mapElement.getAttribute(
-            "data-restroom-icon-url"
-          );
-          const routeIconUrl = mapElement.getAttribute("data-route-icon-url");
 
-          const dataStarOn = mapElement.getAttribute("data-star-on");
-          const dataStarOff = mapElement.getAttribute("data-star-off");
-          const dataStarHalf = mapElement.getAttribute("data-star-half");
+          routeIconUrl = mapElement.getAttribute("data-route-icon-url");
+
+          dataStarOn = mapElement.getAttribute("data-star-on");
+          dataStarOff = mapElement.getAttribute("data-star-off");
+          dataStarHalf = mapElement.getAttribute("data-star-half");
 
           // 現在地の取得に失敗した場合の処理
           // 東京駅の座標
@@ -149,7 +141,6 @@ async function initMap() {
             tokyoStationPos,
             directionsService,
             directionsRenderer,
-            restroomIconUrl,
             routeIconUrl,
             dataStarOn,
             dataStarOff,
@@ -175,6 +166,7 @@ async function initMap() {
   });
 }
 
+//マップの表示
 document.addEventListener("turbo:load", () => {
   if (document.getElementById("top-map") || document.getElementById("map")) {
     initMap();

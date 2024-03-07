@@ -8,7 +8,6 @@ export function addMarkers(
   userPos,
   directionsService,
   directionsRenderer,
-  restroomIconUrl,
   routeIconUrl,
   dataStarOn,
   dataStarOff,
