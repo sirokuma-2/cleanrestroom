@@ -226,6 +226,8 @@ export function addMarkers(
       containerElement.style.justifyContent = "space-around";
       containerElement.style.alignItems = "center";
 
+      titleElement.textContent = titleText;
+
       // コンテンツ用の要素を作成
       const contentElement = document.createElement("p");
       contentElement.textContent = `平均 ${contentText}`;
@@ -233,21 +235,20 @@ export function addMarkers(
       contentElement.style.fontSize = "16px";
       contentElement.style.marginLeft = "20px";
 
-      const contentElement2 = document.createElement("a");
-      contentElement2.textContent = `(${contentText2}件の評価を見る)`;
-      contentElement2.href = `${baseUrl}/posts/${location.id}`;
-      contentElement2.style.color = "#555";
-      contentElement2.style.fontSize = "16px";
-      contentElement2.style.marginLeft = "20px";
-
       // 星評価を表示するためのdiv要素の作成
       const starRatingElement = document.createElement("div");
-      titleElement.textContent = titleText;
       starRatingElement.id = "star-rating";
       starRatingElement.setAttribute("data-score", contentText);
       starRatingElement.setAttribute("data-star-on", dataStarOn);
       starRatingElement.setAttribute("data-star-off", dataStarOff);
       starRatingElement.setAttribute("data-star-half", dataStarHalf);
+
+      const contentElement2 = document.createElement("a");
+      contentElement2.textContent = `(${contentText2}件の評価を見る)`;
+      contentElement2.href = `${baseUrl}/posts/${location.id}`;
+      contentElement2.style.color = "#555";
+      contentElement2.style.fontSize = "16px";
+      contentElement2.style.marginLeft = "5px";
 
       // titleElement と contentElement を item に追加
       item.appendChild(titleElement);
