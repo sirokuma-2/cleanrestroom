@@ -14,7 +14,6 @@ pin "handleLocationError", to:"handleLocationError.js"
 pin "menu", to:"menu.js"
 pin "preview", to:"preview.js"
 pin "previewName", to:"previewName.js"
-pin "rating", to:"rating.js"
 pin "ratingStar", to:"ratingStar.js"
 
 
