@@ -20,10 +20,7 @@ class PostFacility
                             nursing_room:, anyone_toilet:, diaper_changing_station:,
                             powder_corner:, stroller_accessible:)
 
-    if image.present?
-      facility.image.attach(image)
-      puts '画像が保存されました'
-    end
+    facility.image.attach(image) if image.present?
 
     if facility.save
       Post.create(facility_id: facility.id, user_id:)

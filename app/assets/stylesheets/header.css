@@ -41,17 +41,17 @@
 
 .nav__right{
   display: none;
-  width:150px;
+  width:250px;
 }
 
 @media (min-width:599px){
   .humburger__menu{
     display: none;
   }
-  .nav__right{
+  /* .nav__right{
     display:inline-block ;
-    width: 355px;
-  }
+    width: 450px;
+  } */
 }
   
 
@@ -61,6 +61,6 @@
   }
     .nav__right{
       display:inline-block ;
-      width: 355px;
+      width: 450px;
     }
 }

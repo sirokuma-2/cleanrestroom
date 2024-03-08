@@ -1,22 +1,19 @@
 import { calculateAndDisplayRoute } from "calculateAndDisplayRoute";
-import { initializeRaty } from "ratingStar2";
+import { initializeRaty } from "ratingStar";
 
 export function addMarkers(
   locations,
   map,
   allMarkers,
-  userPos,
+  userPos, //現在地または東京駅
   directionsService,
   directionsRenderer,
-  restroomIconUrl,
   routeIconUrl,
   dataStarOn,
   dataStarOff,
   dataStarHalf
 ) {
   locations.forEach((location) => {
-    //locationごとに繰り返し
-
     const pinViewScaled = new google.maps.marker.PinView({
       background: "#0000FF",
       glyphColor: "white",
@@ -41,23 +38,30 @@ export function addMarkers(
         ? "http://localhost:3000"
         : "https://cleanrestrooms.net";
 
-    //編集するボタンを作成
-    function addEditButton(parentElement) {
-      const editButton = document.createElement("a");
-      editButton.textContent = "編集する";
-      editButton.href = `${baseUrl}/posts/${location.id}/edit`;
-      editButton.style.display = "inline-block"; // ブロック要素のように扱う
-      editButton.style.backgroundColor = "#4CAF50";
-      editButton.style.color = "#FFFFFF";
-      editButton.style.borderRadius = "10px";
-      editButton.style.textDecoration = "none";
-      editButton.style.border = "none";
-      editButton.style.padding = "10px 20px";
-      editButton.style.cursor = "pointer";
-      parentElement.appendChild(editButton);
-    }
+    //post_facilityテーブルからの情報を定義
+    let name,
+      address,
+      content,
+      nursing_room,
+      anyone_toilet,
+      diaper_changing_station,
+      powder_corner,
+      stroller_accessible,
+      imageUrl,
+      averageRating,
+      countRating;
 
-    // パネルを閉じる機能を持つボタンの動的作成とイベントリスナーの追加
+    name = location.name;
+    address = location.address;
+    content = location.content;
+    nursing_room = location.nursing_room;
+    anyone_toilet = location.anyone_toilet;
+    diaper_changing_station = location.diaper_changing_station;
+    powder_corner = location.powder_corner;
+    stroller_accessible = location.stroller_accessible;
+    imageUrl = location.image;
+
+    // 戻るボタン関数の作成
     function addCloseButton(parentElement) {
       const closeButton = document.createElement("button");
       closeButton.textContent = "← 戻る";
@@ -67,7 +71,7 @@ export function addMarkers(
       parentElement.appendChild(closeButton);
     }
 
-    // パネルを閉じる関数
+    // 戻るをクリックするとパネル閉じる関数
     function hideInfoPanel() {
       infoPanel.classList.remove("infoPanel-visible");
       setTimeout(function () {
@@ -76,10 +80,9 @@ export function addMarkers(
       }, 250);
     }
 
-    // ルート検索機能を持つボタンの動的作成とイベントリスナーの追加
+    // ルート案内ボタ関数の作成
     function addSearchRouteButton(parentElement) {
       const searchButton = document.createElement("button");
-      // searchButton.textContent = "ルート検索";
       // ボタンに背景画像を設定
       searchButton.style.backgroundImage = `url(${routeIconUrl})`;
       searchButton.style.backgroundSize = "cover";
@@ -105,53 +108,173 @@ export function addMarkers(
       parentElement.appendChild(searchButton);
     }
 
-    //評価するボタンを作成
-    function addReviewButton(parentElement) {
-      const reviewButton = document.createElement("a");
-      reviewButton.textContent = "評価する";
-      reviewButton.href = `${baseUrl}/posts/${location.id}/comments/new`;
-      reviewButton.style.backgroundColor = "#4CAF50";
-      reviewButton.style.color = "#FFFFFF";
-      reviewButton.style.borderRadius = "10px";
-      reviewButton.style.border = "none";
-      reviewButton.style.textDecoration = "none";
-      reviewButton.style.padding = "10px 30px";
-      reviewButton.style.cursor = "pointer";
-      reviewButton.style.marginTop = "10px";
-      parentElement.appendChild(reviewButton);
+    //編集・評価するボタンの関数作成
+    function addButton(parentElement, buttonText) {
+      const Button = document.createElement("a");
+      Button.textContent = buttonText;
+      Button.href = `${baseUrl}/posts/${location.id}/edit`;
+      Button.style.display = "inline-block"; // ブロック要素のように扱う
+      Button.style.backgroundColor = "#4CAF50";
+      Button.style.color = "#FFFFFF";
+      Button.style.borderRadius = "10px";
+      Button.style.textDecoration = "none";
+      Button.style.border = "none";
+      Button.style.padding = "10px 20px";
+      Button.style.cursor = "pointer";
+      parentElement.appendChild(Button);
     }
 
-    let name,
-      address,
-      content,
-      nursing_room,
-      anyone_toilet,
-      diaper_changing_station,
-      powder_corner,
-      stroller_accessible,
-      imageUrl,
-      averageRating,
-      countRating;
+    //住所・コメントの表示関数の作成
+    function addItem(titleText, contentText) {
+      // 追記の親要素（ラッパー）を作成
+      const item = document.createElement("div");
+      item.style.padding = "4px 0px";
 
-    name = location.name;
-    address = location.address;
-    content = location.content;
-    nursing_room = location.nursing_room;
-    anyone_toilet = location.anyone_toilet;
-    diaper_changing_station = location.diaper_changing_station;
-    powder_corner = location.powder_corner;
-    stroller_accessible = location.stroller_accessible;
-    imageUrl = location.image;
+      // タイトル用の要素を作成
+      const titleElement = document.createElement("div");
+      titleElement.textContent = titleText;
+      titleElement.style.color = "#333";
+      titleElement.style.fontSize = "18px";
+      titleElement.style.fontWeight = "bold";
+      titleElement.style.marginBottom = "10px";
 
-    // マップ上のアイコンにイベントリスナーを追加
+      // コンテンツ用の要素を作成
+      const contentElement = document.createElement("div");
+      contentElement.textContent = contentText;
+      contentElement.style.color = "#555";
+      contentElement.style.fontSize = "16px";
+      contentElement.style.marginLeft = "20px";
+
+      // titleElement と contentElement を item に追加
+      item.appendChild(titleElement);
+      item.appendChild(contentElement);
+
+      // item を infoWindowContent に追加
+      infoWindowContent.appendChild(item);
+    }
+
+    //設備情報の表示関数の作成
+    function addItemFacility(titleText, contentTextList) {
+      // 追記の親要素（ラッパー）を作成
+      const item = document.createElement("div");
+      item.style.padding = "4px 0px";
+
+      // タイトル用の要素を作成
+      const titleElement = document.createElement("div");
+      titleElement.textContent = titleText;
+      titleElement.style.color = "#333";
+      titleElement.style.fontSize = "18px";
+      titleElement.style.fontWeight = "bold";
+      titleElement.style.marginBottom = "10px";
+
+      item.appendChild(titleElement);
+
+      const contentElementWrapper = document.createElement("div");
+      contentElementWrapper.style.maxWidth = "350px";
+      contentElementWrapper.style.display = "flex";
+      contentElementWrapper.style.flexWrap = "wrap"; // 要素が多い場合に折り返す
+      contentElementWrapper.style.justifyContent = "space-between";
+
+      // contentTextList 内の各設備に対してループ処理
+      contentTextList.forEach(function (contentText, index) {
+        if (contentText) {
+          // 設備が true の場合のみ
+          const contentElement = document.createElement("div");
+          contentElement.textContent = [
+            "授乳室",
+            "誰でもトイレ",
+            "オムツ交換台",
+            "パウダーコーナー",
+            "ベビーカー可",
+          ][index]; // 対応する設備名
+          contentElement.style.width = "150px";
+          contentElement.style.color = "#555";
+          contentElement.style.fontSize = "16px";
+          contentElement.style.textAlign = "center";
+          contentElement.style.marginBottom = "5px";
+          contentElement.style.marginLeft = "20px";
+          contentElement.style.border = "1px solid black";
+          contentElement.style.backgroundColor = "#F0F0F0";
+          contentElement.style.borderRadius = "10px";
+
+          contentElementWrapper.appendChild(contentElement);
+          item.appendChild(contentElementWrapper);
+        }
+      });
+
+      // item を infoWindowContent に追加
+      infoWindowContent.appendChild(item);
+    }
+
+    //レビューの表示関するの作成
+    function addItemReview(titleText, contentText, contentText2) {
+      // 追記の親要素（ラッパー）を作成
+      const item = document.createElement("div");
+      item.style.padding = "4px 0px";
+
+      // タイトル用の要素を作成
+      const titleElement = document.createElement("div");
+      titleElement.textContent = titleText;
+      titleElement.style.color = "#333";
+      titleElement.style.fontSize = "18px";
+      titleElement.style.fontWeight = "bold";
+      titleElement.style.marginBottom = "10px";
+
+      const containerElement = document.createElement("div");
+      containerElement.style.maxWidth = "400px";
+      containerElement.style.display = "flex";
+      containerElement.style.justifyContent = "space-around";
+      containerElement.style.alignItems = "center";
+
+      // コンテンツ用の要素を作成
+      const contentElement = document.createElement("p");
+      contentElement.textContent = `平均 ${contentText}`;
+      contentElement.style.color = "#555";
+      contentElement.style.fontSize = "16px";
+      contentElement.style.marginLeft = "20px";
+
+      const contentElement2 = document.createElement("a");
+      contentElement2.textContent = `(${contentText2}件の評価を見る)`;
+      contentElement2.href = `${baseUrl}/posts/${location.id}`;
+      contentElement2.style.color = "#555";
+      contentElement2.style.fontSize = "16px";
+      contentElement2.style.marginLeft = "20px";
+
+      // 星評価を表示するためのdiv要素の作成
+      const starRatingElement = document.createElement("div");
+      titleElement.textContent = titleText;
+      starRatingElement.id = "star-rating";
+      starRatingElement.setAttribute("data-score", contentText);
+      starRatingElement.setAttribute("data-star-on", dataStarOn);
+      starRatingElement.setAttribute("data-star-off", dataStarOff);
+      starRatingElement.setAttribute("data-star-half", dataStarHalf);
+
+      // titleElement と contentElement を item に追加
+      item.appendChild(titleElement);
+
+      // 各要素をコンテナに追加
+      containerElement.appendChild(contentElement);
+      containerElement.appendChild(starRatingElement);
+      containerElement.appendChild(contentElement2);
+
+      // コンテナをitemに追加（itemは既にある要素と仮定）
+      item.appendChild(containerElement);
+
+      // item を infoWindowContent に追加
+      infoWindowContent.appendChild(item);
+
+      //　itemを描画したのちにレビュー星を作成
+      initializeRaty();
+    }
+
+    // infopanelの表示
     marker.addListener("gmp-click", function () {
       infoPanel.style.display = "block";
 
       // infoPanelの中身をクリア
       infoPanel.innerHTML = "";
 
-      // infoPanelの中身を新しく作成
-      //divクラスを作成　 id="infoWindowContent"
+      //画像の表示
       const infoWindowContent = document.createElement("div");
       infoWindowContent.id = "infoWindowContent";
       infoWindowContent.style =
@@ -166,7 +289,8 @@ export function addMarkers(
         image.style.height = "auto";
         infoWindowContent.appendChild(image);
       }
-      //h1の親要素を作成
+
+      //戻る　施設名称　ルート案内ボタンのラッパーの作成
       const h1Wrapper = document.createElement("div");
       h1Wrapper.style.display = "flex";
       h1Wrapper.style.justifyContent = "space-around";
@@ -177,7 +301,7 @@ export function addMarkers(
       h1Wrapper.style.marginBottom = "10px";
       h1Wrapper.style.paddingLeft = "10px";
 
-      // h1タグ id class style
+      //施設名称の表示
       const firstHeading = document.createElement("h1");
       firstHeading.id = "firstHeading";
       firstHeading.className = "firstHeading";
@@ -185,187 +309,26 @@ export function addMarkers(
         "font-size: 20px; margin: 0 auto; text-align: center; vertical-align: middle;";
       firstHeading.textContent = name;
 
-      // h1をラッパーに追加
+      // 戻るボタン　ルート案内ボタンの表示
       addCloseButton(h1Wrapper);
       h1Wrapper.appendChild(firstHeading);
       addSearchRouteButton(h1Wrapper);
 
-      // ラッパーをinfoWindowContentに追加
+      // 戻る　施設名称　ルートあんなにボタンの追加
       infoWindowContent.appendChild(h1Wrapper);
 
-      // ボタンの親要素（ラッパー）を作成
+      // 編集ボタンのラッパーの作成
       const buttonWrapper = document.createElement("div");
       buttonWrapper.style.display = "flex";
       buttonWrapper.style.justifyContent = "flex-end";
       buttonWrapper.style.width = "100%";
 
-      // buttonWrapperを親要素として編集ボタンを追加
-      addEditButton(buttonWrapper);
-
-      // buttonWrapperを最終的な親要素に追加（例: infoWindowContent）
+      // 編集ボタンを追加
+      addButton(buttonWrapper, "編集する");
       infoWindowContent.appendChild(buttonWrapper);
-
-      // infoPanelにinfoWindowContentを追加
       infoPanel.appendChild(infoWindowContent);
 
-      //住所　コメントの表示
-      function addItem(titleText, contentText) {
-        // 追記の親要素（ラッパー）を作成
-        const item = document.createElement("div");
-        item.style.padding = "4px 0px";
-
-        // タイトル用の要素を作成
-        const titleElement = document.createElement("div");
-        titleElement.textContent = titleText;
-        titleElement.style.color = "#333";
-        titleElement.style.fontSize = "18px";
-        titleElement.style.fontWeight = "bold";
-        titleElement.style.marginBottom = "10px";
-
-        // コンテンツ用の要素を作成
-        const contentElement = document.createElement("div");
-        contentElement.textContent = contentText;
-        contentElement.style.color = "#555";
-        contentElement.style.fontSize = "16px";
-        contentElement.style.marginLeft = "20px";
-
-        // titleElement と contentElement を item に追加
-        item.appendChild(titleElement);
-        item.appendChild(contentElement);
-
-        // item を infoWindowContent に追加
-        infoWindowContent.appendChild(item);
-      }
-
-      //設備情報の表示
-      function addItemFacility(titleText, contentTextList) {
-        // 追記の親要素（ラッパー）を作成
-        const item = document.createElement("div");
-        item.style.padding = "4px 0px";
-
-        // タイトル用の要素を作成
-        const titleElement = document.createElement("div");
-        titleElement.textContent = titleText;
-        titleElement.style.color = "#333";
-        titleElement.style.fontSize = "18px";
-        titleElement.style.fontWeight = "bold";
-        titleElement.style.marginBottom = "10px";
-
-        item.appendChild(titleElement);
-
-        // コンテンツ用の要素を作成
-        const contentElement = document.createElement("div");
-
-        const contentElementWrapper = document.createElement("div");
-        contentElementWrapper.style.maxWidth = "350px";
-        contentElementWrapper.style.display = "flex";
-        contentElementWrapper.style.flexWrap = "wrap"; // 要素が多い場合に折り返す
-        contentElementWrapper.style.justifyContent = "space-between";
-
-        // contentTextList 内の各設備に対してループ処理
-        contentTextList.forEach(function (contentText, index) {
-          if (contentText) {
-            // 設備が true の場合のみ
-            const contentElement = document.createElement("div");
-            contentElement.textContent = [
-              "授乳室",
-              "誰でもトイレ",
-              "オムツ交換台",
-              "パウダーコーナー",
-              "ベビーカー可",
-            ][index]; // 対応する設備名
-            contentElement.style.width = "150px";
-            contentElement.style.color = "#555";
-            contentElement.style.fontSize = "16px";
-            contentElement.style.textAlign = "center";
-            contentElement.style.marginBottom = "5px";
-            contentElement.style.marginLeft = "20px";
-            contentElement.style.border = "1px solid black";
-            contentElement.style.backgroundColor = "#F0F0F0";
-            contentElement.style.borderRadius = "10px";
-
-            contentElementWrapper.appendChild(contentElement);
-            item.appendChild(contentElementWrapper);
-          }
-        });
-
-        // item を infoWindowContent に追加
-        infoWindowContent.appendChild(item);
-      }
-
-      //レビューの表示
-      function addItemReview(titleText, contentText, contentText2) {
-        // 追記の親要素（ラッパー）を作成
-        const item = document.createElement("div");
-        item.style.padding = "4px 0px";
-
-        // タイトル用の要素を作成
-        const titleElement = document.createElement("div");
-        titleElement.textContent = titleText;
-        titleElement.style.color = "#333";
-        titleElement.style.fontSize = "18px";
-        titleElement.style.fontWeight = "bold";
-        titleElement.style.marginBottom = "10px";
-
-        const containerElement = document.createElement("div");
-        containerElement.style.maxWidth = "400px";
-        containerElement.style.display = "flex";
-        containerElement.style.justifyContent = "space-around";
-        containerElement.style.alignItems = "center";
-
-        // コンテンツ用の要素を作成
-        const contentElement = document.createElement("p");
-        contentElement.textContent = `${contentText}`;
-        contentElement.style.color = "#555";
-        contentElement.style.fontSize = "16px";
-        contentElement.style.marginLeft = "20px";
-
-        const contentElement2 = document.createElement("a");
-        contentElement2.textContent = `(${contentText2}件の評価を見る)`;
-        contentElement2.href = `${baseUrl}/posts/${location.id}`;
-        contentElement2.style.color = "#555";
-        contentElement2.style.fontSize = "16px";
-        contentElement2.style.marginLeft = "20px";
-
-        // 星評価を表示するためのdiv要素の作成
-        const starRatingElement = document.createElement("div");
-        titleElement.textContent = titleText;
-        starRatingElement.id = "star-rating";
-        starRatingElement.setAttribute("data-score", contentText);
-        starRatingElement.setAttribute("data-star-on", dataStarOn);
-        starRatingElement.setAttribute("data-star-off", dataStarOff);
-        starRatingElement.setAttribute("data-star-half", dataStarHalf);
-
-        // titleElement と contentElement を item に追加
-        item.appendChild(titleElement);
-
-        // 各要素をコンテナに追加
-        containerElement.appendChild(contentElement);
-        containerElement.appendChild(starRatingElement);
-        containerElement.appendChild(contentElement2);
-
-        // コンテナをitemに追加（itemは既にある要素と仮定）
-        item.appendChild(containerElement);
-
-        // item を infoWindowContent に追加
-        infoWindowContent.appendChild(item);
-
-        //　itemを描画したのちにレビュー星を作成
-        initializeRaty();
-      }
-
-      // 使用例
-
-      //レビュー平均
-      const totalRating = location.comment.reduce((acc, comment) => {
-        return acc + comment.rating;
-      }, 0);
-
-      averageRating = totalRating / location.comment.length;
-
-      //レビュー件数
-      countRating = location.comment.length;
-
+      //住所　コメント　設備情報の追加
       addItem("住所", address);
       addItem("コメント", content);
       addItemFacility("設備情報", [
@@ -375,19 +338,31 @@ export function addMarkers(
         powder_corner,
         stroller_accessible,
       ]);
-      addItemReview("レビュー", averageRating.toFixed(1), countRating);
 
-      // ボタンの親要素（ラッパー）を作成
+      //レビューの追加
+      const totalRating = location.comment.reduce((acc, comment) => {
+        return acc + comment.rating;
+      }, 0);
+
+      if (location.comment.length) {
+        averageRating = (totalRating / location.comment.length).toFixed(1);
+      } else {
+        averageRating = 0;
+      }
+
+      countRating = location.comment.length;
+
+      addItemReview("レビュー", averageRating, countRating);
+
+      // 評価するボタンのラッパーの作成
       const buttonWrapper2 = document.createElement("div");
       buttonWrapper2.style.display = "flex";
       buttonWrapper2.style.justifyContent = "center";
       buttonWrapper2.style.width = "100%";
       buttonWrapper2.style.marginBottom = "10px";
 
-      // buttonWrapperを親要素として編集ボタンを追加
-      addReviewButton(buttonWrapper2);
-
-      // buttonWrapperを最終的な親要素に追加（例: infoWindowContent）
+      // 評価するボタンの追加
+      addButton(buttonWrapper2, "評価する");
       infoWindowContent.appendChild(buttonWrapper2);
     });
   });

@@ -1,51 +1,14 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_gons, only: [:top, :index]
 
   include Rails.application.routes.url_helpers
 
   def top
-    gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
-
-    @posts = Post.includes(:facility).all
-    gon.posts = @posts.map do |post|
-      {
-        id: post.id,
-        name: post.facility.name,
-        address: post.facility.address,
-        content: post.facility.content,
-        latitude: post.facility.latitude,
-        longitude: post.facility.longitude,
-        anyone_toilet: post.facility.anyone_toilet,
-        diaper_changing_station: post.facility.diaper_changing_station,
-        powder_corner: post.facility.powder_corner,
-        stroller_accessible: post.facility.stroller_accessible,
-        image: url_for(post.facility.image.url)
-      }
-    end
   end
 
   def index
-    gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
-
-    @posts = Post.includes(:facility).all
-    gon.posts = @posts.map do |post|
-      {
-        id: post.id,
-        name: post.facility.name,
-        address: post.facility.address,
-        content: post.facility.content,
-        latitude: post.facility.latitude,
-        longitude: post.facility.longitude,
-        nursing_room: post.facility.nursing_room,
-        anyone_toilet: post.facility.anyone_toilet,
-        diaper_changing_station: post.facility.diaper_changing_station,
-        powder_corner: post.facility.powder_corner,
-        stroller_accessible: post.facility.stroller_accessible,
-        image: url_for(post.facility.image.url),
-        comment: post.comments
-      }
-    end
   end
 
   def show
@@ -99,6 +62,29 @@ class PostsController < ApplicationController
       params.require(:facility).permit(:name, :address, :content, :latitude, :longitude,
                                        :nursing_room, :anyone_toilet, :diaper_changing_station,
                                        :powder_corner, :stroller_accessible, :image)
+    end
+  end
+
+  def set_gons
+    gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
+
+    @posts = Post.includes(:facility).all
+    gon.posts = @posts.map do |post|
+      {
+        id: post.id,
+        name: post.facility.name,
+        address: post.facility.address,
+        content: post.facility.content,
+        latitude: post.facility.latitude,
+        longitude: post.facility.longitude,
+        nursing_room: post.facility.nursing_room,
+        anyone_toilet: post.facility.anyone_toilet,
+        diaper_changing_station: post.facility.diaper_changing_station,
+        powder_corner: post.facility.powder_corner,
+        stroller_accessible: post.facility.stroller_accessible,
+        image: url_for(post.facility.image.url),
+        comment: post.comments
+      }
     end
   end
 
