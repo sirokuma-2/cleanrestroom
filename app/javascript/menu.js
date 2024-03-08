@@ -1,31 +1,25 @@
 window.addEventListener("turbo:load", function () {
-  const hamburgerMenuLoggedIn = document.getElementById(
+  const humburgerMenuLoggedIn = document.getElementById(
     "humburger-menu-logged-in"
   );
-  const hamburgerMenuLoggedOut = document.getElementById(
+  const humburgerMenuLoggedOut = document.getElementById(
     "humburger-menu-logged-out"
   );
 
   const navRightLoggedIn = document.getElementById("nav-right-logged-in");
   const navRightLoggedOut = document.getElementById("nav-right-logged-out");
 
-  const humburgerMenu = hamburgerMenuLoggedIn || hamburgerMenuLoggedOut;
+  const humburgerMenu = humburgerMenuLoggedIn || humburgerMenuLoggedOut;
   const navRight = navRightLoggedIn || navRightLoggedOut;
 
   if (humburgerMenu) {
-    humburgerMenu.addEventListener("click", function (e) {
-      navRight.style.display = "block";
-      humburgerMenu.style.display = "none";
-      e.stopPropagation();
+    humburgerMenu.addEventListener("click", function () {
+      // navRightの表示状態を切り替える
+      if (navRight.style.display === "block") {
+        navRight.style.display = "none";
+      } else {
+        navRight.style.display = "block";
+      }
     });
   }
-
-  document.addEventListener("click", function (e) {
-    if (navRight.style.display === "block" && e.target !== humburgerMenu) {
-      navRight.style.display = "none";
-      if (humburgerMenu) {
-        humburgerMenu.style.display = "block";
-      }
-    }
-  });
 });
