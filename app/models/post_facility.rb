@@ -20,9 +20,7 @@ class PostFacility
                             nursing_room:, anyone_toilet:, diaper_changing_station:,
                             powder_corner:, stroller_accessible:)
 
-    if image.present?
-      facility.image.attach(image)
-    end
+    facility.image.attach(image) if image.present?
 
     if facility.save
       Post.create(facility_id: facility.id, user_id:)

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update]
-  before_action :set_gons, only:  [:top, :index]
+  before_action :set_gons, only: [:top, :index]
 
   include Rails.application.routes.url_helpers
 
@@ -86,7 +86,6 @@ class PostsController < ApplicationController
         comment: post.comments
       }
     end
-
   end
 
   def set_post
