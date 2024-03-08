@@ -228,7 +228,7 @@ export function addMarkers(
 
       // コンテンツ用の要素を作成
       const contentElement = document.createElement("p");
-      contentElement.textContent = `${contentText}`;
+      contentElement.textContent = `平均 ${contentText}`;
       contentElement.style.color = "#555";
       contentElement.style.fontSize = "16px";
       contentElement.style.marginLeft = "20px";
@@ -343,9 +343,16 @@ export function addMarkers(
       const totalRating = location.comment.reduce((acc, comment) => {
         return acc + comment.rating;
       }, 0);
-      averageRating = totalRating / location.comment.length;
+
+      if (location.comment.length) {
+        averageRating = (totalRating / location.comment.length).toFixed(1);
+      } else {
+        averageRating = 0;
+      }
+
       countRating = location.comment.length;
-      addItemReview("レビュー", averageRating.toFixed(1), countRating);
+
+      addItemReview("レビュー", averageRating, countRating);
 
       // 評価するボタンのラッパーの作成
       const buttonWrapper2 = document.createElement("div");
