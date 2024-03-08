@@ -1,5 +1,5 @@
 import { calculateAndDisplayRoute } from "calculateAndDisplayRoute";
-import { initializeRaty } from "ratingStar2";
+import { initializeRaty } from "ratingStar";
 
 export function addMarkers(
   locations,
