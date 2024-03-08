@@ -45,9 +45,9 @@
 }
 
 @media (min-width:599px){
-  .humburger__menu{
+  /* .humburger__menu{
     display: none;
-  }
+  } */
   /* .nav__right{
     display:inline-block ;
     width: 450px;
