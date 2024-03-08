@@ -86,6 +86,27 @@ async function initMap() {
       marker.setMap(null); // マーカーをマップから削除
     });
   });
+
+  //スマホの場合の長押し
+  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+    let start, end, longpress;
+    //以下、ロングタップの処理
+    google.maps.event.addListener(map, "mousedown", function (event) {
+      start = new Date().getTime();
+    });
+
+    google.maps.event.addListener(map, "mouseup", function (event) {
+      if (start) {
+        end = new Date().getTime();
+        longpress = end - start < 300 ? false : true;
+
+        if (longpress) {
+          // clickListener 関数を呼び出し、マーカーを作成
+          const marker = clickListener(event, map);
+        }
+      }
+    });
+  }
 }
 
 //マップの表示
