@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_post, only: [:show, :edit, :update]
   before_action :set_gons, only: [:top, :index]
+  before_action :set_post, only: [:show, :edit, :update]
+  before_action :move_to_index, except: [:top,:index, :show, :new, :create]
 
   include Rails.application.routes.url_helpers
 
@@ -68,6 +69,8 @@ class PostsController < ApplicationController
   def set_gons
     gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
 
+    gon.current_userid = current_user.id
+
     @posts = Post.includes(:facility).all
     gon.posts = @posts.map do |post|
       {
@@ -83,12 +86,18 @@ class PostsController < ApplicationController
         powder_corner: post.facility.powder_corner,
         stroller_accessible: post.facility.stroller_accessible,
         image: url_for(post.facility.image.url),
-        comment: post.comments
+        comment: post.comments,
+        userId: post.user
       }
     end
   end
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def move_to_index
+    return if user_signed_in? && current_user.id == Post.find(params[:id]).user_id
+    redirect_to action: :index
   end
 end
