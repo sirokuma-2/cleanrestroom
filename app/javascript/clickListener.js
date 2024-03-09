@@ -8,7 +8,7 @@ export function clickListener(e, map) {
       : "https://cleanrestrooms.net";
 
   const pinViewScaled = new google.maps.marker.PinView({
-    background: "#0000FF",
+    background: "#4CAF50",
     glyphColor: "white",
   });
 

@@ -88,7 +88,7 @@ async function initMap() {
   });
 
   //スマホの場合の長押し
-  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
+  if (navigator.userAgent.match(/iPhone|iPad|Android.+Mobile/)) {
     let start, end, longpress;
     //以下、ロングタップの処理
     google.maps.event.addListener(map, "mousedown", function (event) {
@@ -98,7 +98,7 @@ async function initMap() {
     google.maps.event.addListener(map, "mouseup", function (event) {
       if (start) {
         end = new Date().getTime();
-        longpress = end - start < 300 ? false : true;
+        longpress = end - start < 1000 ? false : true;
 
         if (longpress) {
           // clickListener 関数を呼び出し、マーカーを作成
