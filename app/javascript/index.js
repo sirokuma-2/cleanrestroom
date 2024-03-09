@@ -89,13 +89,14 @@ async function initMap() {
 
   //スマホの場合の長押し
   if (navigator.userAgent.match(/iPhone|iPad|Android.+Mobile/)) {
-    let start, end, longpress;
+    let start, end;
     //以下、ロングタップの処理
     google.maps.event.addListener(map, "mousedown", function (event) {
       start = new Date().getTime();
     });
 
     google.maps.event.addListener(map, "mouseup", function (event) {
+      let longpress;
       if (start) {
         end = new Date().getTime();
         longpress = end - start < 1000 ? false : true;

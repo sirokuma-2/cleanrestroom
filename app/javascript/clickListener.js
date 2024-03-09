@@ -38,5 +38,10 @@ export function clickListener(e, map) {
 
   infowindow.open(map, marker);
 
+  // 情報ウィンドウの閉じるボタンがクリックされたらマーカーを削除
+  infowindow.addListener("closeclick", function () {
+    marker.setMap(null);
+  });
+
   return marker;
 }

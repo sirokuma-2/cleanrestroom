@@ -20,9 +20,11 @@
           </div>
           <% if user_signed_in? %> 
             <div class="nav__right" id="nav-right-logged-in">
-              <%= link_to "マップ", posts_path, class: :nav__btn %>
-              <%= link_to "マイページ", user_path(current_user), class: :nav__btn %>
-              <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav__btn %>
+              <div class="nav__btn__wrapper">
+                <%= link_to "マップ", posts_path, class: :nav__btn %>
+                <%= link_to "マイページ", user_path(current_user), class: :nav__btn %>
+                <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav__btn %>
+              </div>
             </div>
             <div class="humburger__menu" id ="humburger-menu-logged-in"s>
               <div jsname="hyP9Qc"  aria-label="メインメニュー" aria-controls="UCqTdf" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0" jsaction="x097hd" >
@@ -31,9 +33,11 @@
            </div>
           <% else %>
             <div class="nav__right" id="nav-right-logged-out">
-              <%= link_to "マップ", posts_path, class: :nav__btn %>
-              <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %> 
-              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+              <div class="nav__btn__wrapper">
+                <%= link_to "マップ", posts_path, class: :nav__btn %>
+                <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %> 
+                <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+              </div>
             </div>
             <div class="humburger__menu" id ="humburger-menu-logged-out">
               <div jsname="hyP9Qc"  aria-label="メインメニュー" aria-controls="UCqTdf" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0" jsaction="x097hd" >
