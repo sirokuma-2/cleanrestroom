@@ -83,7 +83,9 @@ class PostsController < ApplicationController
         powder_corner: post.facility.powder_corner,
         stroller_accessible: post.facility.stroller_accessible,
         image: url_for(post.facility.image.url),
-        comment: post.comments
+        comment: post.comments,
+        userId: post.user
+
       }
     end
   end

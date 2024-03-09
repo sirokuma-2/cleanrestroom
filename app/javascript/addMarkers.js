@@ -49,7 +49,8 @@ export function addMarkers(
       stroller_accessible,
       imageUrl,
       averageRating,
-      countRating;
+      countRating,
+      userId;
 
     name = location.name;
     address = location.address;
@@ -60,6 +61,7 @@ export function addMarkers(
     powder_corner = location.powder_corner;
     stroller_accessible = location.stroller_accessible;
     imageUrl = location.image;
+    userId = location.userId.id;
 
     // 戻るボタン関数の作成
     function addCloseButton(parentElement) {
