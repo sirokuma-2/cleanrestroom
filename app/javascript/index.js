@@ -76,10 +76,15 @@ async function initMap() {
     dataStarHalf
   );
 
+  let marker;
+
   //右クリックの拡張
   google.maps.event.addListener(map, "rightclick", (event) => {
     // clickListener 関数を呼び出し、マーカーを作成
-    const marker = clickListener(event, map);
+    if (marker) {
+      marker.setMap(null); // マーカーをマップから削除
+      marker = clickListener(event, map);
+    }
 
     // マーカーに 'click' イベントリスナーを追加してマーカーを削除
     google.maps.event.addListener(marker, "gmp-click", () => {
@@ -103,7 +108,11 @@ async function initMap() {
 
         if (longpress) {
           // clickListener 関数を呼び出し、マーカーを作成
-          const marker = clickListener(event, map);
+          if (marker) {
+            marker.setMap(null); // マーカーをマップから削除
+            marker = clickListener(event, map);
+          }
+          s;
         }
       }
     });
