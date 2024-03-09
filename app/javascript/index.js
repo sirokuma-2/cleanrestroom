@@ -3,6 +3,7 @@ import { geoLocation } from "geoLocation";
 import { clickListener } from "clickListener";
 
 let locations; //すべての施設の位置
+let currentUserId;
 let map;
 let allMarkers = []; // すべてのマーカーを保持する配列
 let directionsService; // ルートを検索するためのDirectionsServiceのインスタンス
@@ -20,6 +21,8 @@ async function initMap() {
     const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
   }
   // gonから施設の位置情報を取得
+  currentUserId = gon.current_userid;
+
   locations = gon.posts;
 
   const mapElement =
@@ -52,6 +55,7 @@ async function initMap() {
   //まずは施設情報をすべて表示
   addMarkers(
     locations,
+    currentUserId,
     map,
     allMarkers,
     tokyoStationPos, //東京駅を渡す

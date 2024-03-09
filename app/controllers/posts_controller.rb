@@ -68,6 +68,8 @@ class PostsController < ApplicationController
   def set_gons
     gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
 
+    gon.current_userid = current_user.id
+
     @posts = Post.includes(:facility).all
     gon.posts = @posts.map do |post|
       {
@@ -85,7 +87,6 @@ class PostsController < ApplicationController
         image: url_for(post.facility.image.url),
         comment: post.comments,
         userId: post.user
-
       }
     end
   end

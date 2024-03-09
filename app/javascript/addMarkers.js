@@ -3,6 +3,7 @@ import { initializeRaty } from "ratingStar";
 
 export function addMarkers(
   locations,
+  currentUserId,
   map,
   allMarkers,
   userPos, //現在地または東京駅
@@ -50,7 +51,8 @@ export function addMarkers(
       imageUrl,
       averageRating,
       countRating,
-      userId;
+      userId,
+      currentUserId2;
 
     name = location.name;
     address = location.address;
@@ -62,6 +64,10 @@ export function addMarkers(
     stroller_accessible = location.stroller_accessible;
     imageUrl = location.image;
     userId = location.userId.id;
+    currentUserId2 = currentUserId;
+
+    console.log(userId);
+    console.log(currentUserId2);
 
     // 戻るボタン関数の作成
     function addCloseButton(parentElement) {
@@ -336,13 +342,17 @@ export function addMarkers(
       infoWindowContent.appendChild(h1Wrapper);
 
       // 編集ボタンのラッパーの作成
+
       const buttonWrapper = document.createElement("div");
       buttonWrapper.style.display = "flex";
       buttonWrapper.style.justifyContent = "flex-end";
       buttonWrapper.style.width = "100%";
 
       // 編集ボタンを追加
-      addButtonEdit(buttonWrapper, "編集する");
+      if (userId === currentUserId2) {
+        addButtonEdit(buttonWrapper, "編集する");
+      }
+
       infoWindowContent.appendChild(buttonWrapper);
       infoPanel.appendChild(infoWindowContent);
 
