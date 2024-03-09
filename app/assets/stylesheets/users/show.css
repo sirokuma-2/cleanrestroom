@@ -30,7 +30,6 @@
   margin-bottom: 20px;
 }
 
-
 .edit-button {
   padding: 10px 40px;
   background-color: #4CAF50;
@@ -98,10 +97,11 @@
   margin-top: 10px;
   margin-left: 5px;
 }
+
 @media (min-width:599px){
   .mypage-wrapper{
     width: 500px;
-    margin: 0 auto;
+    margin: 50px auto;
   }
 
   .user-image{
@@ -120,7 +120,7 @@
 @media (min-width:1024px){
   .mypage-wrapper{
     width: 500px;
-    margin: 0 auto;
+    margin: 50px auto;
   }
 
   .user-image{
