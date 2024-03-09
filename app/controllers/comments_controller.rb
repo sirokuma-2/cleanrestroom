@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-     @comment = Comment.new(comment_params)
+    @comment = Comment.new(comment_params)
     if Comment.create(comment_params)
       redirect_to "/posts/#{@comment.post.id}" # コメントと結びつくツイートの詳細画面に遷移する
     else
