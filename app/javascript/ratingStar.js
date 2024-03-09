@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-// Ratyの初期化関数を定義
+// レビューの星を表示
 export function initializeRaty() {
   let elem = document.querySelector("#star-rating");
   if (elem && !elem.hasAttribute("data-raty-initialized")) {
