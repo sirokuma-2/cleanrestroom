@@ -11,13 +11,13 @@
 }
 
 .user-image{
-  width: 200px;
-  height: 200px;
-  margin-right: 50px;
+  width: 100px;
+  height: 100px;
+  margin-right: 25px;
 }
 
 .user-image-pic {
-  width: 200px;
+  width: 100px;
   height: auto;
   border-radius: 50%;
 }
@@ -103,11 +103,35 @@
     width: 500px;
     margin: 0 auto;
   }
+
+  .user-image{
+    width: 200px;
+    height: 200px;
+    margin-right: 50px;
+  }
+  
+  .user-image-pic {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+  }
 }
 
 @media (min-width:1024px){
   .mypage-wrapper{
     width: 500px;
     margin: 0 auto;
+  }
+
+  .user-image{
+    width: 200px;
+    height: 200px;
+    margin-right: 50px;
+  }
+  
+  .user-image-pic {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
   }
 }
