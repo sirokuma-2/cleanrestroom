@@ -44,10 +44,11 @@
   <p>\ S E A R C H /</p>
   <div class="pict">
     <%= image_tag "map.png", class:"map-pict" %>
+    <%= link_to "最寄りのトイレ", posts_path, class:"map-link"%>
   </div>
-  <%= link_to "最寄りのトイレ", posts_path, class:"map-link"%>
   <p>東京</p>
 </div>
+
 <!-- ここにGoogle MapsやOpenStreetMapの埋め込みコードを挿入 -->
 <div class = "top-map" id="top-map" data-house-icon-url="<%= asset_path('house.svg') %>" data-restroom-icon-url="<%= asset_path('public.png') %>" data-route-icon-url="<%= asset_path('route.png') %>"></div>
 

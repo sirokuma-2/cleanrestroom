@@ -23,6 +23,7 @@ export function geoLocation(
   locationButton.style.backgroundColor = "#4CAF50";
   locationButton.style.color = "#FFFFFF";
   locationButton.style.fontSize = "16px";
+  locationButton.style.fontWeight = "bold";
   locationButton.style.border = "none";
   locationButton.style.padding = "10px 20px";
   locationButton.style.borderRadius = "10px";
