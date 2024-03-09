@@ -66,13 +66,11 @@ export function addMarkers(
     userId = location.userId.id;
     currentUserId2 = currentUserId;
 
-    console.log(userId);
-    console.log(currentUserId2);
-
     // 戻るボタン関数の作成
     function addCloseButton(parentElement) {
       const closeButton = document.createElement("button");
       closeButton.textContent = "← 戻る";
+      closeButton.fontSize = "18px";
       closeButton.style.border = "none";
       closeButton.style.fontWeight = "bold";
       closeButton.onclick = hideInfoPanel;
