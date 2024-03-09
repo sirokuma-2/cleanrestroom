@@ -1,14 +1,14 @@
 /* ヘッダー */
 
 .header {
-  padding: 20px;
+  height: 50px;
+  padding: 20px 20px 0 20px;
 }
 
 .header_btn{
-  font-size: 32px; 
+  font-size: 20px; 
   font-weight: bold;
   color: #000000;
-
   text-decoration: none;
   user-select: none;
   border-radius: 3px;
@@ -21,46 +21,91 @@
   justify-content: space-between;
 }
 
-.nav__btn{
-  display: inline-block;
-  color: #000000;
-  padding: 0.4em 1.6em;
-  text-decoration: none;
-  user-select: none;
-  border-radius: 3px;
-  transition: 0.4s ease;
-}
-.nav__btn:hover{
-  /* color: #fff;
-  background: #87CEFA; */
-}
-
-.humburger__menu{
-  display: inline-block;
+.nav__right__wrapper{
+  display: flex;
+  flex-direction: column;
 }
 
 .nav__right{
   display: none;
-  width:250px;
+  width:100px;
+  height: 30px;
+  position: relative;
+}
+
+.nav__btn__wrapper{
+  width:100px;
+  background-color:#ffffff;;
+  align-items: flex-end;
+  position: absolute;
+  top:0px;
+  right: 0px;
+  z-index: 1;
+}
+
+.nav__btn{
+  width: 100px;
+  display: inline-block;
+  color: #000000;
+  padding: 10px 0;
+  text-decoration: none;
+  user-select: none;
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 3px;
+  transition: 0.4s ease;
+}
+
+.humburger__menu{
+  display: inline-block;
+  text-align: right;
+  height: 30px;
 }
 
 @media (min-width:599px){
-  /* .humburger__menu{
-    display: none;
-  } */
-  /* .nav__right{
-    display:inline-block ;
-    width: 450px;
-  } */
+  .header_btn{
+    font-size: 32px;
+  } 
+
 }
   
 
 @media (min-width:1024px){
+    .header_btn{
+      font-size: 32px;
+    }
+
     .humburger__menu{
     display: none;
-  }
+    }
+    
     .nav__right{
       display:inline-block ;
-      width: 450px;
+      width: 300px;
+      position: none;
+    }
+
+    
+    .nav__btn__wrapper{
+      width:300px;
+      background-color:#ffffff;;
+      position: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      top:0px;
+      right: 0px;
+      z-index: 1;
+    }
+
+    .nav__btn{
+      width: auto;
+      display: block;
+      color: #000000;
+      padding: 10px 0;
+      text-decoration: none;
+      user-select: none;
+      border-bottom: none;
+      border-radius: 3px;
+      transition: 0.4s ease;
     }
 }

@@ -8,7 +8,7 @@ export function clickListener(e, map) {
       : "https://cleanrestrooms.net";
 
   const pinViewScaled = new google.maps.marker.PinView({
-    background: "#0000FF",
+    background: "#4CAF50",
     glyphColor: "white",
   });
 
@@ -37,6 +37,11 @@ export function clickListener(e, map) {
   });
 
   infowindow.open(map, marker);
+
+  // 情報ウィンドウの閉じるボタンがクリックされたらマーカーを削除
+  infowindow.addListener("closeclick", function () {
+    marker.setMap(null);
+  });
 
   return marker;
 }

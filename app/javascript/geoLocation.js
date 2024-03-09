@@ -20,12 +20,13 @@ export function geoLocation(
   locationButton.textContent = "現在地を表示";
 
   // ボタンをページに追加
-  locationButton.style.backgroundColor = "#FFFFFF";
-  locationButton.style.color = "#000000";
+  locationButton.style.backgroundColor = "#4CAF50";
+  locationButton.style.color = "#FFFFFF";
   locationButton.style.fontSize = "16px";
   locationButton.style.border = "none";
   locationButton.style.padding = "10px 20px";
-  locationButton.style.marginTop = "10px";
+  locationButton.style.borderRadius = "10px";
+  locationButton.style.marginTop = "60px";
 
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
 

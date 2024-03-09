@@ -76,10 +76,15 @@ async function initMap() {
     dataStarHalf
   );
 
+  let marker;
+
   //右クリックの拡張
   google.maps.event.addListener(map, "rightclick", (event) => {
     // clickListener 関数を呼び出し、マーカーを作成
-    const marker = clickListener(event, map);
+    if (marker) {
+      marker.setMap(null); // マーカーをマップから削除
+      marker = clickListener(event, map);
+    }
 
     // マーカーに 'click' イベントリスナーを追加してマーカーを削除
     google.maps.event.addListener(marker, "gmp-click", () => {
@@ -88,21 +93,26 @@ async function initMap() {
   });
 
   //スマホの場合の長押し
-  if (navigator.userAgent.match(/iPhone|Android.+Mobile/)) {
-    let start, end, longpress;
+  if (navigator.userAgent.match(/iPhone|iPad|Android.+Mobile/)) {
+    let start, end;
     //以下、ロングタップの処理
     google.maps.event.addListener(map, "mousedown", function (event) {
       start = new Date().getTime();
     });
 
     google.maps.event.addListener(map, "mouseup", function (event) {
+      let longpress;
       if (start) {
         end = new Date().getTime();
-        longpress = end - start < 300 ? false : true;
+        longpress = end - start < 1000 ? false : true;
 
         if (longpress) {
           // clickListener 関数を呼び出し、マーカーを作成
-          const marker = clickListener(event, map);
+          if (marker) {
+            marker.setMap(null); // マーカーをマップから削除
+            marker = clickListener(event, map);
+          }
+          s;
         }
       }
     });

@@ -15,10 +15,10 @@ window.addEventListener("turbo:load", function () {
   if (humburgerMenu) {
     humburgerMenu.addEventListener("click", function () {
       // navRightの表示状態を切り替える
-      if (navRight.style.display === "block") {
+      if (navRight.style.display === "inline-block") {
         navRight.style.display = "none";
       } else {
-        navRight.style.display = "block";
+        navRight.style.display = "inline-block";
       }
     });
   }
