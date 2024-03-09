@@ -9,7 +9,7 @@
   display: none;
   position: absolute;
   transition: opacity 1.0s ease-in-out; 
-  top: 150px;
+  top: 70px;
   left: 0;
   width: 100%; /* 左半分の幅 */
   height: 90%;

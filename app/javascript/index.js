@@ -84,6 +84,8 @@ async function initMap() {
     if (marker) {
       marker.setMap(null); // マーカーをマップから削除
       marker = clickListener(event, map);
+    } else {
+      marker = clickListener(event, map);
     }
 
     // マーカーに 'click' イベントリスナーを追加してマーカーを削除
@@ -111,8 +113,9 @@ async function initMap() {
           if (marker) {
             marker.setMap(null); // マーカーをマップから削除
             marker = clickListener(event, map);
+          } else {
+            marker = clickListener(event, map);
           }
-          s;
         }
       }
     });
