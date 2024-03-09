@@ -15,6 +15,7 @@ pin "menu", to:"menu.js"
 pin "preview", to:"preview.js"
 pin "previewName", to:"previewName.js"
 pin "ratingStar", to:"ratingStar.js"
+pin "ratingStarReview", to:"ratingStarReview.js"
 
 
 

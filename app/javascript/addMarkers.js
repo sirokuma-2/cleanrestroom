@@ -109,10 +109,25 @@ export function addMarkers(
     }
 
     //編集・評価するボタンの関数作成
-    function addButton(parentElement, buttonText) {
+    function addButtonEdit(parentElement, buttonText) {
       const Button = document.createElement("a");
       Button.textContent = buttonText;
       Button.href = `${baseUrl}/posts/${location.id}/edit`;
+      Button.style.display = "inline-block"; // ブロック要素のように扱う
+      Button.style.backgroundColor = "#4CAF50";
+      Button.style.color = "#FFFFFF";
+      Button.style.borderRadius = "10px";
+      Button.style.textDecoration = "none";
+      Button.style.border = "none";
+      Button.style.padding = "10px 20px";
+      Button.style.cursor = "pointer";
+      parentElement.appendChild(Button);
+    }
+
+    function addButtonReview(parentElement, buttonText) {
+      const Button = document.createElement("a");
+      Button.textContent = buttonText;
+      Button.href = `${baseUrl}/posts/${location.id}/comments/new`;
       Button.style.display = "inline-block"; // ブロック要素のように扱う
       Button.style.backgroundColor = "#4CAF50";
       Button.style.color = "#FFFFFF";
@@ -325,7 +340,7 @@ export function addMarkers(
       buttonWrapper.style.width = "100%";
 
       // 編集ボタンを追加
-      addButton(buttonWrapper, "編集する");
+      addButtonEdit(buttonWrapper, "編集する");
       infoWindowContent.appendChild(buttonWrapper);
       infoPanel.appendChild(infoWindowContent);
 
@@ -363,7 +378,7 @@ export function addMarkers(
       buttonWrapper2.style.marginBottom = "10px";
 
       // 評価するボタンの追加
-      addButton(buttonWrapper2, "評価する");
+      addButtonReview(buttonWrapper2, "評価する");
       infoWindowContent.appendChild(buttonWrapper2);
     });
   });
