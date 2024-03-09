@@ -3,41 +3,29 @@
   margin: 0 auto;
 }
 
-.comment-details{
-  border-bottom: 1px solid #808080;
-}
-
-.post-page {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.comment-facility-name{
-  width:200px;
-  margin-bottom: 20px;
-}
-
 .post-image{
-  width: 400px;
+  width: 95%;
   height: auto;
   margin: 0 auto;
 }
 
 .post-image-pic {
-  width: 400px;
-  height: auto;
+  width: 95%;
+}
+
+comment-page {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .comment-details{
-  width: 400px;
+  width: 95%;
   margin: 20px auto;
+  border-bottom: 1px solid #808080;
 }
 
-.facility-name{
-  
-}
-
-.user-email{
+.comment-facility-name{
+  width:200px;
   margin-bottom: 20px;
 }
 
@@ -62,7 +50,7 @@
 }
 
 .comments {
-  width: 400px;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -153,15 +141,13 @@
 }
 
 @media (min-width:599px){
-  .mypage-wrapper{
-    width: 500px;
-    margin: 0 auto;
+  .comments-page-wrapper{
+    margin: 50px auto;
   }
 }
 
 @media (min-width:1024px){
-  .mypage-wrapper{
-    width: 500px;
-    margin: 0 auto;
+  .comments-page-wrapper{
+    margin: 50px auto;
   }
 }
