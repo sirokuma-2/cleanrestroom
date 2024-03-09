@@ -69,7 +69,9 @@ class PostsController < ApplicationController
   def set_gons
     gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
 
-    gon.current_userid = current_user.id
+    if user_signed_in?
+      gon.current_userid = current_user.id
+    end
 
     @posts = Post.includes(:facility).all
     gon.posts = @posts.map do |post|
