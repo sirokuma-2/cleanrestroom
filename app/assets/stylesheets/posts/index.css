@@ -12,7 +12,6 @@
   background-color: white;
 }
 
-/* JavaScriptでこのクラスを切り替える */
 .infoPanel-visible {
   visibility: visible;
   opacity: 1;
