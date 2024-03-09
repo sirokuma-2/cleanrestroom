@@ -1,20 +1,15 @@
-
-/* マップ一覧画面 */
-
 #map {
   height: 95%;
 }
 
 .info-panel {
+  width: 100%;
+  height: 90%;
   display: none;
   position: absolute;
-  transition: opacity 1.0s ease-in-out; 
   top: 70px;
   left: 0;
-  width: 100%; /* 左半分の幅 */
-  height: 90%;
-  background-color: white; /* 背景色 */
-  box-sizing: border-box;
+  background-color: white;
 }
 
 /* JavaScriptでこのクラスを切り替える */
@@ -33,28 +28,14 @@
 
 @media (min-width:599px){
   .info-panel {
+    width: 50%;
     display: none;
-    position: absolute;
-    transition: opacity 1.0s ease-in-out; 
-    top: 75px;
-    left: 0;
-    width: 50%; /* 左半分の幅 */
-    height: 90%;
-    background-color: white; /* 背景色 */
-    box-sizing: border-box;
   }
 }
 
 @media (min-width:1024px){
   .info-panel {
+    width: 25%;
     display: none;
-    position: absolute;
-    transition: opacity 1.0s ease-in-out; 
-    top: 75px;
-    left: 0;
-    width: 25%; /* 左半分の幅 */
-    height: 90%;
-    background-color: white; /* 背景色 */
-    box-sizing: border-box;
   }
 }

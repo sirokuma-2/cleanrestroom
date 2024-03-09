@@ -70,7 +70,6 @@ export function addMarkers(
     function addCloseButton(parentElement) {
       const closeButton = document.createElement("button");
       closeButton.textContent = "← 戻る";
-      closeButton.fontSize = "18px";
       closeButton.style.border = "none";
       closeButton.style.fontWeight = "bold";
       closeButton.onclick = hideInfoPanel;
