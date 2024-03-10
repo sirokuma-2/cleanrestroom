@@ -6,6 +6,7 @@ let userPos;
 // GPSで現在地を表示　現在地にhouseアイコンを表示　マーカーと詳細情報を表示
 export function geoLocation(
   locations,
+  current_userId,
   map,
   allMarkers,
   directionsService,
@@ -53,6 +54,7 @@ export function geoLocation(
           // マーカーと詳細情報を表示
           addMarkers(
             locations,
+            current_userId,
             map,
             allMarkers,
             userPos,
@@ -95,6 +97,8 @@ export function geoLocation(
             dataStarOff,
             dataStarHalf
           );
+
+          console.log(tokyoStationPos);
         }
       );
     } else {

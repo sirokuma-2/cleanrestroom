@@ -70,6 +70,7 @@ async function initMap() {
   //現在地と施設情報の表示
   geoLocation(
     locations,
+    currentUserId,
     map,
     allMarkers,
     directionsService,
