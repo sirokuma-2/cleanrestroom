@@ -2,7 +2,7 @@
 .account-page .account-page__inner {
   width: 75%;
   margin: 60px auto;
-  padding: 60px;
+  padding: 30px;
 }
 .account-page .account-page__inner:after {
   clear: both;
