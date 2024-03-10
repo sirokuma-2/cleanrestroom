@@ -85,7 +85,7 @@ export function addMarkers(
       }, 250);
     }
 
-    // ルート案内ボタ関数の作成
+    // ルート案内ボタン関数の作成
     function addSearchRouteButton(parentElement) {
       const searchButton = document.createElement("button");
       // ボタンに背景画像を設定
@@ -334,7 +334,6 @@ export function addMarkers(
       addCloseButton(h1Wrapper);
       h1Wrapper.appendChild(firstHeading);
       addSearchRouteButton(h1Wrapper);
-
       // 戻る　施設名称　ルートあんなにボタンの追加
       infoWindowContent.appendChild(h1Wrapper);
 
