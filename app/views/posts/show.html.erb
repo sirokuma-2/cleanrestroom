@@ -49,6 +49,7 @@
         </div>
       </div>
     <% end %>
+    <%= paginate @comments %>
   </div>
   <div class="button-wrapper">
     <%= link_to '戻る', posts_path, class: 'close-button' %>
