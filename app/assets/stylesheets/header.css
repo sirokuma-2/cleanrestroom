@@ -51,6 +51,7 @@
   color: #000000;
   padding: 10px 0;
   text-decoration: none;
+  user-select: none;
   border-bottom: 1px solid #f0f0f0;
 }
 
