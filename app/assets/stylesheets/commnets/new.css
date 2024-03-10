@@ -1,5 +1,5 @@
 .comments-form {
-  width: 95%;
+  width: 350px;
   min-height: 85px; 
   margin: 0 auto;
 }
@@ -28,4 +28,29 @@
     margin: 15px auto;
     border: none;
     border-radius: 5px; 
+}
+
+
+@media (min-width:599px){
+  .comments-form {
+    width: 500px;
+    min-height: 85px; 
+    margin: 0 auto;
+  } 
+}
+
+@media (min-width:1024px){
+  .comments-form {
+    width: 500px;
+    min-height: 85px; 
+    margin: 0 auto;
+  }
+}
+
+@media (min-width:1200px){
+  .comments-form {
+    width: 500px;
+    min-height: 85px; 
+    margin: 0 auto;
+  }
 }

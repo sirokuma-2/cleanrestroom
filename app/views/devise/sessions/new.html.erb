@@ -2,6 +2,10 @@
   <div class='account-page__inner clearfix'> 
     <div class='user-form'>
       <%= form_with model: @user, url: user_session_path, local: true do |f|%>
+       <%= render "devise/shared/error_messages", resource: resource %>
+          <div class='login-flash-message'>
+            <%= flash[:alert] %>
+          </div>
           <div class='account-page__header'>
             <h2>ログイン</h2>
           </div>
