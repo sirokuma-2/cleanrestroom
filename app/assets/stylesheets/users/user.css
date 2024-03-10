@@ -4,6 +4,7 @@
   margin: 60px auto;
   padding: 30px;
 }
+
 .account-page .account-page__inner:after {
   clear: both;
   content: "";
@@ -174,4 +175,22 @@
   margin: 0;
   padding: 0;
   font-size: 13px;
+}
+
+@media (min-width:599px){
+  .account-page .account-page__inner {
+    width: 500px;
+  }
+}
+
+@media (min-width:1024px){
+  .account-page .account-page__inner {
+    width: 500px;
+  }
+}
+
+@media (min-width:1200px){
+  .account-page .account-page__inner {
+    width: 500px;
+  }
 }
