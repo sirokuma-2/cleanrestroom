@@ -30,9 +30,9 @@ async function initMap() {
 
   if (mapElement) {
     map = new google.maps.Map(mapElement, {
-      zoom: 13,
+      zoom: 16,
       mapId: "DEMO_MAP_ID",
-      maxZoom: 18,
+      maxZoom: 25,
       center: { lat: 35.681236, lng: 139.767125 },
     });
   }
