@@ -1,13 +1,10 @@
-
-
-/* 編集画面 */
 .facility-delete{
   margin-top: 20px;
 }
 
 .facility-delete-btn {
-  width: 100px; /* 横幅を100pxに設定 */
-  height: 50px; /* 縦幅を50pxに設定 */
+  width: 100px;
+  height: 50px;
   color: #FFFFFF;
   background-color: red; /* .facility-delete-btn は背景色をredに設定 */
   display: flex;

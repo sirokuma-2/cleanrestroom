@@ -10,13 +10,13 @@
       </div>
       <p>レビュー</p>
       <div class="post-review-average">
-        <p class="post-review-average-content">平均　<%= @comments.average(:rating)? @comments.average(:rating).round(1):0 %></p>
+        <p class="post-review-average-content">平均　<%= @comments_reviews.average(:rating)? @comments_reviews.average(:rating).round(1):0 %></p>
         <p id="star-rating" class="star-rating"
-            data-score="<%= @comments.average(:rating)? @comments.average(:rating).round(1):0 %>"
+            data-score="<%= @comments_reviews.average(:rating)? @comments_reviews.average(:rating).round(1):0 %>"
             data-star-on="<%= asset_path('star-on.png') %>"
             data-star-off="<%= asset_path('star-off.png') %>"
             data-star-half="<%= asset_path('star-half.png') %>"></p>
-        <p class="post-review-average-content">(<%= @comments.count %>件の評価)</p>
+        <p class="post-review-average-content">(<%= @comments_reviews.count %>件の評価)</p>
       </div>
     </div>
   </div>
@@ -49,6 +49,7 @@
         </div>
       </div>
     <% end %>
+    <%= paginate @comments %>
   </div>
   <div class="button-wrapper">
     <%= link_to '戻る', posts_path, class: 'close-button' %>

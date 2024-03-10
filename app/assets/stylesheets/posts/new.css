@@ -1,4 +1,3 @@
-/* 画像投稿画面 */
 .facility {
   width: 100%;
   padding-left: 30px;
@@ -27,13 +26,13 @@
   border: none;
 }
 
+.check-box-contents {
+  margin-bottom: 20px;
+}
+
 .facility-check-box{
   display: block;
   margin-bottom: 5px;
-}
-
-.check-box-contents {
-  margin-bottom: 20px;
 }
 
 .check-box-contents p{
@@ -59,7 +58,7 @@
   border-radius: 5px;
   cursor: pointer;
   display: inline-block;
-  transition: background-color 0.3s, color 0.3s; /* スムーズなホバー効果を追加 */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .item-image-btn {
@@ -70,15 +69,15 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
-  transition: background-color 1.0s, color 1.0s; /* スムーズなホバー効果を追加 */
+  transition: background-color 1.0s, color 1.0s; 
 }
-
 
 .preview-image{
   width: 200px;
   margin-top: 10px;
 }
 
+/* 緯度軽度 非表示*/
 .facility-post-btn {
   width: 100px;
   height: 50px;
@@ -90,25 +89,20 @@
   border-radius: 5px;
 }
 
-
 .facility-place-form{
   display: none;
 }
-@media (min-width:599px){
 
+@media (min-width:599px){
   .facility {
     width: 75%;
-    margin: 0 auto;
+    margin: 50px auto;
   }
-
 }
   
-
 @media (min-width:1024px){
-
   .facility {
     width: 600px;
-    margin: 0 auto;
+    margin: 50px auto;
   }
-
 }

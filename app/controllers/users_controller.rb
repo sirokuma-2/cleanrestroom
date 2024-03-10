@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
 
   def show
-    @posts = Post.includes(:user).where(user_id: @user.id).order('created_at DESC').limit(5)
+    @posts = Post.includes(:user).where(user_id: @user.id).order('created_at DESC').page(params[:page]).per(5)
   end
 
   def edit
