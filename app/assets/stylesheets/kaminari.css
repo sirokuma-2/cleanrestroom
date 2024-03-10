@@ -2,6 +2,7 @@
   display: flex;
   list-style: none;
   padding: 0;
+  margin-bottom: 50px;
 }
 
 .pagination li {
@@ -12,7 +13,7 @@
   border: 1px solid #ddd;
   padding: 5px 10px;
   text-decoration: none;
-  color: #000000;
+  color: green;
 }
 
 .pagination li.active a {
