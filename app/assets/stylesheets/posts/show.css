@@ -1,16 +1,16 @@
 .comments-page-wrapper{
-  width: 500px;
+  width: 350px;
   margin: 0 auto;
 }
 
 .post-image{
-  width: 500px;
+  width: 350px;
   height: auto;
   margin: 0 auto;
 }
 
 .post-image-pic {
-  width: 500px;
+  width: 350px;
 }
 
 comment-page {
@@ -19,7 +19,7 @@ comment-page {
 }
 
 .comment-details{
-  width: 500px;
+  width: 350px;
   margin: 20px auto;
   border-bottom: 1px solid #808080;
 }
@@ -50,7 +50,7 @@ comment-page {
 }
 
 .comments {
-  width: 500px;
+  width: 350px;
   margin: 0 auto;
 }
 
@@ -144,10 +144,58 @@ comment-page {
   .comments-page-wrapper{
     margin: 50px auto;
   }
+
+  .comments-page-wrapper{
+    width: 500px;
+  }
+  
+  .post-image{
+    width: 500px;
+  }
+  
+  .post-image-pic {
+    width: 500px;
+  }
+    
+  .comment-details{
+    width: 500px;
+  }
+  
+  .post-review-average{
+    width: 500px; 
+  }
+  
+  .comments {
+    width: 500px;
+  }
 }
 
 @media (min-width:1024px){
   .comments-page-wrapper{
     margin: 50px auto;
+  }
+
+  .comments-page-wrapper{
+    width: 700px;
+  }
+  
+  .post-image{
+    width: 700px;
+  }
+  
+  .post-image-pic {
+    width: 700px;
+  }
+    
+  .comment-details{
+    width: 700px;
+  }
+  
+  .post-review-average{
+    width: 700px; 
+  }
+  
+  .comments {
+    width: 700px;
   }
 }
