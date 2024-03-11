@@ -11,7 +11,7 @@ class PostFacility
     validates :content
     validates :latitude
     validates :longitude
-    validates :image, presence: true, unless: :was_attached?
+    # validates :image, presence: true, unless: :was_attached?
     validates :user_id
   end
 
@@ -20,7 +20,7 @@ class PostFacility
                             nursing_room:, anyone_toilet:, diaper_changing_station:,
                             powder_corner:, stroller_accessible:)
 
-    facility.image.attach(image) if image.present?
+    # facility.image.attach(image) if image.present?
 
     if facility.save
       Post.create(facility_id: facility.id, user_id:)
