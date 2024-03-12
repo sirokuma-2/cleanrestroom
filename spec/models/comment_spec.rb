@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   before do
     @comment = FactoryBot.build(:comment)
-    puts @comment
   end
 
   describe 'コメントを登録できる場合' do
