@@ -33,7 +33,7 @@ RSpec.describe PostFacility, type: :model do
         expect(@post_facility).to be_valid
       end
       it 'imageが空でもnameがあれば登録できる' do
-        @post_facility.image = ''
+        @post_facility.image = nil
         expect(@post_facility).to be_valid
       end
     end
