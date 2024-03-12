@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
-    puts @user.imageName
-    puts @user.name
   end
 
   describe 'ユーザー新規登録' do

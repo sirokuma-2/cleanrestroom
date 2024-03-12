@@ -4,7 +4,6 @@ RSpec.describe PostFacility, type: :model do
   before do
     user =  FactoryBot.create(:user)
     facility = FactoryBot.create(:facility)
-    post = FactoryBot.create(:post)
     @post_facility = FactoryBot.build(:post_facility,
                                        user_id: user.id,
                                        facility_id: facility.id,
@@ -19,7 +18,7 @@ RSpec.describe PostFacility, type: :model do
                                        powder_corner: facility.powder_corner,
                                        stroller_accessible: facility.stroller_accessible,
                                        image: facility.image)
-    sleep 0.5
+    sleep 0.1
 
   end
 
