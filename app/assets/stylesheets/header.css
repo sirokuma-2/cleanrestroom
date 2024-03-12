@@ -10,11 +10,11 @@
 }
 
 .header_btn{
-  font-size: 20px; 
+  font-size: 16px; 
+  text-align: center;
   font-weight: bold;
   color: #000000;
   text-decoration: none;
-  border-radius: 3px;
 }
 
 .nav-right-wrapper{
@@ -25,7 +25,6 @@
 .humburger-menu{
   display: inline-block;
   text-align: right;
-  height: 30px;
 }
 
 .nav-right{
@@ -58,15 +57,19 @@
 
 @media (min-width:599px){
   .header_btn{
-    font-size: 32px;
+    font-size: 24px;
   } 
+
+  .nav_btn{
+    border-bottom: none;
+  }
 
 }
   
 
 @media (min-width:1024px){
     .header_btn{
-      font-size: 32px;
+      font-size: 24px;
     }
 
     .humburger-menu{

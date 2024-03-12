@@ -18,7 +18,7 @@ export function geoLocation(
 ) {
   //現在地を取得するボタン プライバシー確保のため現在地をいきなり表示できない
   const locationButton = document.createElement("button");
-  locationButton.textContent = "現在地を表示";
+  locationButton.textContent = "現在地を表示する";
 
   // ボタンをページに追加
   locationButton.style.backgroundColor = "#4CAF50";

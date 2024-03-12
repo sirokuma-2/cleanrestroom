@@ -1,13 +1,13 @@
 <%= include_gon %>
 
 <div class="top-bar" id="top-bar">
-  <h1>きれいなトイレを見つけよう（東京）</h1>
+  <h1>きれいなトイレを見つけよう</h1>
   <p>あなたの近くの清潔で安全なトイレを見つけましょう。</p>
 </div>
 
 <div class="search">
   <!-- 検索バーの実装はここに入れます -->
-  <%= link_to "最寄りのトイレ", posts_path, class:"search-btn"%>
+  <%= link_to "最寄りのトイレを探す", posts_path, class:"search-btn"%>
 </div>
 
 <div class="points">
@@ -44,9 +44,8 @@
   <p>\ S E A R C H /</p>
   <div class="pict">
     <%= image_tag "map.png", class:"map-pict" %>
-    <%= link_to "最寄りのトイレ", posts_path, class:"map-link"%>
+    <%= link_to "最寄りのトイレを探す", posts_path, class:"search-btn"%>
   </div>
-  <p>東京</p>
 </div>
 
 <!-- ここにGoogle MapsやOpenStreetMapの埋め込みコードを挿入 -->
