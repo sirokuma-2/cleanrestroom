@@ -31,12 +31,13 @@
 .nav-right{
   display: none;
   width:100px;
-  height: 30px;
+  height: auto;
   position: relative;
 }
 
 .nav-btn-wrapper{
   width:100px;
+  margin: 0 auto;
   background-color:#ffffff;;
   align-items: flex-end;
   position: absolute;
@@ -46,10 +47,10 @@
 }
 
 .nav_btn{
-  width: 100px;
+  width: 80px;
   display: inline-block;
   color: #000000;
-  padding: 10px 0;
+  padding: 10px 10px;
   text-decoration: none;
   user-select: none;
   border-bottom: 1px solid #f0f0f0;
