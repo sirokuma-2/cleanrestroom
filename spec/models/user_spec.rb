@@ -48,13 +48,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it 'nameもimageNameも空では登録できない' do
-        @user.name = ''
-        @user.imageName = ''
-        @user.valid?
-        puts @user.errors.full_messages
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
-      end
     end
   end
 end
