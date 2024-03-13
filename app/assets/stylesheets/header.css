@@ -29,7 +29,7 @@
 
 .nav-right{
   display: none;
-  width:100px;
+  width:130px;
   height: auto;
   position: relative;
 }
@@ -99,15 +99,27 @@
     .humburger-menu{
     display: none;
     }
-    
+
+    .nav-right{
+      display: none;
+      width:auto;
+      height: auto;
+      position: relative;
+    }
+
+    /* 矢印アイコンの作成 */
+    .nav_btn:before, .nav_btn:after {
+      display: none;
+    }
+  
     .nav-right{
       display:inline-block ;
-      width: 300px;
+      width: 390px;
       position: none;
     }
 
     .nav-btn-wrapper{
-      width:300px;
+      width:390px;
       position: none;
       display: flex;
       justify-content: space-between;
