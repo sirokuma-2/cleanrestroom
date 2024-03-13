@@ -111,6 +111,30 @@
   margin: 30px auto;
 }
 
+
+/* 矢印アイコンの作成 */
+button:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  right: 12px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+button:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: 12px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(-45deg);
+}
+
 .bottom-bar {
   margin-top: 10px;
 }

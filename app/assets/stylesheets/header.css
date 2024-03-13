@@ -10,7 +10,7 @@
 }
 
 .header_btn{
-  font-size: 16px; 
+  font-size: 14px; 
   text-align: center;
   font-weight: bold;
   color: #000000;
@@ -35,7 +35,7 @@
 }
 
 .nav-btn-wrapper{
-  width:100px;
+  width:130px;
   margin: 0 auto;
   background-color:#ffffff;;
   align-items: flex-end;
@@ -49,10 +49,34 @@
   width: 80px;
   display: inline-block;
   color: #000000;
-  padding: 10px 10px;
+  padding: 7px 20px;
   text-decoration: none;
   user-select: none;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 2px solid #f0f0f0;
+  position: relative;
+}
+
+/* 矢印アイコンの作成 */
+.nav_btn:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  right: 0px;
+  width: 10px;
+  height: 2px;
+  background: black;
+  transform: rotate(45deg);
+}
+
+.nav_btn:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: 0px;
+  width: 10px;
+  height: 2px;
+  background: black;
+  transform: rotate(-45deg);
 }
 
 @media (min-width:599px){

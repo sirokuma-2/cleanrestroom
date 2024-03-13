@@ -26,7 +26,7 @@ export function geoLocation(
   locationButton.style.fontSize = "16px";
   locationButton.style.fontWeight = "bold";
   locationButton.style.border = "none";
-  locationButton.style.padding = "10px 20px";
+  locationButton.style.padding = "10px 10%";
   locationButton.style.borderRadius = "10px";
   locationButton.style.marginTop = "60px";
 
