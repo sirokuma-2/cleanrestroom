@@ -1,7 +1,7 @@
 /* フッター */
 
 .footer {
-  margin-top: 10px;
+  margin-top: 20px;
   padding-left: 20px;
   text-align: center;
   display: flex;
@@ -14,8 +14,8 @@
   display: flex;
   justify-content: left;
   list-style: none; 
-  margin-bottom: 30px;
-
+  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .footer-details ul {
@@ -36,5 +36,4 @@
 .footer p {
   font-size: 12px;
   margin: 0 auto;
-  margin-bottom: 20px;
 }
