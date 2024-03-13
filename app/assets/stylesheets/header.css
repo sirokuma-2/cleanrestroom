@@ -22,9 +22,33 @@
   flex-direction: column;
 }
 
-.humburger-menu{
+.hamburger-menu{
   display: inline-block;
   text-align: right;
+}
+
+.close-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.close-icon:before, .close-icon:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 11px;
+  width: 1px;
+  height: 24px;
+  background-color: #000; /* 黒色の線 */
+}
+
+.close-icon:before {
+  transform: rotate(45deg); /* 45度回転 */
+}
+
+.close-icon:after {
+  transform: rotate(-45deg); /* -45度回転 */
 }
 
 .nav-right{
@@ -64,7 +88,7 @@
   right: 0px;
   width: 10px;
   height: 2px;
-  background: black;
+  background: red;
   transform: rotate(45deg);
 }
 
@@ -75,7 +99,7 @@
   right: 0px;
   width: 10px;
   height: 2px;
-  background: black;
+  background: red;
   transform: rotate(-45deg);
 }
 
