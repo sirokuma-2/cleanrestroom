@@ -120,8 +120,12 @@
       font-size: 24px;
     }
 
-    .humburger-menu{
-    display: none;
+    .hamburger-menu{
+     display: none;
+    }
+
+    .close-icon {
+      display: none;
     }
 
     .nav-right{
