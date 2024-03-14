@@ -63,7 +63,6 @@ comment-page {
   min-height: 75px; 
   margin-bottom: 30px;
   padding: 10px;
-  border: 1px solid black;
   display: flex; 
   flex-direction: column;
 }
@@ -71,16 +70,17 @@ comment-page {
 .comment-facility-created-at{
   color: #808080;
   font-size: 10px;
-  text-align: right;
+  text-align: left;
 }
 
 .comment-wrapper {
   display: flex;
   align-items: center;
+  margin-top: 1px;
 }
 
 .comment-reviewer-pic {
-  width: 50px;
+  width: 30px;
   height:auto;
   border-radius: 50%;
 }
@@ -95,16 +95,15 @@ comment-page {
   margin-left: 20px;
 }
 
-.rating {
-  margin-left: auto;
+.star-rating2 {
+  margin-top: 1px;
 }
 
-.rating img{
+.star-rating2 img{
   width: 16px;
 }
 .comment-review-content {
-  margin-top: 10px;
-  margin-left: 5px;
+  margin-top: 1px;
 }
 
 .button-wrapper{
@@ -196,6 +195,6 @@ comment-page {
   }
   
   .comments {
-    width: 700px;
+    width: 500px;
   }
 }

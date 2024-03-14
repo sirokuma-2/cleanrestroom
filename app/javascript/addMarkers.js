@@ -92,7 +92,7 @@ export function addMarkers(
       searchButton.style.backgroundImage = `url(${routeIconUrl})`;
       searchButton.style.backgroundSize = "cover";
       searchButton.style.width = "60px";
-      searchButton.style.height = "45px";
+      searchButton.style.height = "55px";
       searchButton.style.border = "none";
       searchButton.style.cursor = "pointer";
       searchButton.style.margin = "0 20px 0 0";
