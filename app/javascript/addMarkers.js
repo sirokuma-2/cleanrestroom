@@ -320,7 +320,6 @@ export function addMarkers(
       h1Wrapper.style.height = "63px";
       h1Wrapper.style.backgroundColor = "#F0F0F0";
       h1Wrapper.style.marginBottom = "10px";
-      h1Wrapper.style.paddingLeft = "10px";
 
       //施設名称の表示
       const firstHeading = document.createElement("h1");
@@ -329,6 +328,17 @@ export function addMarkers(
       firstHeading.style =
         "font-size: 20px; margin: 0 auto; text-align: center; vertical-align: middle;";
       firstHeading.textContent = name;
+
+      if (firstHeading.textContent.length > 20) {
+        firstHeading.style =
+          "font-size: 14px; margin: 0 auto; text-align: center; vertical-align: middle;";
+      } else if (firstHeading.textContent.length > 10) {
+        firstHeading.style =
+          "font-size: 16px; margin: 0 auto; text-align: center; vertical-align: middle;";
+      } else {
+        firstHeading.style =
+          "font-size: 18px; margin: 0 auto; text-align: center; vertical-align: middle;";
+      }
 
       // 戻るボタン　ルート案内ボタンの表示
       addCloseButton(h1Wrapper);

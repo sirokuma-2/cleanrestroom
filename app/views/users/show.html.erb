@@ -22,7 +22,8 @@
             <%= image_tag post.facility.image.url , class: "review-user-image-pic" if post.facility.image.url.present? %>
           </div>
           <div class="review-facility-name">
-            <%= post.facility.name %>
+            <%# <%= post.facility.name %>
+            <%= link_to post.facility.name, post_path(post) %>
           </div>
         </div>
         <div class="review-content">

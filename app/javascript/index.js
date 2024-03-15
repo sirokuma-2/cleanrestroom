@@ -53,7 +53,6 @@ async function initMap() {
     lng: 139.767125,
   };
 
-  console.log(mapElement);
   //まずは施設情報をすべて表示
   addMarkers(
     locations,
@@ -68,8 +67,6 @@ async function initMap() {
     dataStarOff,
     dataStarHalf
   );
-
-  console.log(mapElement);
 
   //現在地と施設情報の表示
   geoLocation(
