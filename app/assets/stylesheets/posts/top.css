@@ -112,7 +112,7 @@
 
 
 /* 矢印アイコンの作成 */
-a:before {
+.search-btn:before {
   content: "";
   position: absolute;
   top: 40%;
@@ -123,7 +123,7 @@ a:before {
   transform: rotate(45deg);
 }
 
-a:after {
+.search-btn:after {
   content: "";
   position: absolute;
   top: 55%;
@@ -134,7 +134,7 @@ a:after {
   transform: rotate(-45deg);
 }
 
-button:before {
+.location-button:before {
   content: "";
   position: absolute;
   top: 40%;
@@ -145,7 +145,7 @@ button:before {
   transform: rotate(45deg);
 }
 
-button:after {
+.location-button:after {
   content: "";
   position: absolute;
   top: 55%;

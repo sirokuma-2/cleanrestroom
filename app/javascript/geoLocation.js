@@ -27,6 +27,7 @@ export function geoLocation(
   if (mapElement.id === "map") {
     //現在地を取得するボタン プライバシー確保のため現在地をいきなり表示できない
     locationButton = document.createElement("button");
+    locationButton.className = "location-button";
     locationButton.textContent = "最寄りのトイレを探す";
 
     // ボタンをページに追加
