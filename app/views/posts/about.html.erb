@@ -1,13 +1,15 @@
 <%= include_gon %>
 
 <div class="top-bar" id="top-bar">
-  <h1>きれいなトイレを見つけよう（東京）</h1>
-  <p>あなたの近くの清潔で安全なトイレを見つけましょう。</p>
+  <h1>きれいなトイレを見つけよう</h1>
+  <p>Quick Clean Restroom Mapは、あなたの近くの清潔で安全なトイレを簡単に見つけることができるアプリです。</p>
+  <br>
+  <p>外出先でのトイレ探しのストレスを軽減し、快適で衛生的なトイレ体験を提供するために開発されました。</p>
 </div>
 
 <div class="search">
   <!-- 検索バーの実装はここに入れます -->
-  <%= link_to "最寄りのトイレ", posts_path, class:"search-btn"%>
+  <%= link_to "最寄りのトイレを探す", posts_path, class:"search-btn"%>
 </div>
 
 <div class="points">
@@ -17,7 +19,8 @@
       <!-- アイコンとテキストの実装 -->
       <p>\ P O I N T 1 /</p>
       <%= image_tag "point1.png", class:"point-pict" %>
-      <p>きれいなトイレを<br>最短最速で検索</p>
+      <p>直感的な検索機能を使って、所要時間や距離に基づいて、すぐにきれいなトイレを見つけることができます。
+          目的のトイレまでのルートも簡単に確認できます。</p>
      </div>     
     </li>
     <li>
@@ -25,7 +28,8 @@
       <!-- アイコンとテキストの実装 -->
       <p>\ P O I N T 2 /</p>
       <%= image_tag "point2.png", class:"point-pict" %>
-      <p>安心ナビでまよわず<br>トイレまで案内</p>
+      <p>ナビゲーション機能を使って、迷うことなく直接トイレまで案内します。
+         歩行者向けのルートや、公共交通機関を使ったルートのオプションも提供します。</p>
      </div>     
     </li>
     <li>
@@ -33,7 +37,8 @@
       <!-- アイコンとテキストの実装 -->
       <p>\ P O I N T 3 /</p>
       <%= image_tag "point3.png", class:"point-pict" %>
-      <p>きれいなトイレを<br>みんなで評価</p>
+      <p>自分が訪れたきれいなトイレを新たに登録することができます。
+         また、既に登録されているトイレに対しても、評価とコメントを残すことが可能です。</p>
      </div>     
     </li>
   </ul>
@@ -44,9 +49,7 @@
   <p>\ S E A R C H /</p>
   <div class="pict">
     <%= image_tag "map.png", class:"map-pict" %>
-    <%= link_to "最寄りのトイレ", posts_path, class:"map-link"%>
   </div>
-  <p>東京</p>
 </div>
 
 <!-- ここにGoogle MapsやOpenStreetMapの埋め込みコードを挿入 -->

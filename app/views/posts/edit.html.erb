@@ -62,7 +62,7 @@
       <%= f.submit "編集する", class:"facility-post-btn" %>
     </div>
     <div class="facility-delete">
-      <%= link_to "削除する", post_path(@post), data: {turbo_method: :delete},class: "facility-delete-btn" %>
+      <%= link_to "削除する", post_path(@post), data: {turbo_method: :delete,turbo_confirm: '本当に削除してもよろしいですか？'},class: "facility-delete-btn" %>
     </div>
   <% end %>
 </div>

@@ -4,6 +4,7 @@ import { clickListener } from "clickListener";
 
 let locations; //すべての施設の位置
 let currentUserId;
+let mapElement;
 let map;
 let allMarkers = []; // すべてのマーカーを保持する配列
 let directionsService; // ルートを検索するためのDirectionsServiceのインスタンス
@@ -25,7 +26,7 @@ async function initMap() {
 
   locations = gon.posts;
 
-  const mapElement =
+  mapElement =
     document.getElementById("top-map") || document.getElementById("map");
 
   if (mapElement) {
@@ -52,6 +53,7 @@ async function initMap() {
     lng: 139.767125,
   };
 
+  console.log(mapElement);
   //まずは施設情報をすべて表示
   addMarkers(
     locations,
@@ -67,10 +69,13 @@ async function initMap() {
     dataStarHalf
   );
 
+  console.log(mapElement);
+
   //現在地と施設情報の表示
   geoLocation(
     locations,
     currentUserId,
+    mapElement,
     map,
     allMarkers,
     directionsService,

@@ -10,11 +10,11 @@
 }
 
 .header_btn{
-  font-size: 20px; 
+  font-size: 14px; 
+  text-align: center;
   font-weight: bold;
   color: #000000;
   text-decoration: none;
-  border-radius: 3px;
 }
 
 .nav-right-wrapper{
@@ -22,21 +22,45 @@
   flex-direction: column;
 }
 
-.humburger-menu{
+.hamburger-menu{
   display: inline-block;
   text-align: right;
-  height: 30px;
+}
+
+.close-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.close-icon:before, .close-icon:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 11px;
+  width: 1px;
+  height: 24px;
+  background-color: #000; /* 黒色の線 */
+}
+
+.close-icon:before {
+  transform: rotate(45deg); /* 45度回転 */
+}
+
+.close-icon:after {
+  transform: rotate(-45deg); /* -45度回転 */
 }
 
 .nav-right{
   display: none;
-  width:100px;
-  height: 30px;
+  width:130px;
+  height: auto;
   position: relative;
 }
 
 .nav-btn-wrapper{
-  width:100px;
+  width:130px;
+  margin: 0 auto;
   background-color:#ffffff;;
   align-items: flex-end;
   position: absolute;
@@ -46,40 +70,116 @@
 }
 
 .nav_btn{
-  width: 100px;
+  width: 80px;
   display: inline-block;
   color: #000000;
-  padding: 10px 0;
+  padding: 7px 20px;
   text-decoration: none;
   user-select: none;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 2px solid #f0f0f0;
+  position: relative;
+}
+
+/* 矢印アイコンの作成 */
+.nav_btn:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  right: 0px;
+  width: 10px;
+  height: 2px;
+  background: red;
+  transform: rotate(45deg);
+}
+
+.nav_btn:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: 0px;
+  width: 10px;
+  height: 2px;
+  background: red;
+  transform: rotate(-45deg);
 }
 
 @media (min-width:599px){
   .header_btn{
-    font-size: 32px;
+    font-size: 16px;
   } 
+
+  .hamburger-menu{
+    display: none;
+   }
+
+   .close-icon {
+     display: none;
+   }
+
+  .nav-right{
+    display:inline-block ;
+    width: 250px;
+    position: none;
+  }
+
+  /* 矢印アイコンの作成 */
+  .nav_btn:before, .nav_btn:after {
+    display: none;
+  }
+
+
+  .nav-btn-wrapper{
+    width:250px;
+    position: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav_btn{
+    border-bottom: none;
+    width: auto;
+    display: block;
+    color: #000000;
+    padding: 0px 0px;
+  }
 
 }
   
 
 @media (min-width:1024px){
     .header_btn{
-      font-size: 32px;
+      font-size: 20px;
     }
 
-    .humburger-menu{
-    display: none;
+    .hamburger-menu{
+     display: none;
     }
-    
+
+    .close-icon {
+      display: none;
+    }
+
+    .nav-right{
+      display: none;
+      width:auto;
+      height: auto;
+      position: relative;
+    }
+
+    /* 矢印アイコンの作成 */
+    .nav_btn:before, .nav_btn:after {
+      display: none;
+    }
+  
     .nav-right{
       display:inline-block ;
-      width: 300px;
+      width: 250px;
       position: none;
     }
 
     .nav-btn-wrapper{
-      width:300px;
+      width:250px;
       position: none;
       display: flex;
       justify-content: space-between;
@@ -90,6 +190,7 @@
       width: auto;
       display: block;
       color: #000000;
-      padding: 10px 0;
+      padding: 0px 0px;
     }
+
 }

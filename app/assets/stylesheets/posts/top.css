@@ -32,12 +32,36 @@
   font-weight: bold;
   color: #FFFFFF;
   background-color: #4CAF50;
-  padding: 10px 20%;
+  padding: 10px 10%;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
   transition: background-color 0.3s, color 0.3s; /* スムーズなホバー効果を追加 */
+  position: relative;
+}
+
+/* 矢印アイコンの作成 */
+.search-btn:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  right: 12px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.search-btn:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: 12px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(-45deg);
 }
 
 .points ul{
@@ -65,7 +89,6 @@
   height: 150px;
 }
 
-
 .map{
   margin-top: 100px;
 }
@@ -81,22 +104,58 @@
   height: 100px;
 }
 
-.map-link{
-  display: inline-block;
-  color: white;
-  background-color: #4CAF50;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-}
-
 .top-map {
   width: 90%;
   height: 500px;
-  margin-top: 10px;
-  margin: 0 auto;
+  margin: 30px auto;
 }
+
+
+/* 矢印アイコンの作成 */
+a:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  right: 12px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+a:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: 12px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(-45deg);
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  right: 12px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+button:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: 12px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(-45deg);
+}
+
 
 .bottom-bar {
   margin-top: 10px;

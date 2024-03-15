@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_gons, only: [:top, :index]
+  before_action :set_gons, only: [:about, :index]
   before_action :set_post, only: [:show, :edit, :update]
-  before_action :move_to_index, except: [:top, :index, :show, :new, :create]
+  before_action :move_to_index, except: [:about, :index, :show, :new, :create]
 
   include Rails.application.routes.url_helpers
 
-  def top
+  def about
   end
 
   def index

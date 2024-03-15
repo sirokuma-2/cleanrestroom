@@ -1,25 +1,30 @@
 window.addEventListener("turbo:load", function () {
-  const humburgerMenuLoggedIn = document.getElementById(
-    "humburger-menu-logged-in"
+  const hamburgerMenuLoggedIn = document.getElementById(
+    "hamburger-menu-logged-in"
   );
-  const humburgerMenuLoggedOut = document.getElementById(
-    "humburger-menu-logged-out"
+  const hamburgerMenuLoggedOut = document.getElementById(
+    "hamburger-menu-logged-out"
   );
 
   const navRightLoggedIn = document.getElementById("nav-right-logged-in");
   const navRightLoggedOut = document.getElementById("nav-right-logged-out");
 
-  const humburgerMenu = humburgerMenuLoggedIn || humburgerMenuLoggedOut;
+  const hamburgerMenu = hamburgerMenuLoggedIn || hamburgerMenuLoggedOut;
   const navRight = navRightLoggedIn || navRightLoggedOut;
 
-  if (humburgerMenu) {
-    humburgerMenu.addEventListener("click", function () {
-      // navRightの表示状態を切り替える
-      if (navRight.style.display === "inline-block") {
-        navRight.style.display = "none";
-      } else {
-        navRight.style.display = "inline-block";
-      }
+  if (hamburgerMenu) {
+    hamburgerMenu.addEventListener("click", function () {
+      var isExpanded = this.getAttribute("aria-expanded") === "true";
+      this.setAttribute("aria-expanded", !isExpanded);
+      navRight.style.display = isExpanded ? "none" : "block";
+
+      // アイコンの切り替え
+      this.querySelector(".icon-hamburger").style.display = isExpanded
+        ? "inline-block"
+        : "none";
+      this.querySelector(".icon-close").style.display = isExpanded
+        ? "none"
+        : "inline-block";
     });
   }
 });
