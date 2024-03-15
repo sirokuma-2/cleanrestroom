@@ -105,11 +105,43 @@
 
 @media (min-width:599px){
   .header_btn{
-    font-size: 24px;
+    font-size: 16px;
   } 
+
+  .hamburger-menu{
+    display: none;
+   }
+
+   .close-icon {
+     display: none;
+   }
+
+  .nav-right{
+    display:inline-block ;
+    width: 250px;
+    position: none;
+  }
+
+  /* 矢印アイコンの作成 */
+  .nav_btn:before, .nav_btn:after {
+    display: none;
+  }
+
+
+  .nav-btn-wrapper{
+    width:250px;
+    position: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .nav_btn{
     border-bottom: none;
+    width: auto;
+    display: block;
+    color: #000000;
+    padding: 10px 0;
   }
 
 }
@@ -117,7 +149,7 @@
 
 @media (min-width:1024px){
     .header_btn{
-      font-size: 24px;
+      font-size: 20px;
     }
 
     .hamburger-menu{
@@ -142,12 +174,12 @@
   
     .nav-right{
       display:inline-block ;
-      width: 390px;
+      width: 250px;
       position: none;
     }
 
     .nav-btn-wrapper{
-      width:390px;
+      width:250px;
       position: none;
       display: flex;
       justify-content: space-between;
@@ -160,4 +192,5 @@
       color: #000000;
       padding: 10px 0;
     }
+
 }
