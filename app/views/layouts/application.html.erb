@@ -24,8 +24,15 @@
                     <path d="M 10,10 L 24,24 M 24,10 L 10,24" stroke="#909090" stroke-width="2"></path>
                   </svg>
                 </div>
+            </div>
+            <div class="nav-right" id="nav-right-logged-in">
+              <div class="nav-btn-wrapper">
+                <%= link_to "概要", about_path, class: :nav_btn %>
+                <%= link_to "マイページ", user_path(current_user), class: :nav_btn %>
+                <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav_btn %>
               </div>
             </div>
+          </div>
           <% else %>
           <div class="nav-right-wrapper">
             <div class="hamburger-menu" id ="hamburger-menu-logged-in">
@@ -33,24 +40,15 @@
                   <svg style="fill:#70757a;width:24px;height:24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
                 </div>
             </div>
-            
+            <div class="nav-right" id="nav-right-logged-out">
+              <div class="nav-btn-wrapper">
+                <%= link_to "概要", about_path, class: :nav_btn %>
+                <%= link_to "新規登録", new_user_registration_path, class: :nav_btn %> 
+                <%= link_to "ログイン", new_user_session_path, class: :nav_btn %>
+              </div>
+            </div>
           </div>
           <% end %>
-        </div>
-
-        <div class="nav-right" id="nav-right-logged-in">
-          <div class="nav-btn-wrapper">
-              <%= link_to "概要", about_path, class: :nav_btn %>
-              <%= link_to "マイページ", user_path(current_user), class: :nav_btn %>
-              <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav_btn %>
-          </div>
-        </div>
-        <div class="nav-right" id="nav-right-logged-out">
-          <div class="nav-btn-wrapper">
-              <%= link_to "概要", about_path, class: :nav_btn %>
-              <%= link_to "新規登録", new_user_registration_path, class: :nav_btn %> 
-              <%= link_to "ログイン", new_user_session_path, class: :nav_btn %>
-          </div>
         </div>
     </header>
     <%= yield %>
