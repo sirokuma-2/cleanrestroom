@@ -301,6 +301,7 @@ export function addMarkers(
     // infopanelの表示
     marker.addListener("gmp-click", function () {
       infoPanel.style.display = "block";
+      infoPanel.style.height = "77%";
 
       // infoPanelの中身をクリア
       infoPanel.innerHTML = "";
