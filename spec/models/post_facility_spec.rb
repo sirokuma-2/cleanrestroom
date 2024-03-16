@@ -18,7 +18,7 @@ RSpec.describe PostFacility, type: :model do
                                        powder_corner: facility.powder_corner,
                                        stroller_accessible: facility.stroller_accessible,
                                        image: facility.image)
-    sleep 0.1
+    sleep 0.2
 
   end
 
