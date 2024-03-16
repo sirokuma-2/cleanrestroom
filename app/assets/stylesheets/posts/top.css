@@ -13,10 +13,10 @@
 }
 
 .top-bar p{
-  width: 350px;
+  width: 300px;
   font-size: 20px;
   margin-top: 10px;
-  text-align: center;
+  text-align: top;
   margin: 0 auto;
 }
 
@@ -72,8 +72,10 @@
 }
 
 .points p{
-  width: 150px;
+  width: 300px;
+  font-size: 20px;
   text-align: center;
+  text-align: top;
   margin-top: 25px;
 }
 
@@ -85,8 +87,8 @@
 }
 
 .point-pict{
-  width: 150px;
-  height: 150px;
+  width: 300px;
+  height: 300px;
 }
 
 .map{
@@ -172,11 +174,17 @@
   }
   
   .top-bar p{
-    width: 100%;
+    width: 75%;
+    font-size: 20px;
+  }
+
+  .point-pict{
+    width: 200px;
+    height: 200px;
   }
 
   .points p{
-    width: 150px;
+    width: 200px;
     text-align: center;
   }
 
@@ -200,11 +208,17 @@
   }
   
   .top-bar p{
-    width: 100%;
+    width: 75%;
+    font-size: 20px;
+  }
+
+  .point-pict{
+    width: 200px;
+    height: 200px;
   }
 
   .points p{
-    width: 150px;
+    width: 200px;
     text-align: center;
   }
 
@@ -228,11 +242,17 @@
   }
   
   .top-bar p{
-    width: 100%;
+    width: 75%;
+    font-size: 20px;
+  }
+
+  .point-pict{
+    width: 200px;
+    height: 200px;
   }
 
   .points p{
-    width: 150px;
+    width: 200px;
     text-align: center;
   }
 
