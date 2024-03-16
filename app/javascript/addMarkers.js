@@ -66,12 +66,16 @@ export function addMarkers(
     userId = location.userId.id;
     currentUserId2 = currentUserId;
 
-    // 戻るボタン関数の作成
+    // 閉じるボタン関数の作成
     function addCloseButton(parentElement) {
       const closeButton = document.createElement("button");
-      closeButton.textContent = "← 戻る";
+      closeButton.textContent = "← 閉じる";
+      closeButton.style.width = "70px";
+      closeButton.style.height = "55px";
       closeButton.style.border = "none";
       closeButton.style.fontWeight = "bold";
+      closeButton.style.margin = "0 0 0 5px";
+      closeButton.style.backgroundColor = "white";
       closeButton.onclick = hideInfoPanel;
       parentElement.appendChild(closeButton);
     }
@@ -92,10 +96,10 @@ export function addMarkers(
       searchButton.style.backgroundImage = `url(${routeIconUrl})`;
       searchButton.style.backgroundSize = "cover";
       searchButton.style.width = "60px";
-      searchButton.style.height = "45px";
+      searchButton.style.height = "55px";
       searchButton.style.border = "none";
       searchButton.style.cursor = "pointer";
-      searchButton.style.margin = "0 20px 0 0";
+      searchButton.style.margin = "0 5px 0 0";
       searchButton.onclick = function () {
         // ルート検索関数を呼び出し
         calculateAndDisplayRoute(
@@ -116,6 +120,7 @@ export function addMarkers(
     //編集・評価するボタンの関数作成
     function addButtonEdit(parentElement, buttonText) {
       const Button = document.createElement("a");
+      Button.className = "button-btn";
       Button.textContent = buttonText;
       Button.href = `${baseUrl}/posts/${location.id}/edit`;
       Button.style.display = "inline-block"; // ブロック要素のように扱う
@@ -125,13 +130,16 @@ export function addMarkers(
       Button.style.textDecoration = "none";
       Button.style.border = "none";
       Button.style.padding = "10px 20px";
+      Button.style.marginTop = "10px";
       Button.style.cursor = "pointer";
+      Button.style.position = "relative";
       parentElement.appendChild(Button);
     }
 
     function addButtonReview(parentElement, buttonText) {
       const Button = document.createElement("a");
       Button.textContent = buttonText;
+      Button.className = "button-btn";
       Button.href = `${baseUrl}/posts/${location.id}/comments/new`;
       Button.style.display = "inline-block"; // ブロック要素のように扱う
       Button.style.backgroundColor = "#4CAF50";
@@ -140,7 +148,9 @@ export function addMarkers(
       Button.style.textDecoration = "none";
       Button.style.border = "none";
       Button.style.padding = "10px 20px";
+      Button.style.marginTop = "10px";
       Button.style.cursor = "pointer";
+      Button.style.position = "relative";
       parentElement.appendChild(Button);
     }
 
@@ -291,6 +301,7 @@ export function addMarkers(
     // infopanelの表示
     marker.addListener("gmp-click", function () {
       infoPanel.style.display = "block";
+      infoPanel.style.height = "77%";
 
       // infoPanelの中身をクリア
       infoPanel.innerHTML = "";
@@ -320,7 +331,6 @@ export function addMarkers(
       h1Wrapper.style.height = "63px";
       h1Wrapper.style.backgroundColor = "#F0F0F0";
       h1Wrapper.style.marginBottom = "10px";
-      h1Wrapper.style.paddingLeft = "10px";
 
       //施設名称の表示
       const firstHeading = document.createElement("h1");
@@ -329,6 +339,18 @@ export function addMarkers(
       firstHeading.style =
         "font-size: 20px; margin: 0 auto; text-align: center; vertical-align: middle;";
       firstHeading.textContent = name;
+
+      if (firstHeading.textContent.length >= 15) {
+        firstHeading.style =
+          "font-size: 12px; margin: 0 auto; text-align: center; vertical-align: middle;";
+      } else if (firstHeading.textContent.length >= 10) {
+        firstHeading.style =
+          "font-size: 16px; margin: 0 auto; text-align: center; vertical-align: middle;";
+      } else {
+        firstHeading.style =
+          "font-size: 18px; margin: 0 auto; text-align: center; vertical-align: middle;";
+      }
+      firstHeading.style.maxWidth = "200px";
 
       // 戻るボタン　ルート案内ボタンの表示
       addCloseButton(h1Wrapper);

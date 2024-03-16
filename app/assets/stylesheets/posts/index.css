@@ -10,6 +10,7 @@
   top: 70px;
   left: 0;
   background-color: white;
+  
 }
 
 .infoPanel-visible {
@@ -29,6 +30,7 @@
   .info-panel {
     width: 50%;
     display: none;
+    overflow:auto
   }
 }
 
@@ -36,6 +38,7 @@
   .info-panel {
     width: 35%;
     display: none;
+    overflow:auto
   }
 }
 
@@ -43,5 +46,6 @@
   .info-panel {
     width: 28%;
     display: none;
+    overflow:auto
   }
 }
