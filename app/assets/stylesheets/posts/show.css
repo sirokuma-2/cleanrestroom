@@ -138,6 +138,31 @@ comment-page {
   cursor: pointer;
 }
 
+/* 矢印アイコンの作成 */
+.button-btn:before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  right: 5px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(45deg);
+}
+
+.button-btn:after {
+  content: "";
+  position: absolute;
+  top: 55%;
+  right: 5px;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(-45deg);
+}
+
+
+
 @media (min-width:599px){
   .comments-page-wrapper{
     margin: 50px auto;
