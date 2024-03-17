@@ -6,14 +6,16 @@ class PostFacility
 
   with_options presence: true do
     validates :facility_id
-    validates :name
+    # validates :name
     validates :address
     validates :content
     validates :latitude
     validates :longitude
-    validates :image, presence: true, unless: :was_attached?
+    # validates :image, presence: true, unless: :was_attached?
     validates :user_id
   end
+
+  validate :image_or_name_present
 
   def save
     facility = Facility.new(name:, address:, content:, latitude:, longitude:,
@@ -24,9 +26,22 @@ class PostFacility
 
     if facility.save
       Post.create(facility_id: facility.id, user_id:)
-      true
+
     else
       false
     end
+  end
+
+  # //rspec用
+  def was_attached?
+    image.present?
+  end
+
+  private
+
+  def image_or_name_present
+    return if name.present? || image.present?
+
+    errors.add(:base, 'Name or image must be present')
   end
 end

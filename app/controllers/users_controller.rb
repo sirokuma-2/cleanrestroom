@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :user_params, only: :create
+  before_action :redirect_to_root_path, only: [:edit, :update]
 
   def show
     @posts = Post.includes(:user).where(user_id: @user.id).order('created_at DESC').page(params[:page]).per(5)
@@ -24,5 +26,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def redirect_to_root_path
+    redirect_to root_path if current_user.id != @user.id
   end
 end
