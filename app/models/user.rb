@@ -7,5 +7,4 @@ class User < ApplicationRecord
   has_one_attached :imageName
 
   validates :name, presence: true
-
 end

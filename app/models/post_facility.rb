@@ -25,8 +25,8 @@ class PostFacility
     facility.image.attach(image) if image.present?
 
     if facility.save
-      post = Post.create(facility_id: facility.id, user_id:)
-      return post
+      Post.create(facility_id: facility.id, user_id:)
+
     else
       false
     end
@@ -38,8 +38,10 @@ class PostFacility
   end
 
   private
+
   def image_or_name_present
     return if name.present? || image.present?
-    errors.add(:base, "Name or image must be present")
+
+    errors.add(:base, 'Name or image must be present')
   end
 end

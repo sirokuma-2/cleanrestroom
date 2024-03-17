@@ -2,24 +2,23 @@ require 'rails_helper'
 
 RSpec.describe PostFacility, type: :model do
   before do
-    user =  FactoryBot.create(:user)
+    user = FactoryBot.create(:user)
     facility = FactoryBot.create(:facility)
     @post_facility = FactoryBot.build(:post_facility,
-                                       user_id: user.id,
-                                       facility_id: facility.id,
-                                       name: facility.name,
-                                       address: facility.address,
-                                       content: facility.content,
-                                       latitude: facility.latitude,
-                                       longitude: facility.longitude,
-                                       nursing_room: facility.nursing_room,
-                                       anyone_toilet: facility.anyone_toilet,
-                                       diaper_changing_station: facility.diaper_changing_station,
-                                       powder_corner: facility.powder_corner,
-                                       stroller_accessible: facility.stroller_accessible,
-                                       image: facility.image)
+                                      user_id: user.id,
+                                      facility_id: facility.id,
+                                      name: facility.name,
+                                      address: facility.address,
+                                      content: facility.content,
+                                      latitude: facility.latitude,
+                                      longitude: facility.longitude,
+                                      nursing_room: facility.nursing_room,
+                                      anyone_toilet: facility.anyone_toilet,
+                                      diaper_changing_station: facility.diaper_changing_station,
+                                      powder_corner: facility.powder_corner,
+                                      stroller_accessible: facility.stroller_accessible,
+                                      image: facility.image)
     sleep 0.2
-
   end
 
   describe '施設情報を登録できる場合' do
@@ -72,7 +71,7 @@ RSpec.describe PostFacility, type: :model do
         @post_facility.name = ''
         @post_facility.image = ''
         @post_facility.valid?
-        expect(@post_facility.errors.full_messages).to include("Name or image must be present")
+        expect(@post_facility.errors.full_messages).to include('Name or image must be present')
       end
     end
   end

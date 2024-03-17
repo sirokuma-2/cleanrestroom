@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
+RSpec.describe 'Users', type: :system do
   before do
     @user = FactoryBot.build(:user)
-
   end
 
   context 'ユーザー新規登録ができるとき' do
@@ -23,10 +22,10 @@ RSpec.describe "Users", type: :system do
       fill_in 'パスワード', with: @user.password
       fill_in 'パスワード確認', with: @user.password_confirmation
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
         sleep 1
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページへ遷移することを確認する
       expect(page).to have_current_path(root_path)
       # カーソルを合わせるとログアウトボタンが表示されることを確認する
@@ -50,10 +49,10 @@ RSpec.describe "Users", type: :system do
       fill_in 'パスワード', with: ''
       fill_in 'パスワード確認', with: ''
       # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
         sleep 1
-      }.to change { User.count }.by(0)
+      end.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する
       expect(page).to have_current_path(new_user_registration_path)
     end
@@ -136,14 +135,13 @@ RSpec.describe 'ユーザー情報編集', type: :system do
       image_path2 = Rails.root.join('public/images/test_image2.png')
 
       # # # 画像選択フォームに画像を添付する
-      attach_file("user[imageName]", image_path2, make_visible: true)
+      attach_file('user[imageName]', image_path2, make_visible: true)
 
       # 編集してもTweetモデルのカウントは変わらないことを確認する
-      expect{
-      find('input[name="commit"]').click
-      sleep 1
-      }.to change { User.count }.by(0)
-
+      expect do
+        find('input[name="commit"]').click
+        sleep 1
+      end.to change { User.count }.by(0)
     end
   end
   context '編集ができないとき' do
@@ -160,7 +158,7 @@ RSpec.describe 'ユーザー情報編集', type: :system do
 
       sleep 1
 
-      expect(page).to have_no_content("編集")
+      expect(page).to have_no_content('編集')
     end
   end
 end

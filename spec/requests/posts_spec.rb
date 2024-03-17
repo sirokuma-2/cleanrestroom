@@ -1,6 +1,5 @@
 require 'rails_helper'
 describe PostsController, type: :request do
-
   # before do
   #   @tweet = FactoryBot.create(:post)
   # end
@@ -16,13 +15,13 @@ describe PostsController, type: :request do
       expect(response.status).to eq(200)
     end
     it 'topアクションにリクエストするとレスポンスにマップが存在する' do
-     get root_path
-     expect(response.body).to include("top-map")
+      get root_path
+      expect(response.body).to include('top-map')
     end
     it 'indexアクションにリクエストするとレスポンスにマップが存在する' do
       get posts_path
-      expect(response.body).to include("map")
-     end
+      expect(response.body).to include('map')
+    end
     # it 'indexアクションにリクエストするとレスポンスに投稿済みのツイートの画像URLが存在する' do
     #  get root_path
     #  expect(response.【B】).to include(【C】.image)

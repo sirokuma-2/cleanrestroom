@@ -1,27 +1,26 @@
 require 'rails_helper'
 
-RSpec.describe "Comments", type: :system do
+RSpec.describe 'Comments', type: :system do
   before do
-    @user =  FactoryBot.create(:user)
+    @user = FactoryBot.create(:user)
     @user2 =  FactoryBot.create(:user)
     @facility = FactoryBot.create(:facility)
     @comment = FactoryBot.create(:comment)
     @post_facility = FactoryBot.build(:post_facility,
-                                       user_id: @user.id,
-                                       facility_id: @facility.id,
-                                       name: @facility.name,
-                                       address: @facility.address,
-                                       content: @facility.content,
-                                       latitude: @facility.latitude,
-                                       longitude: @facility.longitude,
-                                       nursing_room: @facility.nursing_room,
-                                       anyone_toilet: @facility.anyone_toilet,
-                                       diaper_changing_station: @facility.diaper_changing_station,
-                                       powder_corner: @facility.powder_corner,
-                                       stroller_accessible: @facility.stroller_accessible,
-                                       image: @facility.image,
-                                       )
-    end
+                                      user_id: @user.id,
+                                      facility_id: @facility.id,
+                                      name: @facility.name,
+                                      address: @facility.address,
+                                      content: @facility.content,
+                                      latitude: @facility.latitude,
+                                      longitude: @facility.longitude,
+                                      nursing_room: @facility.nursing_room,
+                                      anyone_toilet: @facility.anyone_toilet,
+                                      diaper_changing_station: @facility.diaper_changing_station,
+                                      powder_corner: @facility.powder_corner,
+                                      stroller_accessible: @facility.stroller_accessible,
+                                      image: @facility.image)
+  end
 
   it 'ログインしたユーザーはツイート詳細ページでコメント投稿できる' do
     # ログインする
@@ -39,25 +38,23 @@ RSpec.describe "Comments", type: :system do
     @post_facility.powder_corner == true ? check('パウダーコーナー') : uncheck('パウダーコーナー')
     @post_facility.stroller_accessible == true ? check('ベビーカー可') : uncheck('ベビーカー可')
 
-
-
     image_path = Rails.root.join('public/images/test_image.png')
 
     # # # 画像選択フォームに画像を添付する
-    attach_file("post_facility[image]", image_path, make_visible: true)
+    attach_file('post_facility[image]', image_path, make_visible: true)
 
     # 送信するとPostモデルのカウントが1上がることを確認する
 
-    expect{
-    find('input[name="commit"]').click
-    sleep 1
-    }.to change {Post.count }.by(1)
+    expect do
+      find('input[name="commit"]').click
+      sleep 1
+    end.to change { Post.count }.by(1)
 
     # #最新のpostidを取得
-    latest_post_id= Post.last.id
+    latest_post_id = Post.last.id
 
     find('a.nav_btn', text: 'ログアウト').click
-    expect(page).to have_content("ログイン")
+    expect(page).to have_content('ログイン')
 
     sign_in(@user2)
 
@@ -67,11 +64,10 @@ RSpec.describe "Comments", type: :system do
     find("img[alt='#{@comment.rating}']").click
     fill_in 'コメントを書く', with: @comment.content
 
-    expect{
+    expect  do
       find('input[name="commit"]').click
       sleep 1
-    }.to change {Comment.count }.by(1)
-
+    end.to change { Comment.count }.by(1)
 
     # ページ上の星の数を数える
     stars_count = page.all('img.rating-star').size
@@ -80,6 +76,5 @@ RSpec.describe "Comments", type: :system do
     expect(stars_count).to eq(@comment.rating)
 
     expect(page).to have_content(@comment.content)
-
   end
 end
