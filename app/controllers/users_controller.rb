@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit]
+  before_action :set_user, only: [:show, :edit, :update]
   before_action :user_params, only: :create
+  before_action :redirect_to_root_path, only: [:edit, :update]
 
 
   def show
