@@ -24,7 +24,7 @@ RSpec.describe Comment, type: :model do
       end
       it '重複したuserIdが存在する場合はコメントできない' do
         @comment.save
-        same_user = FactoryBot.build(:comment, user_id: @comment.user_id ,post_id: @comment.post_id)
+        same_user = FactoryBot.build(:comment, user_id: @comment.user_id, post_id: @comment.post_id)
         same_user.valid?
         expect(same_user.errors.full_messages).to include('User コメントは一人１回である必要があります')
       end
