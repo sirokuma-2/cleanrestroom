@@ -25,8 +25,8 @@ class PostFacility
     facility.image.attach(image) if image.present?
 
     if facility.save
-      Post.create(facility_id: facility.id, user_id:)
-      true
+      post = Post.create(facility_id: facility.id, user_id:)
+      return post
     else
       false
     end
