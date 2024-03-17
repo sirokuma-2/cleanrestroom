@@ -125,7 +125,6 @@ RSpec.describe "PostFacilities", type: :system do
        # # # 画像選択フォームに画像を添付する
        attach_file("facility[image]", image_path2, make_visible: true)
 
-
        # 編集してもTweetモデルのカウントは変わらないことを確認する
        expect{
         find('input[name="commit"]').click
@@ -172,15 +171,12 @@ RSpec.describe "PostFacilities", type: :system do
       find('a.nav_btn', text: 'ログアウト').click
       expect(page).to have_content("ログイン")
 
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @user2.email
-      fill_in 'パスワード', with: @user2.password
-      find('input[name="commit"]').click
+      sign_in(@user2)
 
       #@userが投稿したページの編集画面にアクセス
       visit edit_post_path(latest_post_id)
 
-      expect(page).to have_no_content("編集する}")
+      expect(page).to have_no_content("編集する")
     end
   end
   context '投稿を削除できるとき'do
@@ -269,10 +265,7 @@ RSpec.describe "PostFacilities", type: :system do
       find('a.nav_btn', text: 'ログアウト').click
       expect(page).to have_content("ログイン")
 
-      visit new_user_session_path
-      fill_in 'メールアドレス', with: @user2.email
-      fill_in 'パスワード', with: @user2.password
-      find('input[name="commit"]').click
+      sign_in(@user2)
 
       #@userが投稿したページの編集画面にアクセス
       visit edit_post_path(latest_post_id)
