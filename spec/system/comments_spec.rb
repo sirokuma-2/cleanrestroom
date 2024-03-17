@@ -22,7 +22,7 @@ RSpec.describe 'Comments', type: :system do
                                       image: @facility.image)
   end
 
-  it 'ログインしたユーザーはツイート詳細ページでコメント投稿できる' do
+  it 'ログインしたユーザーはコメント投稿できる' do
     # ログインする
     sign_in(@user)
     # 投稿ページに移動する
