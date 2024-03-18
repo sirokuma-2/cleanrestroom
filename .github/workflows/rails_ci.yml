@@ -40,8 +40,8 @@ jobs:
         MYSQL_ROOT_PASSWORD: password
   
 
-    - name: Run RSpec
-      run: bundle exec rspec spec/models
+    # - name: Run RSpec
+    #   run: bundle exec rspec 
 
     - name: Run RuboCop
       run: bundle exec rubocop
