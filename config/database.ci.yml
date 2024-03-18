@@ -3,5 +3,5 @@ test:
   encoding: utf8
   username: root
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
-  host: 127.0.0.1
+  host: mysql
   database: cleanrestroom_test

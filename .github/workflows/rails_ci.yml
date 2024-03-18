@@ -34,7 +34,6 @@ jobs:
 
     - name: Setup database
       run: |
-        sudo /etc/init.d/mysql start
         cp config/database.ci.yml config/database.yml
         bundle exec rails db:create db:schema:load RAILS_ENV=test
       env:
