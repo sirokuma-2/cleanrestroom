@@ -37,6 +37,9 @@ jobs:
         sudo /etc/init.d/mysql start
         cp config/database.ci.yml config/database.yml
         bundle exec rails db:create db:schema:load RAILS_ENV=test
+      env:
+        MYSQL_ROOT_PASSWORD: password
+  
 
     - name: Run RSpec
       run: bundle exec rspec
