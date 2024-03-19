@@ -74,9 +74,8 @@ RSpec.configure do |config|
     options.add_argument('--no-sandbox') # This option is required if running on CI such as TravisCI
     options.add_argument('--window-size=1920,1080')
 
-    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
-    end
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
+  end
 
   Capybara.javascript_driver = :selenium_chrome_headless
-
 end
