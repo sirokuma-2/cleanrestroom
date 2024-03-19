@@ -4,31 +4,23 @@ describe PostsController, type: :request do
   #   @tweet = FactoryBot.create(:post)
   # end
 
-  describe 'GET #index' do
-    it 'topアクションにリクエストすると正常にレスポンスが返ってくる' do
+  describe 'GET postコントローラー' do
+    it 'indexアクションにリクエストすると正常にレスポンスが返ってくる' do
       get root_path
       # binding.pry
       expect(response.status).to eq(200)
     end
-    it 'indexアクションにリクエストすると正常にレスポンスが返ってくる' do
-      get posts_path
+    it 'aboutアクションにリクエストすると正常にレスポンスが返ってくる' do
+      get about_path
       expect(response.status).to eq(200)
     end
-    it 'topアクションにリクエストするとレスポンスにマップが存在する' do
-      get root_path
-      expect(response.body).to include('top-map')
-    end
     it 'indexアクションにリクエストするとレスポンスにマップが存在する' do
-      get posts_path
+      get root_path
       expect(response.body).to include('map')
     end
-    # it 'indexアクションにリクエストするとレスポンスに投稿済みのツイートの画像URLが存在する' do
-    #  get root_path
-    #  expect(response.【B】).to include(【C】.image)
-    # end
-    # it 'indexアクションにリクエストするとレスポンスに投稿検索フォームが存在する' do
-    #   get root_path
-    #   expect(response.【B】).to 【D】('投稿を検索する')
-    # end
+    it 'aboutアクションにリクエストするとレスポンスにマップが存在する' do
+      get about_path
+      expect(response.body).to include('top-map')
+    end
   end
 end

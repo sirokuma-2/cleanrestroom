@@ -112,7 +112,7 @@ RSpec.describe 'ユーザー情報編集', type: :system do
   end
 
   context '編集ができるとき' do
-    it '保存されているユーザーの情報と合致すればログインができる' do
+    it '保存されているユーザーの情報と合致すればユーザー情報を編集できる' do
       visit new_user_session_path
       fill_in 'メールアドレス', with: @user.email
       fill_in 'パスワード', with: @user.password
@@ -145,7 +145,7 @@ RSpec.describe 'ユーザー情報編集', type: :system do
     end
   end
   context '編集ができないとき' do
-    it '保存されているユーザーの情報と合致しないとログインができない' do
+    it '保存されているユーザーの情報と合致しないとユーザ情報を編集できない' do
       visit new_user_session_path
       fill_in 'メールアドレス', with: @user2.email
       fill_in 'パスワード', with: @user2.password
