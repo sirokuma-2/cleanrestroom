@@ -15,7 +15,7 @@ RSpec.describe PostFacility, type: :model do
                                       nursing_room: facility.nursing_room,
                                       anyone_toilet: facility.anyone_toilet,
                                       diaper_changing_station: facility.diaper_changing_station,
-                                        powder_corner: facility.powder_corner,
+                                      powder_corner: facility.powder_corner,
                                       stroller_accessible: facility.stroller_accessible,
                                       image: facility.image)
     sleep 0.1
