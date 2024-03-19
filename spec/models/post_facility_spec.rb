@@ -18,7 +18,6 @@ RSpec.describe PostFacility, type: :model do
                                       powder_corner: facility.powder_corner,
                                       stroller_accessible: facility.stroller_accessible,
                                       image: facility.image)
-    sleep 5.0
   end
 
   describe '施設情報を登録できる場合' do
