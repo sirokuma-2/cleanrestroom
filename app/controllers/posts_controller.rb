@@ -100,7 +100,7 @@ class PostsController < ApplicationController
             rating: comment.rating
           }
         end,
-        userId: Digest::SHA256.hexdigest(post.user.id.to_s),
+        userId: Digest::SHA256.hexdigest(post.user.id.to_s)
       }
     end
   end
@@ -111,6 +111,7 @@ class PostsController < ApplicationController
 
   def move_to_index
     return if user_signed_in? && current_user.id == Post.find(params[:id]).user_id
+
     redirect_to action: :index
   end
 end
