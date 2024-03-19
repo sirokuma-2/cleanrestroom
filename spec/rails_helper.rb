@@ -1,5 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+
+require 'capybara/rspec'
+require 'selenium-webdriver'
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -62,4 +66,17 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  Capybara.register_driver :selenium_chrome_headless do |app|
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu') # For older versions of Chrome
+    options.add_argument('--no-sandbox') # This option is required if running on CI such as TravisCI
+    options.add_argument('--window-size=1920,1080')
+
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+    end
+
+  Capybara.javascript_driver = :selenium_chrome_headless
+
 end
