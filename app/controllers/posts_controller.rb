@@ -1,3 +1,5 @@
+require 'digest'
+
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_gons, only: [:about, :index]
@@ -70,7 +72,7 @@ class PostsController < ApplicationController
   def set_gons
     gon.googlemap_key = ENV['GOOGLE_MAP_KEY']
 
-    gon.current_userid = current_user.id if user_signed_in?
+    gon.current_userid = Digest::SHA256.hexdigest(current_user.id.to_s) if user_signed_in?
 
     @posts = Post.includes(:facility).all
     gon.posts = @posts.map do |post|
@@ -87,8 +89,18 @@ class PostsController < ApplicationController
         powder_corner: post.facility.powder_corner,
         stroller_accessible: post.facility.stroller_accessible,
         image: url_for(post.facility.image.url),
-        comment: post.comments,
-        userId: post.user
+        comment: post.comments.map do |comment|
+          {
+            id: comment.id,
+            post_id: comment.post_id,
+            user_id: Digest::SHA256.hexdigest(comment.user_id.to_s),
+            content: comment.content,
+            created_at: comment.created_at,
+            updated_at: comment.updated_at,
+            rating: comment.rating
+          }
+        end,
+        userId: Digest::SHA256.hexdigest(post.user.id.to_s),
       }
     end
   end
@@ -99,7 +111,6 @@ class PostsController < ApplicationController
 
   def move_to_index
     return if user_signed_in? && current_user.id == Post.find(params[:id]).user_id
-
     redirect_to action: :index
   end
 end
