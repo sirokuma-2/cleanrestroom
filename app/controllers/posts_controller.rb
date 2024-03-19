@@ -89,17 +89,7 @@ class PostsController < ApplicationController
         powder_corner: post.facility.powder_corner,
         stroller_accessible: post.facility.stroller_accessible,
         image: url_for(post.facility.image.url),
-        comment: post.comments.map do |comment|
-          {
-            id: comment.id,
-            post_id: comment.post_id,
-            user_id: Digest::SHA256.hexdigest(comment.user_id.to_s),
-            content: comment.content,
-            created_at: comment.created_at,
-            updated_at: comment.updated_at,
-            rating: comment.rating
-          }
-        end,
+        comment: comments_data(post.comments),
         userId: Digest::SHA256.hexdigest(post.user.id.to_s)
       }
     end
@@ -113,5 +103,19 @@ class PostsController < ApplicationController
     return if user_signed_in? && current_user.id == Post.find(params[:id]).user_id
 
     redirect_to action: :index
+  end
+
+  def comments_data(comments)
+    comments.map do |comment|
+      {
+        id: comment.id,
+        post_id: comment.post_id,
+        user_id: Digest::SHA256.hexdigest(comment.user_id.to_s),
+        content: comment.content,
+        created_at: comment.created_at,
+        updated_at: comment.updated_at,
+        rating: comment.rating
+      }
+    end
   end
 end
