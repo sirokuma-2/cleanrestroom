@@ -100,3 +100,5 @@ gem 'aws-sdk-rails'
 gem 'kaminari'
 
 gem 'rails-i18n'
+
+gem 'friendly_id'
