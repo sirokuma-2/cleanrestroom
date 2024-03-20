@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_20_014054) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_20_084247) do
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -68,7 +68,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_20_014054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "hashId"
     t.index ["facility_id"], name: "index_posts_on_facility_id"
+    t.index ["hashId"], name: "index_posts_on_hashId"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|

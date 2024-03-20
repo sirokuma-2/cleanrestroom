@@ -16,8 +16,10 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @post = Post.find_by(params[:post_hashId])
     @comments = @post.comments.includes(:user).page(params[:page]).per(5)
     @comments_reviews = @post.comments.includes(:user)
+    puts @post.id
   end
 
   def new
@@ -96,7 +98,8 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find_by(hashId: params[:hashId])
+    puts @post
   end
 
   def move_to_index
@@ -118,4 +121,5 @@ class PostsController < ApplicationController
       }
     end
   end
+
 end
