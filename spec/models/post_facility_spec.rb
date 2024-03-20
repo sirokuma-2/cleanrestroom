@@ -8,7 +8,7 @@ RSpec.describe PostFacility, type: :model do
     @post_facility = FactoryBot.build(:post_facility,
                                       user_id: user.id,
                                       facility_id: facility.id,
-                                      hashId: post.hashId,
+                                      hash_id: post.hash_id,
                                       name: facility.name,
                                       address: facility.address,
                                       content: facility.content,
@@ -48,10 +48,10 @@ RSpec.describe PostFacility, type: :model do
         @post_facility.valid?
         expect(@post_facility.errors.full_messages).to include("Facility can't be blank")
       end
-      it 'hashIdが空では登録できない' do
-        @post_facility.hashId = ''
+      it 'hash_idが空では登録できない' do
+        @post_facility.hash_id = ''
         @post_facility.valid?
-        expect(@post_facility.errors.full_messages).to include("Hashid can't be blank")
+        expect(@post_facility.errors.full_messages).to include("Hash can't be blank")
       end
       it 'addressが空では登録できない' do
         @post_facility.address = ''

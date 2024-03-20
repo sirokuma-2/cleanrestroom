@@ -8,6 +8,6 @@ class Post < ApplicationRecord
   private
 
   def generate_hash_id
-    self.hashId = Digest::SHA256.hexdigest("#{id}#{Time.current.to_i}")
+    self.hash_id = Digest::SHA256.hexdigest("#{id}#{Time.current.to_i}")
   end
 end

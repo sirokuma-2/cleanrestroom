@@ -9,7 +9,7 @@ RSpec.describe 'PostFacilities', type: :system do
     @post_facility = FactoryBot.build(:post_facility,
                                       user_id: @user.id,
                                       facility_id: @facility.id,
-                                      hashId: @post.hashId,
+                                      hash_id: @post.hash_id,
                                       name: @facility.name,
                                       address: @facility.address,
                                       content: @facility.content,
@@ -53,7 +53,7 @@ RSpec.describe 'PostFacilities', type: :system do
       end.to change { Post.count }.by(1)
 
       # #最新のpostidを取得
-      latest_post_id = Post.last.hashId
+      latest_post_id = Post.last.hash_id
       visit post_path(latest_post_id)
       # 投稿した内容の画像が存在することを確認する（画像）
       expect(page).to have_xpath("//img[contains(@src, 'test_image')]")
@@ -102,7 +102,7 @@ RSpec.describe 'PostFacilities', type: :system do
       end.to change { Post.count }.by(1)
 
       # #最新のpostidを取得
-      latest_post_id = Post.last.hashId
+      latest_post_id = Post.last.hash_id
       visit edit_post_path(latest_post_id)
 
       # すでに投稿済みの内容がフォームに入っていることを確認する
@@ -163,7 +163,7 @@ RSpec.describe 'PostFacilities', type: :system do
         sleep 1
       end.to change { Post.count }.by(1)
 
-      latest_post_id = Post.last.hashId
+      latest_post_id = Post.last.hash_id
 
       find('a.nav_btn', text: 'ログアウト').click
       expect(page).to have_content('ログイン')
@@ -205,7 +205,7 @@ RSpec.describe 'PostFacilities', type: :system do
       end.to change { Post.count }.by(1)
 
       # #最新のpostidを取得
-      latest_post_id = Post.last.hashId
+      latest_post_id = Post.last.hash_id
 
       # ログアウト
       find('a.nav_btn', text: 'ログアウト').click
@@ -257,7 +257,7 @@ RSpec.describe 'PostFacilities', type: :system do
         sleep 1
       end.to change { Post.count }.by(1)
 
-      latest_post_id = Post.last.hashId
+      latest_post_id = Post.last.hash_id
 
       find('a.nav_btn', text: 'ログアウト').click
       expect(page).to have_content('ログイン')
@@ -298,7 +298,7 @@ RSpec.describe 'PostFacilities', type: :system do
         sleep 1
       end.to change { Post.count }.by(1)
 
-      latest_post_id = Post.last.hashId
+      latest_post_id = Post.last.hash_id
 
       find('a.nav_btn', text: 'ログアウト').click
 
