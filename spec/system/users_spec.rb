@@ -154,7 +154,7 @@ RSpec.describe 'ユーザー情報編集', type: :system do
 
       sleep 1
 
-      visit edit_user_path(@user.id)
+      visit edit_user_path(@user)
 
       sleep 1
 
