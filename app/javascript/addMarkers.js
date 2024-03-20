@@ -63,7 +63,7 @@ export function addMarkers(
     powder_corner = location.powder_corner;
     stroller_accessible = location.stroller_accessible;
     imageUrl = location.image;
-    userId = location.userId.id;
+    userId = location.userId;
     currentUserId2 = currentUserId;
 
     // 閉じるボタン関数の作成
