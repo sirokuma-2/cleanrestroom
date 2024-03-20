@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @post = Post.find_by(hashId: params[:post_hashId])
     @comment = Comment.new(comment_params)
     if Comment.create(comment_params)
-      redirect_to "/posts/#{@comment.post.id}" # コメントと結びつくツイートの詳細画面に遷移する
+      redirect_to "/posts/#{@comment.post.hashId}" # コメントと結びつくツイートの詳細画面に遷移する
     else
       render :new, status: :unprocessable_entity
     end

@@ -16,10 +16,8 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @post = Post.find_by(params[:post_hashId])
     @comments = @post.comments.includes(:user).page(params[:page]).per(5)
     @comments_reviews = @post.comments.includes(:user)
-    puts @post.id
   end
 
   def new
@@ -80,6 +78,7 @@ class PostsController < ApplicationController
     gon.posts = @posts.map do |post|
       {
         id: post.id,
+        hashId:post.hashId,
         name: post.facility.name,
         address: post.facility.address,
         content: post.facility.content,
@@ -99,12 +98,10 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_by(hashId: params[:hashId])
-    puts @post
   end
 
   def move_to_index
-    return if user_signed_in? && current_user.id == Post.find(params[:id]).user_id
-
+    return if user_signed_in? && current_user.id == Post.find_by(hashId: params[:hashId]).user_id
     redirect_to action: :index
   end
 

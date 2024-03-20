@@ -28,7 +28,6 @@
       <%= f.label :content, "コメントを書く" %><br />
       <%= f.text_field :content, class:"comment-text" %>
     </div>
-      <%= @post.id %>
     <div class="facility-place-form">
       <p><%= @post.id %></p>
       <%= f.hidden_field :post_id, value: @post.id %>
