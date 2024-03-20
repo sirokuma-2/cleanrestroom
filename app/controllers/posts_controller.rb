@@ -79,7 +79,6 @@ class PostsController < ApplicationController
     @posts = Post.includes(:facility).all
     gon.posts = @posts.map do |post|
       {
-        id: post.id,
         hashId:post.hashId,
         name: post.facility.name,
         address: post.facility.address,
@@ -111,8 +110,6 @@ class PostsController < ApplicationController
   def comments_data(comments)
     comments.map do |comment|
       {
-        id: comment.id,
-        post_id: comment.post_id,
         user_id: Digest::SHA256.hexdigest(comment.user_id.to_s),
         content: comment.content,
         created_at: comment.created_at,
