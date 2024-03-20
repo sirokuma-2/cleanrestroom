@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post =Post.find_by(hashId: params[:hashId])
+    @post = Post.find_by(hashId: params[:hashId])
     @facility = @post.facility
     if @facility.update(post_params)
       redirect_to posts_path
@@ -50,8 +50,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post =Post.find_by(hashId: params[:hashId])
-    puts post
+    post = Post.find_by(hashId: params[:hashId])
     post.destroy
     redirect_to posts_path
   end
@@ -60,12 +59,12 @@ class PostsController < ApplicationController
 
   def post_params
     if params[:post_facility]
-      params.require(:post_facility).permit(:hashId,:name, :address, :content, :latitude, :longitude,
+      params.require(:post_facility).permit(:hashId, :name, :address, :content, :latitude, :longitude,
                                             :nursing_room, :anyone_toilet, :diaper_changing_station,
                                             :powder_corner, :stroller_accessible,
                                             :image).merge(user_id: current_user.id)
     elsif params[:facility]
-      params.require(:facility).permit(:hashId,:name, :address, :content, :latitude, :longitude,
+      params.require(:facility).permit(:hashId, :name, :address, :content, :latitude, :longitude,
                                        :nursing_room, :anyone_toilet, :diaper_changing_station,
                                        :powder_corner, :stroller_accessible, :image)
     end
@@ -79,7 +78,7 @@ class PostsController < ApplicationController
     @posts = Post.includes(:facility).all
     gon.posts = @posts.map do |post|
       {
-        hashId:post.hashId,
+        hashId: post.hashId,
         name: post.facility.name,
         address: post.facility.address,
         content: post.facility.content,
@@ -99,11 +98,11 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_by(hashId: params[:hashId])
-    puts @post.user_id
   end
 
   def move_to_index
     return if user_signed_in? && current_user.id == Post.find_by(hashId: params[:hashId]).user_id
+
     redirect_to action: :index
   end
 
@@ -118,5 +117,4 @@ class PostsController < ApplicationController
       }
     end
   end
-
 end

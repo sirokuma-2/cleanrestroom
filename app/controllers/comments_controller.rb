@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   def new
     # @post = Post.find(params[:post_id])
     @post = Post.find_by(hashId: params[:post_hashId])
-    puts @post.id
     @comment = Comment.new
   end
 
@@ -21,7 +20,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:rating, :content,:post_id).merge(user_id: current_user.id)
+    params.require(:comment).permit(:rating, :content, :post_id).merge(user_id: current_user.id)
   end
-
 end
