@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post =Post.find_by(hashId: params[:hashId])
     @facility = @post.facility
     if @facility.update(post_params)
       redirect_to posts_path
@@ -49,7 +50,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
+    post =Post.find_by(hashId: params[:hashId])
+    puts post
     post.destroy
     redirect_to posts_path
   end
@@ -98,6 +100,7 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find_by(hashId: params[:hashId])
+    puts @post.user_id
   end
 
   def move_to_index
