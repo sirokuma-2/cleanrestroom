@@ -3,10 +3,12 @@ require 'rails_helper'
 RSpec.describe PostFacility, type: :model do
   before do
     user = FactoryBot.create(:user)
+    post = FactoryBot.create(:post)
     facility = FactoryBot.create(:facility)
     @post_facility = FactoryBot.build(:post_facility,
                                       user_id: user.id,
                                       facility_id: facility.id,
+                                      hash_id: post.hash_id,
                                       name: facility.name,
                                       address: facility.address,
                                       content: facility.content,
@@ -45,6 +47,11 @@ RSpec.describe PostFacility, type: :model do
         @post_facility.facility_id = ''
         @post_facility.valid?
         expect(@post_facility.errors.full_messages).to include("Facility can't be blank")
+      end
+      it 'hash_idが空では登録できない' do
+        @post_facility.hash_id = ''
+        @post_facility.valid?
+        expect(@post_facility.errors.full_messages).to include("Hash can't be blank")
       end
       it 'addressが空では登録できない' do
         @post_facility.address = ''

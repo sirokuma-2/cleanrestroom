@@ -23,7 +23,7 @@
           </div>
           <div class="review-facility-name">
             <%# <%= post.facility.name %>
-            <%= link_to post.facility.name, post_path(post) %>
+            <%= link_to post.facility.name, post_path(post.hash_id) %>
           </div>
         </div>
         <div class="review-content">

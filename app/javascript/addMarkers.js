@@ -122,7 +122,7 @@ export function addMarkers(
       const Button = document.createElement("a");
       Button.className = "button-btn";
       Button.textContent = buttonText;
-      Button.href = `${baseUrl}/posts/${location.id}/edit`;
+      Button.href = `${baseUrl}/posts/${location.hash_id}/edit`;
       Button.style.display = "inline-block"; // ブロック要素のように扱う
       Button.style.backgroundColor = "#4CAF50";
       Button.style.color = "#FFFFFF";
@@ -140,7 +140,7 @@ export function addMarkers(
       const Button = document.createElement("a");
       Button.textContent = buttonText;
       Button.className = "button-btn";
-      Button.href = `${baseUrl}/posts/${location.id}/comments/new`;
+      Button.href = `${baseUrl}/posts/${location.hash_id}/comments/new`;
       Button.style.display = "inline-block"; // ブロック要素のように扱う
       Button.style.backgroundColor = "#4CAF50";
       Button.style.color = "#FFFFFF";
@@ -275,7 +275,7 @@ export function addMarkers(
 
       const contentElement2 = document.createElement("a");
       contentElement2.textContent = `(${contentText2}件の評価を見る)`;
-      contentElement2.href = `${baseUrl}/posts/${location.id}`;
+      contentElement2.href = `${baseUrl}/posts/${location.hash_id}`;
       contentElement2.style.color = "#555";
       contentElement2.style.fontSize = "16px";
       contentElement2.style.marginLeft = "5px";

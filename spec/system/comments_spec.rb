@@ -51,7 +51,7 @@ RSpec.describe 'Comments', type: :system do
     end.to change { Post.count }.by(1)
 
     # #最新のpostidを取得
-    latest_post_id = Post.last.id
+    latest_post_id = Post.last.hash_id
 
     find('a.nav_btn', text: 'ログアウト').click
     expect(page).to have_content('ログイン')
