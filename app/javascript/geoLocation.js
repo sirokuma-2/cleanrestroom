@@ -136,6 +136,7 @@ export function geoLocation(
             // マーカーと詳細情報を表示
             addMarkers(
               locations,
+              null,
               map,
               allMarkers,
               tokyoStationPos,
