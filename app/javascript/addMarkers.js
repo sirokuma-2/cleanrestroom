@@ -19,8 +19,8 @@ export function addMarkers(
     const restroomImg = document.createElement("img");
 
     restroomImg.src = restroom;
-    restroomImg.width = 50;
-    restroomImg.height = 50;
+    restroomImg.width = 75;
+    restroomImg.height = 75;
 
     // マーカーを設置する設定
     const marker = new google.maps.marker.AdvancedMarkerView({
