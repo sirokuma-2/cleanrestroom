@@ -22,6 +22,7 @@ async function initMap() {
   if (google) {
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+    const { Animation } = await google.maps.importLibrary("marker");
   }
   // gonから施設の位置情報を取得
   currentUserId = gon.current_userid;
