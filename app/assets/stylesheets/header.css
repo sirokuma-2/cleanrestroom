@@ -9,12 +9,19 @@
   justify-content: space-between;
 }
 
+.nav__left{
+  height: auto;
+}
+
 .header_btn{
-  font-size: 14px; 
-  text-align: center;
-  font-weight: bold;
+  height: 30px;
   color: #000000;
   text-decoration: none;
+}
+
+.header_btn img{
+  width: 175px;
+  height: auto;
 }
 
 .nav-right-wrapper{
@@ -60,7 +67,7 @@
 
 .nav-btn-wrapper{
   width:130px;
-  margin: 0 auto;
+  margin: 10px auto;
   background-color:#ffffff;;
   align-items: flex-end;
   position: absolute;

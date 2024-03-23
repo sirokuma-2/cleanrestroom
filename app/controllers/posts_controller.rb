@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_gons, only: [:about, :index]
   before_action :set_post, only: [:show, :edit, :update]
-  before_action :move_to_index, except: [:about, :index, :show, :new, :create]
+  before_action :move_to_index, except: [:about, :index, :show, :new, :create, :termsofuse, :privacypolicy]
 
   include Rails.application.routes.url_helpers
 
@@ -53,6 +53,12 @@ class PostsController < ApplicationController
     post = Post.find_by(hash_id: params[:hashed_id])
     post.destroy
     redirect_to posts_path
+  end
+
+  def termsofuse
+  end
+
+  def privacypolicy
   end
 
   private

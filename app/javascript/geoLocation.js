@@ -45,7 +45,7 @@ export function geoLocation(
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
   } else {
     linkButton = document.createElement("a");
-    linkButton.textContent = "最寄りのトイレを探す";
+    linkButton.textContent = "マップでトイレを探す";
     linkButton.className = "location-button";
     linkButton.href = `${baseUrl}/posts/`;
 
