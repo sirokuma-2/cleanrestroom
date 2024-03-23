@@ -78,8 +78,8 @@ export function geoLocation(
             const userPositionImg = document.createElement("img");
 
             userPositionImg.src = userPosition;
-            userPositionImg.width = 50;
-            userPositionImg.height = 50;
+            userPositionImg.width = 75;
+            userPositionImg.height = 75;
 
             //現在地のアイコンを表示
             new google.maps.marker.AdvancedMarkerView({
@@ -119,8 +119,8 @@ export function geoLocation(
             const userPositionImg = document.createElement("img");
 
             userPositionImg.src = userPosition;
-            userPositionImg.width = 50;
-            userPositionImg.height = 50;
+            userPositionImg.width = 75;
+            userPositionImg.height = 75;
 
             // 東京駅に現在地を設置
             new google.maps.marker.AdvancedMarkerView({
