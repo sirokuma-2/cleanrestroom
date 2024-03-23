@@ -2,6 +2,17 @@
   height: 85%;
 }
 
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.bounce {
+  animation: bounce 2.0s infinite;
+}
+
+
 .info-panel {
   width: 100%;
   height: 85%;

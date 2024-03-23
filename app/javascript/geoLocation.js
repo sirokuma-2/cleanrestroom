@@ -122,8 +122,10 @@ export function geoLocation(
             userPositionImg.width = 75;
             userPositionImg.height = 75;
 
+            userPositionImg.classList.add("bounce");
+
             // 東京駅に現在地を設置
-            new google.maps.marker.AdvancedMarkerView({
+            new google.maps.marker.AdvancedMarkerElement({
               position: tokyoStationPos,
               map: map,
               title: "Tokyo Station",
