@@ -10,22 +10,24 @@ export function addMarkers(
   directionsService,
   directionsRenderer,
   routeIconUrl,
+  restroom,
   dataStarOn,
   dataStarOff,
   dataStarHalf
 ) {
   locations.forEach((location) => {
-    const pinViewScaled = new google.maps.marker.PinView({
-      background: "#0000FF",
-      glyphColor: "white",
-    });
+    const restroomImg = document.createElement("img");
+
+    restroomImg.src = restroom;
+    restroomImg.width = 50;
+    restroomImg.height = 50;
 
     // マーカーを設置する設定
     const marker = new google.maps.marker.AdvancedMarkerView({
       map: map,
       position: { lat: location.latitude, lng: location.longitude },
       title: location.name,
-      content: pinViewScaled.element,
+      content: restroomImg,
     });
 
     // ここでマーカーを配列に追加

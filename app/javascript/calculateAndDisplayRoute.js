@@ -17,8 +17,6 @@ export function calculateAndDisplayRoute(
       if (status === google.maps.DirectionsStatus.OK) {
         directionsRenderer.setDirections(response);
 
-        console.log(userPos);
-
         // ルートの所要時間を取得して表示
         const durationText = response.routes[0].legs[0].duration.text;
         // ルートの中間地点を計算

@@ -48,12 +48,18 @@
 <div class="map">
   <p>\ S E A R C H /</p>
   <div class="pict">
-    <%= image_tag "map.png", class:"map-pict" %>
   </div>
 </div>
 
 <!-- ここにGoogle MapsやOpenStreetMapの埋め込みコードを挿入 -->
-<div class = "top-map" id="top-map" data-house-icon-url="<%= asset_path('house.svg') %>" data-restroom-icon-url="<%= asset_path('public.png') %>" data-route-icon-url="<%= asset_path('route.png') %>"></div>
+<div class = "top-map" id="top-map" 
+              data-userposition-icon-url="<%= asset_path('userposition.png') %>" 
+              data-restroom-icon-url="<%= asset_path('restroom.png') %>" 
+              data-route-icon-url="<%= asset_path('route.png') %>"
+              data-star-on="<%= asset_path('star-on.png') %>"
+              data-star-off="<%= asset_path('star-off.png') %>"
+              data-star-half="<%= asset_path('star-half.png') %>">
+</div>
 
 <div class="bottom-bar">
   <div class="pict">

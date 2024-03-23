@@ -9,6 +9,8 @@ let map;
 let allMarkers = []; // すべてのマーカーを保持する配列
 let directionsService; // ルートを検索するためのDirectionsServiceのインスタンス
 let directionsRenderer; // マップ上にルートを表示するためのDirectionsRendererのインスタンス
+let userPosition;
+let restroom;
 let routeIconUrl;
 let dataStarOn;
 let dataStarOff;
@@ -39,6 +41,8 @@ async function initMap() {
   }
 
   //アイコンのイメージ図
+  userPosition = mapElement.getAttribute("data-userposition-icon-url");
+  restroom = mapElement.getAttribute("data-restroom-icon-url");
   routeIconUrl = mapElement.getAttribute("data-route-icon-url");
   dataStarOn = mapElement.getAttribute("data-star-on");
   dataStarOff = mapElement.getAttribute("data-star-off");
@@ -63,6 +67,7 @@ async function initMap() {
     directionsService,
     directionsRenderer,
     routeIconUrl,
+    restroom,
     dataStarOn,
     dataStarOff,
     dataStarHalf
@@ -77,7 +82,9 @@ async function initMap() {
     allMarkers,
     directionsService,
     directionsRenderer,
+    userPosition,
     routeIconUrl,
+    restroom,
     dataStarOn,
     dataStarOff,
     dataStarHalf

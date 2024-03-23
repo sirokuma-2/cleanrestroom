@@ -14,7 +14,9 @@ export function geoLocation(
   allMarkers,
   directionsService,
   directionsRenderer,
+  userPosition,
   routeIconUrl,
+  restroom,
   dataStarOn,
   dataStarOff,
   dataStarHalf
@@ -73,11 +75,18 @@ export function geoLocation(
               lng: position.coords.longitude,
             };
 
+            const userPositionImg = document.createElement("img");
+
+            userPositionImg.src = userPosition;
+            userPositionImg.width = 50;
+            userPositionImg.height = 50;
+
             //現在地のアイコンを表示
             new google.maps.marker.AdvancedMarkerView({
               position: userPos,
               map: map,
               title: "Your Location",
+              content: userPositionImg,
             });
 
             // マップの中心を現在地に移動
@@ -93,6 +102,7 @@ export function geoLocation(
               directionsService,
               directionsRenderer,
               routeIconUrl,
+              restroom,
               dataStarOn,
               dataStarOff,
               dataStarHalf
@@ -106,11 +116,18 @@ export function geoLocation(
               lng: 139.767125,
             };
 
+            const userPositionImg = document.createElement("img");
+
+            userPositionImg.src = userPosition;
+            userPositionImg.width = 50;
+            userPositionImg.height = 50;
+
             // 東京駅に現在地を設置
             new google.maps.marker.AdvancedMarkerView({
               position: tokyoStationPos,
               map: map,
               title: "Tokyo Station",
+              content: userPositionImg,
             });
 
             // マップの中心を現在位置に移動
@@ -125,12 +142,11 @@ export function geoLocation(
               directionsService,
               directionsRenderer,
               routeIconUrl,
+              restroom,
               dataStarOn,
               dataStarOff,
               dataStarHalf
             );
-
-            console.log(tokyoStationPos);
           }
         );
       } else {
