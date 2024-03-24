@@ -64,6 +64,11 @@
   transform: rotate(-45deg);
 }
 
+.point-logo{
+  font-size: 20px;
+  text-align: center;
+}
+
 .points ul{
   margin-top: 50px;
   display: flex;
@@ -71,11 +76,9 @@
   flex-direction: column;
 }
 
-.points p{
+.point-text{
   width: 300px;
   font-size: 20px;
-  text-align: center;
-  text-align: top;
   margin-top: 25px;
 }
 
@@ -184,7 +187,12 @@
     height: 200px;
   }
 
-  .points p{
+  .point-logo{
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .point-text{
     width: 200px;
     text-align: center;
   }
@@ -218,9 +226,14 @@
     height: 200px;
   }
 
-  .points p{
-    width: 200px;
+  .point-logo{
+    font-size: 20px;
     text-align: center;
+  }
+
+  .point-text{
+    width: 200px;
+    text-align: left;
   }
 
   .points ul{
@@ -252,9 +265,14 @@
     height: 200px;
   }
 
-  .points p{
-    width: 200px;
+  .point-logo{
+    font-size: 20px;
     text-align: center;
+  }
+
+  .point-text{
+    width: 200px;
+    text-align: left;
   }
 
   .points ul{

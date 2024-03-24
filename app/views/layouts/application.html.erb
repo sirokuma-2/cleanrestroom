@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <%= javascript_importmap_tags %>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZX092C8CME"></script>
@@ -36,7 +37,7 @@
             </div>
             <div class="nav-right" id="nav-right-logged-in">
               <div class="nav-btn-wrapper">
-                <%= link_to "概要", about_path, class: :nav_btn %>
+                <%= link_to "紹介", about_path, class: :nav_btn %>
                 <%= link_to "マイページ", user_path(current_user), class: :nav_btn %>
                 <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav_btn %>
               </div>
@@ -45,13 +46,16 @@
           <% else %>
           <div class="nav-right-wrapper">
             <div class="hamburger-menu" id ="hamburger-menu-logged-in">
-                <div jsname="hyP9Qc"  aria-label="メインメニュー" aria-controls="UCqTdf" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0" jsaction="x097hd" >
-                  <svg style="fill:#70757a;width:24px;height:24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+               <div jsname="hyP9Qc"  aria-label="メインメニュー" aria-controls="UCqTdf" aria-expanded="false" aria-haspopup="true" role="button" tabindex="0" jsaction="x097hd" >
+                  <svg class="icon-hamburger" style="fill:#70757a;width:24px;height:24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+                  <svg class="icon-close" viewBox="0 0 24 24" width="24" height="24" style="display: none;">
+                    <path d="M 10,10 L 24,24 M 24,10 L 10,24" stroke="#909090" stroke-width="2"></path>
+                  </svg>
                 </div>
             </div>
             <div class="nav-right" id="nav-right-logged-out">
               <div class="nav-btn-wrapper">
-                <%= link_to "概要", about_path, class: :nav_btn %>
+                <%= link_to "紹介", about_path, class: :nav_btn %>
                 <%= link_to "新規登録", new_user_registration_path, class: :nav_btn %> 
                 <%= link_to "ログイン", new_user_session_path, class: :nav_btn %>
               </div>
@@ -64,8 +68,9 @@
      <footer class="footer">
       <div class='footer-details'>
         <ul>
-          <li><%= link_to 'サービス利用規約', termsofuse_path, class: "footer-link" %></li>
+          <li><%= link_to '利用規約', termsofuse_path, class: "footer-link" %></li>
           <li><%= link_to 'プライバシーポリシー', privacypolicy_path, class: "footer-link" %></li>
+          <li><%= link_to 'お問合わせ', "https://docs.google.com/forms/d/e/1FAIpQLSdZHfAcoKSQ20rWOP9uCd0iDXwLwMDF0PlOiftMxrp4XNgy3g/viewform", class: "footer-link" %></li>
         </ul>
       </div>
       <p class="copyright">Copyright © Qucik Clean Restroom Map  All rights reserved.</p>
