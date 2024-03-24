@@ -28,7 +28,7 @@ jobs:
       - name: Deploy to EC2
         run: |
           eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/github_actions_cleanrestroom
+          ssh-add ~/.ssh/github-actions
           BRANCH=develop bundle exec cap staging deploy
 
 
