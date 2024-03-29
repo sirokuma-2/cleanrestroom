@@ -21,7 +21,7 @@
 }
 
 .account-page .account-page__header h2 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   letter-spacing: 3px;
   font-size: 24px;
   font-weight: 200;
@@ -63,7 +63,9 @@
 
 .preview-name-image{
   width: 200px;
+  height: 200px;
   margin-top: 10px;
+  border-radius: 100%;
 }
 
 /* ログイン機能 */
