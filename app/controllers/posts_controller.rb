@@ -85,7 +85,7 @@ class PostsController < ApplicationController
     longitude_range = 139.6..139.9
     latitude_range = 35.5..35.8
 
-    @posts = Post.includes(:facility).all.where(facilities: {longitude: longitude_range, latitude: latitude_range})
+    @posts = Post.includes(:facility).all.where(facilities: { longitude: longitude_range, latitude: latitude_range })
     gon.posts = @posts.map do |post|
       {
         hash_id: post.hash_id,
