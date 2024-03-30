@@ -75,25 +75,26 @@ export function geoLocation(
               lng: position.coords.longitude,
             };
 
-            const userPositionImg = document.createElement("img");
+            if (!window.userPositionImg) {
+              window.userPositionImg = document.createElement("img");
 
-            userPositionImg.src = userPosition;
-            userPositionImg.width = 75;
-            userPositionImg.height = 75;
+              window.userPositionImg.src = userPosition;
+              window.userPositionImg.width = 75;
+              window.userPositionImg.height = 75;
 
-            userPositionImg.classList.add("bounce");
+              window.userPositionImg.classList.add("bounce");
 
-            //現在地のアイコンを表示
-            new google.maps.marker.AdvancedMarkerView({
-              position: userPos,
-              map: map,
-              title: "Your Location",
-              content: userPositionImg,
-            });
+              //現在地のアイコンを表示
+              new google.maps.marker.AdvancedMarkerView({
+                position: userPos,
+                map: map,
+                title: "Your Location",
+                content: userPositionImg,
+              });
 
-            // マップの中心を現在地に移動
-            map.setCenter(userPos);
-
+              // マップの中心を現在地に移動
+              map.setCenter(userPos);
+            }
             // マーカーと詳細情報を表示
             addMarkers(
               locations,
@@ -118,24 +119,26 @@ export function geoLocation(
               lng: 139.767125,
             };
 
-            const userPositionImg = document.createElement("img");
+            if (!window.userPositionImg) {
+              window.userPositionImg = document.createElement("img");
 
-            userPositionImg.src = userPosition;
-            userPositionImg.width = 75;
-            userPositionImg.height = 75;
+              window.userPositionImg.src = userPosition;
+              window.userPositionImg.width = 75;
+              window.userPositionImg.height = 75;
 
-            userPositionImg.classList.add("bounce");
+              window.userPositionImg.classList.add("bounce");
 
-            // 東京駅に現在地を設置
-            new google.maps.marker.AdvancedMarkerElement({
-              position: tokyoStationPos,
-              map: map,
-              title: "Tokyo Station",
-              content: userPositionImg,
-            });
+              // 東京駅に現在地を設置
+              new google.maps.marker.AdvancedMarkerElement({
+                position: tokyoStationPos,
+                map: map,
+                title: "Tokyo Station",
+                content: userPositionImg,
+              });
 
-            // マップの中心を現在位置に移動
-            map.setCenter(tokyoStationPos);
+              // マップの中心を現在位置に移動
+              map.setCenter(tokyoStationPos);
+            }
 
             // マーカーと詳細情報を表示
             addMarkers(
