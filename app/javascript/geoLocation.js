@@ -81,6 +81,8 @@ export function geoLocation(
             userPositionImg.width = 75;
             userPositionImg.height = 75;
 
+            userPositionImg.classList.add("bounce");
+
             //現在地のアイコンを表示
             new google.maps.marker.AdvancedMarkerView({
               position: userPos,
