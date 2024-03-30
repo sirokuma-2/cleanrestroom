@@ -82,8 +82,8 @@ class PostsController < ApplicationController
     gon.current_userid = Digest::SHA256.hexdigest(current_user.id.to_s) if user_signed_in?
 
     # 表示範囲の制限
-    longitude_range = 139.6..139.9
-    latitude_range = 35.5..35.8
+    longitude_range = 139..140
+    latitude_range = 35..36
 
     @posts = Post.includes(:facility).all.where(facilities: { longitude: longitude_range, latitude: latitude_range })
     gon.posts = @posts.map do |post|
