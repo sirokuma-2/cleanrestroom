@@ -37,7 +37,8 @@
             </div>
             <div class="nav-right" id="nav-right-logged-in">
               <div class="nav-btn-wrapper">
-                <input type="text" class="nav_btn" id="keyword"><button id="search">検索</button>
+                <input type="text" id="keyword" class="search-form">
+                <button id="search" class="">検索</button>
                 <%= link_to "紹介", about_path, class: :nav_btn %>
                 <%= link_to "マイページ", user_path(current_user), class: :nav_btn %>
                 <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav_btn %>
