@@ -2,21 +2,6 @@ import { addMarkers } from "addMarkers";
 import { geoLocation } from "geoLocation";
 import { clickListener } from "clickListener";
 
-let locations; //すべての施設の位置
-let currentUserId;
-let mapElement;
-let map;
-let allMarkers = []; // すべてのマーカーを保持する配列
-let directionsService; // ルートを検索するためのDirectionsServiceのインスタンス
-let directionsRenderer; // マップ上にルートを表示するためのDirectionsRendererのインスタンス
-let userPosition;
-let restroom;
-let routeIconUrl;
-let dataStarOn;
-let dataStarOff;
-let dataStarHalf;
-
-//非同期関数　マップの初期化
 async function initMap() {
   //Google Mapsライブラリを非同期にインポート　　Mapクラス
   if (google) {
@@ -25,13 +10,14 @@ async function initMap() {
     const { Animation } = await google.maps.importLibrary("marker");
   }
   // gonから施設の位置情報を取得
-  currentUserId = gon.current_userid;
+  let currentUserId = gon.current_userid;
 
-  locations = gon.posts;
+  let locations = gon.posts;
 
-  mapElement =
+  let mapElement =
     document.getElementById("top-map") || document.getElementById("map");
 
+  let map;
   if (mapElement) {
     map = new google.maps.Map(mapElement, {
       zoom: 16,
@@ -42,21 +28,24 @@ async function initMap() {
   }
 
   //アイコンのイメージ図
-  userPosition = mapElement.getAttribute("data-userposition-icon-url");
-  restroom = mapElement.getAttribute("data-restroom-icon-url");
-  routeIconUrl = mapElement.getAttribute("data-route-icon-url");
-  dataStarOn = mapElement.getAttribute("data-star-on");
-  dataStarOff = mapElement.getAttribute("data-star-off");
-  dataStarHalf = mapElement.getAttribute("data-star-half");
+  let userPosition = mapElement.getAttribute("data-user-position-icon-url");
+  let restroom = mapElement.getAttribute("data-restroom-icon-url");
+  let routeIconUrl = mapElement.getAttribute("data-route-icon-url");
+  let dataStarOn = mapElement.getAttribute("data-star-on");
+  let dataStarOff = mapElement.getAttribute("data-star-off");
+  let dataStarHalf = mapElement.getAttribute("data-star-half");
 
   //ルート検索機能
-  directionsService = new google.maps.DirectionsService(); //ルートを検索するためのインスタンス
-  directionsRenderer = new google.maps.DirectionsRenderer(); //マップにルートを表示するためのインスタンス
+  let directionsService = new google.maps.DirectionsService();
+  let directionsRenderer = new google.maps.DirectionsRenderer();
 
+  //東京駅の緯度経度
   const tokyoStationPos = {
     lat: 35.681236,
     lng: 139.767125,
   };
+
+  let allMarkers = []; // すべてのマーカーを保持する配列
 
   //まずは施設情報をすべて表示
   addMarkers(
