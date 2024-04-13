@@ -7,7 +7,6 @@ import "geoLocation";
 import "calculateAndDisplayRoute";
 import "clickListener";
 import "handleLocationError";
-import "search";
 import "menu";
 import "preview";
 import "previewName";
