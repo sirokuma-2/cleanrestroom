@@ -50,7 +50,6 @@ export function geoLocation(
     linkButton.href = `${baseUrl}/posts/`;
 
     // ボタンをページに追加
-
     linkButton.style.backgroundColor = "#4CAF50";
     linkButton.style.color = "#FFFFFF";
     linkButton.style.fontSize = "16px";
