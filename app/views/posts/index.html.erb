@@ -29,7 +29,7 @@
         b = window;
       b = b[c] || (b[c] = {});
       var d = b.maps || (b.maps = {}),
-        r = new Set(),
+        r = new Set(['places']),  //検索ボタン用
         e = new URLSearchParams(),
         u = () =>
           h ||
