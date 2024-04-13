@@ -206,48 +206,10 @@
   }
 }
 
-@media (min-width:700px){
-  body{
-    width: 90%;
-    margin: auto;
-  }
-
-  .top-bar h1{
-    width:100%;
-  }
-  
-  .top-bar p{
-    width: 75%;
-    font-size: 20px;
-  }
-
-  .point-pict{
-    width: 200px;
-    height: 200px;
-  }
-
-  .point-logo{
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .point-text{
-    width: 200px;
-    text-align: left;
-  }
-
-  .points ul{
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-  }
-}
 
 @media (min-width:1024px){
   body{
-    width: 65%;
+    width: 75%;
     margin: auto;
   }
 
