@@ -151,5 +151,6 @@ async function initMap() {
 document.addEventListener("turbo:load", () => {
   if (document.getElementById("top-map") || document.getElementById("map")) {
     initMap();
+    window.userPositionImg = null; //ページ間で遷移すると一旦nullにする
   }
 });
