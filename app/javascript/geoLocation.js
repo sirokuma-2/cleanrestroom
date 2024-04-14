@@ -47,7 +47,7 @@ export function geoLocation(
     linkButton = document.createElement("a");
     linkButton.textContent = "最寄りのトイレを探す";
     linkButton.className = "location-button";
-    linkButton.href = `${baseUrl}/posts/`;
+    linkButton.href = `${baseUrl}`;
 
     // ボタンをページに追加
     linkButton.style.backgroundColor = "#4CAF50";
