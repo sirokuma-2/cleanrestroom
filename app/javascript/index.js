@@ -45,6 +45,8 @@ async function initMap() {
           map.setCenter(results[0].geometry.location);
         }
       });
+
+      document.body.style.zoom = "1.0";
     });
   }
 
