@@ -89,6 +89,7 @@ export function geoLocation(
                 map: map,
                 title: "Your Location",
                 content: userPositionImg,
+                zIndex: 1,
               });
 
               // マップの中心を現在地に移動
@@ -133,6 +134,7 @@ export function geoLocation(
                 map: map,
                 title: "Tokyo Station",
                 content: userPositionImg,
+                zIndex: 1,
               });
 
               // マップの中心を現在位置に移動
