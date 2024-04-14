@@ -30,7 +30,7 @@ async function initMap() {
   //検索ボタン
   document.getElementById("search").addEventListener("click", function () {
     let keyword = document.getElementById("keyword").value;
-    console.log("keyword");
+
     let request = {
       query: keyword,
       fields: ["name", "geometry"],
