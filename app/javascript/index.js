@@ -28,22 +28,25 @@ async function initMap() {
   }
 
   //検索ボタン
-  document.getElementById("search").addEventListener("click", function () {
-    let keyword = document.getElementById("keyword").value;
+  let searchButton = document.getElementById("search");
+  if (searchButton) {
+    searchButton.addEventListener("click", function () {
+      let keyword = document.getElementById("keyword").value;
 
-    let request = {
-      query: keyword,
-      fields: ["name", "geometry"],
-    };
+      let request = {
+        query: keyword,
+        fields: ["name", "geometry"],
+      };
 
-    let service = new google.maps.places.PlacesService(map);
+      let service = new google.maps.places.PlacesService(map);
 
-    service.findPlaceFromQuery(request, function (results, status) {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-      }
+      service.findPlaceFromQuery(request, function (results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+        }
+      });
     });
-  });
+  }
 
   //アイコンのイメージ図
   let userPosition = mapElement.getAttribute("data-user-position-icon-url");
