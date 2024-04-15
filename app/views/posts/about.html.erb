@@ -59,7 +59,7 @@
               data-star-on="<%= asset_path('star-on.png') %>"
               data-star-off="<%= asset_path('star-off.png') %>"
               data-star-half="<%= asset_path('star-half.png') %>">
-</d>
+</div>
 
 <div class="bottom-bar">
   <div class="pict">
@@ -70,7 +70,7 @@
 
 
 <script>
-  
+
  if (typeof window.googlemapKey === 'undefined') {
   window.googlemapKey = gon.googlemap_key;
   }
@@ -125,15 +125,14 @@
   };
   <!-- マップの表示 -->
 
-document.addEventListener('turbo:load', () => {
-  // マップを表示するDOM要素の存在をチェック
-  const mapElement = document.getElementById('top-map'); 
+  document.addEventListener('turbo:load', () => {
+    // マップを表示するDOM要素の存在をチェック
+    const mapElement = document.getElementById('top-map'); 
 
-  // DOM要素が存在する場合のみマップを初期化
-  if (mapElement) {
-    loadGoogleMapsAPI(); // マップを初期化する関数を呼び出し
-  }
+    // DOM要素が存在する場合のみマップを初期化
+    if (mapElement) {
+      loadGoogleMapsAPI(); // マップを初期化する関数を呼び出し
+    }
 
-});
-
+  });
 </script>
