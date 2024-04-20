@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def create
     @post_facility = PostFacility.new(post_params)
     if @post_facility.save
-      redirect_to posts_path
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(hash_id: params[:hashed_id])
     @facility = @post.facility
     if @facility.update(post_params)
-      redirect_to posts_path
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find_by(hash_id: params[:hashed_id])
     post.destroy
-    redirect_to posts_path
+    redirect_to root_path
   end
 
   def termsofuse
