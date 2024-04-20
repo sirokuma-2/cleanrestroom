@@ -42,31 +42,18 @@ export function addMarkers(
         : "https://cleanrestrooms.net";
 
     //post_facilityテーブルからの情報を定義
-    let name,
-      address,
-      content,
-      nursing_room,
-      anyone_toilet,
-      diaper_changing_station,
-      powder_corner,
-      stroller_accessible,
-      imageUrl,
-      averageRating,
-      countRating,
-      userId,
-      currentUserId2;
 
-    name = location.name;
-    address = location.address;
-    content = location.content;
-    nursing_room = location.nursing_room;
-    anyone_toilet = location.anyone_toilet;
-    diaper_changing_station = location.diaper_changing_station;
-    powder_corner = location.powder_corner;
-    stroller_accessible = location.stroller_accessible;
-    imageUrl = location.image;
-    userId = location.userId;
-    currentUserId2 = currentUserId;
+    let name = location.name;
+    let address = location.address;
+    let content = location.content;
+    let nursing_room = location.nursing_room;
+    let anyone_toilet = location.anyone_toilet;
+    let diaper_changing_station = location.diaper_changing_station;
+    let powder_corner = location.powder_corner;
+    let stroller_accessible = location.stroller_accessible;
+    let imageUrl = location.image;
+    let userId = location.userId;
+    let currentUserId2 = currentUserId;
 
     // 閉じるボタン関数の作成
     function addCloseButton(parentElement) {
