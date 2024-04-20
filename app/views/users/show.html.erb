@@ -23,7 +23,7 @@
               <%= image_tag post.facility.image.url , class: "review-user-image-pic" if post.facility.image.url.present? %>
             </div>
             <div class="review-facility-name">
-              <%= link_to post.facility.name, post_path(post.hash_id) %>
+              <%= link_to post.facility.name, post_path(post.hash_id), data: { turbo_frame: "_top" }%>
             </div>
           </div>
           <div class="review-content">
