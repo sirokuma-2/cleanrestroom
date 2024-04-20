@@ -63,7 +63,7 @@ class PostsController < ApplicationController
 
   private
 
-  #postテーブルと#facilityテーブルの複合テーブルのため
+  # postテーブルと#facilityテーブルの複合テーブルのため
   def post_params
     # new用
     if params[:post_facility]
@@ -116,6 +116,7 @@ class PostsController < ApplicationController
 
   def move_to_index
     return if user_signed_in? && current_user.id == Post.find_by(hash_id: params[:hashed_id]).user_id
+
     redirect_to action: :index
   end
 
