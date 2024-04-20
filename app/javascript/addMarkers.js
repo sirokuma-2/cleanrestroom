@@ -378,13 +378,14 @@ export function addMarkers(
         return acc + comment.rating;
       }, 0);
 
+      let averageRating;
       if (location.comment.length) {
         averageRating = (totalRating / location.comment.length).toFixed(1);
       } else {
         averageRating = 0;
       }
 
-      countRating = location.comment.length;
+      let countRating = location.comment.length;
 
       addItemReview("レビュー", averageRating, countRating);
 
