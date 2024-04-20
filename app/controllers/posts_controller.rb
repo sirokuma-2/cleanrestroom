@@ -63,12 +63,15 @@ class PostsController < ApplicationController
 
   private
 
+  # postテーブルと#facilityテーブルの複合テーブルのため
   def post_params
+    # new用
     if params[:post_facility]
       params.require(:post_facility).permit(:hash_id, :name, :address, :content, :latitude, :longitude,
                                             :nursing_room, :anyone_toilet, :diaper_changing_station,
                                             :powder_corner, :stroller_accessible,
                                             :image).merge(user_id: current_user.id)
+    # edit用
     elsif params[:facility]
       params.require(:facility).permit(:hash_id, :name, :address, :content, :latitude, :longitude,
                                        :nursing_room, :anyone_toilet, :diaper_changing_station,
@@ -81,11 +84,12 @@ class PostsController < ApplicationController
 
     gon.current_userid = Digest::SHA256.hexdigest(current_user.id.to_s) if user_signed_in?
 
-    # 表示範囲の制限
-    longitude_range = 139..140
-    latitude_range = 35..36
+    # 表示範囲の制限　日本のみ
+    longitude_range = 122..153
+    latitude_range = 20..45
 
     @posts = Post.includes(:facility).all.where(facilities: { longitude: longitude_range, latitude: latitude_range })
+
     gon.posts = @posts.map do |post|
       {
         hash_id: post.hash_id,

@@ -8,7 +8,6 @@
 </div>
 
 <div class="search">
-  <!-- 検索バーの実装はここに入れます -->
   <%= link_to "最寄りのトイレを探す", root_path, class:"search-btn"%>
 </div>
 
@@ -16,7 +15,6 @@
   <ul>
     <li>
      <div class="point">
-      <!-- アイコンとテキストの実装 -->
       <p class="point-logo">\ P O I N T 1 /</p>
       <%= image_tag "point1.png", class:"point-pict" %>
       <p class="point-text">あなたの現在位置から近い清潔なトイレをすぐに見つけることができます。
@@ -25,7 +23,6 @@
     </li>
     <li>
      <div class="point">
-      <!-- アイコンとテキストの実装 -->
       <p class="point-logo">\ P O I N T 2 /</p>
       <%= image_tag "point2.png", class:"point-pict" %>
       <p class="point-text">ナビゲーション機能を使って、迷うことなく直接トイレまで案内します。
@@ -34,7 +31,6 @@
     </li>
     <li>
      <div class="point">
-      <!-- アイコンとテキストの実装 -->
       <p class="point-logo">\ P O I N T 3 /</p>
       <%= image_tag "point3.png", class:"point-pict" %>
       <p class="point-text">自分が訪れたきれいなトイレを新たに登録することができます。
@@ -44,14 +40,12 @@
   </ul>
 </div>
 
-
 <div class="map">
   <p class="point-logo">\ S E A R C H /</p>
   <div class="pict">
   </div>
 </div>
 
-<!-- ここにGoogle MapsやOpenStreetMapの埋め込みコードを挿入 -->
 <div class = "top-map" id="top-map" 
               data-userposition-icon-url="<%= asset_path('userposition.png') %>" 
               data-restroom-icon-url="<%= asset_path('restroom.png') %>" 
@@ -67,10 +61,7 @@
   </div>
 </div>
 
-
-
 <script>
-
  if (typeof window.googlemapKey === 'undefined') {
   window.googlemapKey = gon.googlemap_key;
   }
@@ -123,16 +114,14 @@
       v: "beta",
     });
   };
+  
   <!-- マップの表示 -->
-
   document.addEventListener('turbo:load', () => {
-    // マップを表示するDOM要素の存在をチェック
     const mapElement = document.getElementById('top-map'); 
 
     // DOM要素が存在する場合のみマップを初期化
     if (mapElement) {
       loadGoogleMapsAPI(); // マップを初期化する関数を呼び出し
     }
-
   });
 </script>

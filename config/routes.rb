@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'posts#index'
+  root 'posts#index'
   get 'about', to: 'posts#about'
   get 'termsofuse', to: 'posts#termsofuse'
   get 'privacypolicy', to: 'posts#privacypolicy'
