@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def new
-    # @post = Post.find(params[:post_id])
     @post = Post.find_by(hash_id: params[:post_hashed_id])
     @comment = Comment.new
   end
@@ -11,7 +10,7 @@ class CommentsController < ApplicationController
     @post = Post.find_by(hash_id: params[:post_hashed_id])
     @comment = Comment.new(comment_params)
     if Comment.create(comment_params)
-      redirect_to "/posts/#{@comment.post.hash_id}" # コメントと結びつくツイートの詳細画面に遷移する
+      redirect_to "/posts/#{@comment.post.hash_id}"
     else
       render :new, status: :unprocessable_entity
     end
