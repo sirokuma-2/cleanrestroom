@@ -69,7 +69,7 @@ async function initMap() {
 
   let allMarkers = []; // すべてのマーカーを保持する配列
 
-  //まずは施設情報をすべて表示
+  //ページを開いた時点で施設情報をすべて表示
   addMarkers(
     locations,
     currentUserId,
@@ -85,7 +85,7 @@ async function initMap() {
     dataStarHalf
   );
 
-  //現在地と施設情報の表示
+  //現在地を表示
   geoLocation(
     locations,
     currentUserId,

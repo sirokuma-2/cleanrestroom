@@ -5,7 +5,7 @@ let userPos;
 let locationButton;
 let linkButton;
 
-// GPSで現在地を表示　現在地にhouseアイコンを表示　マーカーと詳細情報を表示
+// GPSで現在地を表示　現在地にuserPositionアイコンを表示　マーカーと詳細情報を表示
 export function geoLocation(
   locations,
   current_userId,
@@ -27,12 +27,12 @@ export function geoLocation(
       : "https://cleanrestrooms.net";
 
   if (mapElement.id === "map") {
-    //現在地を取得するボタン プライバシー確保のため現在地をいきなり表示できない
+    //現在地を取得するボタン プライバシー確保のため現在地をいきなり表示できないため
     locationButton = document.createElement("button");
     locationButton.className = "location-button";
     locationButton.textContent = "最寄りのトイレを探す";
 
-    // ボタンをページに追加
+    // ボタンをページに追加 topページ用
     locationButton.style.backgroundColor = "#4CAF50";
     locationButton.style.color = "#FFFFFF";
     locationButton.style.fontSize = "16px";
@@ -47,9 +47,11 @@ export function geoLocation(
     linkButton = document.createElement("a");
     linkButton.textContent = "最寄りのトイレを探す";
     linkButton.className = "location-button";
+
+    //紹介ページからトップページにリンクを飛ばすため
     linkButton.href = `${baseUrl}`;
 
-    // ボタンをページに追加
+    // ボタンをページに追加 紹介ページ用
     linkButton.style.backgroundColor = "#4CAF50";
     linkButton.style.color = "#FFFFFF";
     linkButton.style.fontSize = "16px";
@@ -69,18 +71,16 @@ export function geoLocation(
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
+            //現在地を取得できる場合
             userPos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
             };
-
             if (!window.userPositionImg) {
               window.userPositionImg = document.createElement("img");
-
               window.userPositionImg.src = userPosition;
               window.userPositionImg.width = 75;
               window.userPositionImg.height = 75;
-
               window.userPositionImg.classList.add("bounce");
 
               //現在地のアイコンを表示
@@ -92,7 +92,6 @@ export function geoLocation(
                 zIndex: 1,
               });
 
-              // マップの中心を現在地に移動
               map.setCenter(userPos);
             }
             // マーカーと詳細情報を表示
@@ -112,8 +111,7 @@ export function geoLocation(
             );
           },
           () => {
-            // 現在地の取得に失敗した場合の処理
-            // 東京駅の座標
+            // 現在地を取得できない場合
             const tokyoStationPos = {
               lat: 35.681236,
               lng: 139.767125,
@@ -121,11 +119,9 @@ export function geoLocation(
 
             if (!window.userPositionImg) {
               window.userPositionImg = document.createElement("img");
-
               window.userPositionImg.src = userPosition;
               window.userPositionImg.width = 75;
               window.userPositionImg.height = 75;
-
               window.userPositionImg.classList.add("bounce");
 
               // 東京駅に現在地を設置
@@ -137,7 +133,6 @@ export function geoLocation(
                 zIndex: 1,
               });
 
-              // マップの中心を現在位置に移動
               map.setCenter(tokyoStationPos);
             }
 
@@ -159,7 +154,6 @@ export function geoLocation(
           }
         );
       } else {
-        //handleLocationErrorの設定
         handleLocationError(false, map.getCenter());
       }
     });
