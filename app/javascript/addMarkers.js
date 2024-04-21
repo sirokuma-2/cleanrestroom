@@ -2,7 +2,7 @@ import { calculateAndDisplayRoute } from "calculateAndDisplayRoute";
 import { initializeRaty } from "ratingStar";
 
 export function addMarkers(
-  locations,
+  filteredLocations,
   currentUserId,
   map,
   allMarkers,
@@ -15,7 +15,7 @@ export function addMarkers(
   dataStarOff,
   dataStarHalf
 ) {
-  locations.forEach((location) => {
+  filteredLocations.forEach((location) => {
     const restroomImg = document.createElement("img");
 
     restroomImg.src = restroom;
